@@ -1,9 +1,7 @@
+import Cart from "./pages/05-cart/Cart";
+
 function App() {
-    return (
-        <>
-            <h1 className="text-red-500">jsd9-catsudon-frontend</h1>
-        </>
-    );
+    return <Cart />;
 }
 
 export default App;
