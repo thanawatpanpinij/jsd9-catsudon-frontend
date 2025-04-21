@@ -2,78 +2,73 @@
 @import "tailwindcss";
 
 @theme {
-  /* color */
-  --color-primary: #2b8c32;
-  --color-secondary: #d94343;
-  --color-third: #031818;
-  --color-fourth: #f29f05;
-  --color-dark: #0d0c0b;
-  --color-dark-grey: #262626;
-  --color-grey: #484848;
-  --color-light-grey: #f0efed;
-  --color-light: #ededee;
-  --color-white: #fff;
-  --color-primary-background: #cff2cf;
-  --color-secondary-background: #f2cb9b;
+    /* color */
+    --color-primary: #2b8c32;
+    --color-secondary: #d94343;
+    --color-third: #031818;
+    --color-fourth: #f29f05;
+    --color-dark: #0d0c0b;
+    --color-dark-grey: #262626;
+    --color-grey: #bab4b4;
+    --color-bright-grey: #e9e9e9;
+    --color-light-grey: #f0efed;
+    --color-light: #ededee;
+    --color-white: #fff;
+    --color-primary-background: #cff2cf;
+    --color-secondary-background: #f2cb9b;
 
-  /* font and typography */
-  --font-poppins: "Poppins", sans-serif;
-  --text-heading01-size: 4.75rem; /* 76px */
-  --text-heading02-size: 3rem; /* 48px */
-  --text-heading03-size: 2rem; /* 40px */
-  --text-large-size: 2rem; /* 32px */
-  --text-medium-size: 1.5rem; /* 24px */
-  --text-normal-size: 1.25rem; /* 20px */
-  --text-base-size: 1rem; /* 16px */
-  --text-small-size: 0.75rem; /* 12px */
+    /* font and typography */
+    --font-poppins: "Poppins", sans-serif;
+    --text-heading01-size: 4.75rem; /* 76px */
+    --text-heading02-size: 3rem; /* 48px */
+    --text-heading03-size: 2rem; /* 40px */
+    --text-large-size: 2rem; /* 32px */
+    --text-medium-size: 1.5rem; /* 24px */
+    --text-normal-size: 1.25rem; /* 20px */
+    --text-base-size: 1rem; /* 16px */
+    --text-small-size: 0.75rem; /* 12px */
 
-  /* font weight */
-  --font-weight-regular-weight: 400;
-  --font-weight-medium-weight: 500;
-  --font-weight-semibold-weight: 600;
-  --font-weight-bold-weight: 700;
-
-  /* breakpoint */
-  --breakpoint-320px: 320px;
-  --breakpoint-350px: 350px;
-  --breakpoint-576px: 576px;
-  --breakpoint-767px: 767px;
-  --breakpoint-1023px: 1023px;
-  --breakpoint-1440px: 1440px;
-  --breakpoint-2048px: 2048px;
-  --breakpoint-3840px: 3840px;
+    /* breakpoint */
+    --breakpoint-320px: 320px;
+    --breakpoint-350px: 350px;
+    --breakpoint-576px: 576px;
+    --breakpoint-767px: 767px;
+    --breakpoint-1023px: 1023px;
+    --breakpoint-1440px: 1440px;
+    --breakpoint-2048px: 2048px;
+    --breakpoint-3840px: 3840px;
 }
 
 /* For traditional CSS Developer */
 :root {
-  /* color */
-  --primary-color: #2b8c32;
-  --secondary-color: #d94343;
-  --third-color: #031818;
-  --fourth-color: #f29f05;
-  --dark-color: #0d0c0b;
-  --dark-grey-color: #262626;
-  --grey-color: #484848;
-  --light-grey-color: #f0efed;
-  --light-color: #ededee;
-  --white-color: #ffffff;
-  --pฺrimary-background-color: #cff2cf;
-  --secondary-background-color: #f2cb9b;
+    /* color */
+    --primary-color: #2b8c32;
+    --secondary-color: #d94343;
+    --third-color: #031818;
+    --fourth-color: #f29f05;
+    --dark-color: #0d0c0b;
+    --dark-grey-color: #262626;
+    --grey-color: #484848;
+    --light-grey-color: #f0efed;
+    --light-color: #ededee;
+    --white-color: #ffffff;
+    --pฺrimary-background-color: #cff2cf;
+    --secondary-background-color: #f2cb9b;
 
-  /* font and typography */
-  --body-font: "Poppins", sans-serif;
-  --heading01-font-size: 4.75rem; /*76px*/
-  --heading02-font-size: 3rem; /*48px*/
-  --heading03-font-size: 2.5rem; /*40px*/
-  --large-font-size: 2rem; /*32px*/
-  --medium-font-size: 1.5rem; /*24px*/
-  --normal-font-size: 1.25rem; /*20px*/
-  --small-font-size: 1rem; /*16px*/
-  --smaller-font-size: 0.75rem; /*12px*/
+    /* font and typography */
+    --body-font: "Poppins", sans-serif;
+    --heading01-font-size: 4.75rem; /*76px*/
+    --heading02-font-size: 3rem; /*48px*/
+    --heading03-font-size: 2.5rem; /*40px*/
+    --large-font-size: 2rem; /*32px*/
+    --medium-font-size: 1.5rem; /*24px*/
+    --normal-font-size: 1.25rem; /*20px*/
+    --small-font-size: 1rem; /*16px*/
+    --smaller-font-size: 0.75rem; /*12px*/
 
-  /* font weight */
-  --regular-weight: 400;
-  --medium-weight: 500;
-  --semibold-weight: 600;
-  --bold-weight: 700;
+    /* font weight */
+    --regular-weight: 400;
+    --medium-weight: 500;
+    --semibold-weight: 600;
+    --bold-weight: 700;
 }

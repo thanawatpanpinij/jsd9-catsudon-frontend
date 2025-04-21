@@ -13,27 +13,27 @@ import DashboardPage from "./pages/09-dashboard/DashboardPage.jsx";
 import AboutUsPage from "./pages/05-about-us/AboutUsPage.jsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: Layout,
-    children: [
-      { index: true, Component: HomePage },
-      { path: "/menus", Component: MenusPage },
-      { path: "/menus/:slug", Component: MenuDetail },
-      { path: "/calories-calculator", Component: CaloriesCalculatorPage },
-      { path: "/blog", Component: BlogPage },
-      { path: "/blog/:name", Component: BlogDetail },
-      { path: "/checkout", Component: CheckoutPage },
-      { path: "/edit-information", Component: EditInformationPage },
-      { path: "/dashboard", Component: DashboardPage },
-      { path: "/about-us", Component: AboutUsPage },
-    ],
-  },
-  { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },
+    {
+        path: "/",
+        Component: Layout,
+        children: [
+            { index: true, Component: HomePage },
+            { path: "/menus", Component: MenusPage },
+            { path: "/menus/:slug", Component: MenuDetail },
+            { path: "/calories-calculator", Component: CaloriesCalculatorPage },
+            { path: "/blog", Component: BlogPage },
+            { path: "/blog/:slug", Component: BlogDetail },
+            { path: "/checkout", Component: CheckoutPage },
+            { path: "/edit-information", Component: EditInformationPage },
+            { path: "/dashboard", Component: DashboardPage },
+            { path: "/about-us", Component: AboutUsPage },
+        ],
+    },
+    { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+    return <RouterProvider router={router} />;
 }
 
 export default App;
