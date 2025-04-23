@@ -3,7 +3,7 @@ import { RiGeminiFill } from "react-icons/ri";
 import styles from "./textScroller.module.css";
 
 const message = "Grab your deal – up to 10% off! Hurry, it won’t last!";
-const repeatCount = 6;
+const repeatCount = 10;
 
 const TextScroller = () => {
   return (
