@@ -22,17 +22,17 @@ const Footer = () => {
                 alt="logo"
               />
             </div>
-            <ul className="text-sm space-y-6 text-small-size">
-              <li className="flex items-center gap-2">
+            <ul className="space-y-6 text-base md:text-small-size lg:text-base">
+              <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-all duration-200">
                 <MdLocationOn className="text-lg" /> Bangkok, Thailand
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-all duration-200">
                 <MdPhone className="text-lg" /> +66 5696 6969
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-all duration-200">
                 <MdEmail className="text-lg" /> calnoy@gmail.com
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-all duration-200">
                 <MdAccessTime className="text-lg" /> 10:00 - 18:00, Mon - Sat
               </li>
             </ul>
@@ -41,22 +41,30 @@ const Footer = () => {
           {/* Account */}
           <div>
             <h3 className="text-base font-semibold mb-5">Account</h3>
-            <ul className="space-y-5 text-small-size">
-              <li>Sign In</li>
-              <li>View Cart</li>
-              <li>My Order</li>
-              <li>Meal Plans</li>
+            <ul className="space-y-5 text-base md:text-small-size lg:text-base">
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                Sign In
+              </li>
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                View Cart
+              </li>
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                My Order
+              </li>
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                Meal Plans
+              </li>
             </ul>
           </div>
 
           {/*Company */}
           <div>
             <h3 className="text-base font-semibold mb-5">Company</h3>
-            <ul className="space-y-5 text-small-size">
-              <li>About Us</li>
-              <li>Privacy Policy</li>
-              <li>Terms & Conditions</li>
-              <li>Help</li>
+            <ul className="space-y-5 text-base md:text-small-size lg:text-base">
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">About Us</li>
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">Privacy Policy</li>
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">Terms & Conditions</li>
+              <li className="cursor-pointer hover:text-primary transition-all duration-200">Help</li>
             </ul>
           </div>
 
@@ -65,7 +73,7 @@ const Footer = () => {
             {/* Payment Methods */}
             <div>
               <h3 className="text-base font-semibold mb-5">Payment</h3>
-              <ul className="flex gap-2 mb-5">
+              <ul className="flex gap-2 mb-10">
                 <li>
                   <img
                     className="w-[50px] h-[50px]"
@@ -101,16 +109,16 @@ const Footer = () => {
                 <h3 className="text-base font-semibold mb-5">Follow us</h3>
                 <ul className="flex gap-2">
                   <li>
-                    <RiLineFill className="text-medium-size transition-transform duration-200 hover:scale-125" />
+                    <RiLineFill className="text-large-size cursor-pointer transition-transform duration-300 hover:scale-125 hover:text-primary" />
                   </li>
                   <li>
-                    <RiFacebookCircleFill className="text-medium-size transition-transform duration-200 hover:scale-125" />
+                    <RiFacebookCircleFill className="text-large-size cursor-pointer transition-transform duration-300 hover:scale-125 hover:text-primary" />
                   </li>
                   <li>
-                    <RiInstagramFill className="text-medium-size transition-transform duration-200 hover:scale-125" />
+                    <RiInstagramFill className="text-large-size cursor-pointer transition-transform duration-300 hover:scale-125 hover:text-primary" />
                   </li>
                   <li>
-                    <RiPinterestFill className="text-medium-size transition-transform duration-200 hover:scale-125" />
+                    <RiPinterestFill className="text-large-size cursor-pointer transition-transform duration-300 hover:scale-125 hover:text-primary" />
                   </li>
                 </ul>
               </div>
@@ -125,7 +133,7 @@ const Footer = () => {
       </div>
 
       {/* Fixed TextScroller */}
-      <div className="fixed bottom-0 left-0 w-full z-50">
+      <div className="bottom-0 left-0 w-full z-50">
         <TextScroller />
       </div>
     </div>
