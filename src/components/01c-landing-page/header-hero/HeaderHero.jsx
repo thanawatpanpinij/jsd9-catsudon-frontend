@@ -26,7 +26,7 @@ const HeaderHero = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 w-full px-[32px] max-w-[1440px] mx-auto mt-[48px] gap-[32px] max-[843px]:grid-cols-1 max-[843px]:justify-center">
+    <section className="grid grid-cols-2 w-full px-[32px] mb-[56px] max-w-[1440px] mx-auto mt-[48px] gap-[32px] max-[843px]:grid-cols-1 max-[843px]:justify-center">
       <div className="flex flex-col items-center w-full">
         <div className="w-full">
           <div className="relative max-[843px]:text-center">
@@ -59,8 +59,8 @@ const HeaderHero = () => {
           clean eating easier and more accessible than ever.
         </p>
 
-        <div className="flex items-center max-[843px]:flex-col mt-[40px] gap-[12px] w-full max-[843px]:w-fit">
-          <button className="bg-primary px-8 h-[60px] rounded-full text-normal-size text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200">
+        <div className="flex items-center max-[843px]:flex-col mt-[50px] gap-[12px] w-full max-[843px]:w-fit">
+          <button className="bg-primary px-8 h-[60px] rounded-full text-base text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200">
             Calorie Calculator
           </button>
 
@@ -99,7 +99,7 @@ const HeaderHero = () => {
           <Swiper
             onSwiper={setSwiperInstance}
             slidesPerView={3}
-            spaceBetween={32}
+            spaceBetween={20}
             centeredSlides={true}
             loop={true}
             speed={1000}
@@ -121,26 +121,26 @@ const HeaderHero = () => {
             ].map((item, index) => (
               <SwiperSlide
                 key={index}
-                className={`flex justify-center items-center w-auto py-[15px] ${
+                className={`flex justify-center items-center w-auto py-[20px] ${
                   swiperInstance?.realIndex === index ? styles.activeSlide : ""
                 }`}
               >
                 <article
                   className={`flex flex-col items-center justify-center max-[393px]:py-2 px-1 py-3 w-auto rounded-full ${item.bgColor} transition-all duration-300`}
                 >
-                  <div className="bg-white rounded-full w-[70px] h-[70px] flex justify-center items-center max-[393px]:w-[55px] max-[393px]:h-[55px]">
+                  <div className="bg-white rounded-full w-[80px] h-[80px] flex justify-center items-center max-[393px]:w-[55px] max-[393px]:h-[55px]">
                     <img
-                      className="w-[70px] h-[70px] object-cover"
+                      className="w-[80px] h-[80px] object-cover"
                       src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720534/002-vector-r02_whb6bu.webp"
                       alt={item.name}
                     />
                   </div>
 
-                  <p className="text-small-size text-white my-4 text-center max-[393px]:text-[10px]">
+                  <p className="text-small-size text-white my-5 text-center max-[393px]:text-[10px]">
                     {item.name}
                   </p>
 
-                  <div className="flex items-center justify-center gap-0.5 text-small-size text-white mb-6">
+                  <div className="flex items-center justify-center gap-1 text-small-size text-white mb-8">
                     <RiStarFill className="text-fourth" />
                     <span>{item.rating}</span>
                   </div>
@@ -211,7 +211,7 @@ const HeaderHero = () => {
         </div>
 
         <div className="flex items-center w-full bg-third text-white px-10 py-5 rounded-full justify-between text-normal-size max-[421px]:px-6 max-[371px]:text-small-size max-[421px]:text-base">
-          <p>200+ Ratings</p>
+          <p>199+ Ratings</p>
           <div className="flex gap-2">
             {[...Array(5)].map((_, index) => (
               <RiStarFill className="text-fourth" key={index} />
@@ -305,7 +305,7 @@ const HeaderHero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
