@@ -16,7 +16,8 @@ export const menus = [
             fat: 12,
             carbohydrates: 32,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720457/001-grilled-lemon-herb_i7voq4.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720457/001-grilled-lemon-herb_i7voq4.jpg",
         tags: {
             th: ["อาหารคลีน", "โปรตีนสูง", "ไขมันต่ำ", "ปราศจากกลูเตน"],
             en: ["clean-eating", "high-protein", "low-fat", "gluten-free"],
@@ -71,7 +72,8 @@ export const menus = [
             fat: 38,
             carbohydrates: 10,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720458/002-roasted-salmon_mjobgq.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720458/002-roasted-salmon_mjobgq.jpg",
         tags: {
             th: ["ดีต่อหัวใจ", "โอเมก้า 3", "ปราศจากกลูเตน", "ไม่มีน้ำตาล"],
             en: ["heart-healthy", "omega-3", "gluten-free", "no-sugar"],
@@ -128,7 +130,8 @@ export const menus = [
             fat: 32,
             carbohydrates: 13,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720463/003-thai-green-curry_twwteu.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720463/003-thai-green-curry_twwteu.jpg",
         tags: {
             th: ["ไทย", "วีแกน", "คาร์บต่ำ", "อาหารคลีน"],
             en: ["thai", "vegan", "low-carb", "clean-eating"],
@@ -183,7 +186,8 @@ export const menus = [
             fat: 18,
             carbohydrates: 45,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720247/001-acai-berry_ztg7et.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720247/001-acai-berry_ztg7et.jpg",
         tags: {
             th: ["สารต้านอนุมูลอิสระ", "ผลไม้", "วีแกน", "อาหารคลีน"],
             en: ["antioxidants", "fruity", "vegan", "clean-eating"],
@@ -242,7 +246,8 @@ export const menus = [
             fat: 23,
             carbohydrates: 6,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720404/002-coconut-chia_ti0p4l.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720404/002-coconut-chia_ti0p4l.jpg",
         tags: {
             th: ["อุดมด้วยไฟเบอร์", "โปรตีน", "ปราศจากกลูเตน", "วีแกน"],
             en: ["fiber-rich", "protein", "gluten-free", "vegan"],
@@ -297,7 +302,8 @@ export const menus = [
             fat: 14,
             carbohydrates: 12,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720404/003-raw-cacao_atu96s.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720404/003-raw-cacao_atu96s.jpg",
         tags: {
             th: ["สารต้านอนุมูลอิสระ", "พลังงาน", "ปราศจากกลูเตน", "วีแกน"],
             en: ["antioxidants", "energy", "gluten-free", "vegan"],
@@ -354,7 +360,8 @@ export const menus = [
             fat: 38,
             carbohydrates: 8,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720470/001-keto-grilled-steak_yb7rk3.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720470/001-keto-grilled-steak_yb7rk3.jpg",
         tags: {
             th: ["คีโต", "โปรตีนสูง", "ไขมันดี", "คาร์บต่ำ"],
             en: ["keto", "high-protein", "healthy-fats", "low-carb"],
@@ -413,7 +420,8 @@ export const menus = [
             fat: 35,
             carbohydrates: 4,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720472/002-bacon-wrapped_one75w.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720472/002-bacon-wrapped_one75w.jpg",
         tags: {
             th: ["คีโต", "ไขมันดี", "โปรตีนสูง", "คาร์บต่ำ"],
             en: ["keto", "healthy-fats", "high-protein", "low-carb"],
@@ -462,7 +470,8 @@ export const menus = [
             fat: 32,
             carbohydrates: 6,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720472/003-zucchini-lasagna_op7vbg.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720472/003-zucchini-lasagna_op7vbg.jpg",
         tags: {
             th: ["คีโต", "ไม่มีแป้ง", "โปรตีนสูง", "คาร์บต่ำ"],
             en: ["keto", "no-pasta", "high-protein", "low-carb"],
@@ -521,7 +530,8 @@ export const menus = [
             fat: 20,
             carbohydrates: 3,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720470/001-keto-chocolate_xbtugb.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720470/001-keto-chocolate_xbtugb.jpg",
         tags: {
             th: ["คีโต", "ไม่มีน้ำตาล", "ไขมันดี", "ช็อกโกแลตเข้มข้น"],
             en: ["keto", "no-sugar", "healthy-fats", "rich-chocolate"],
@@ -568,7 +578,8 @@ export const menus = [
             fat: 22,
             carbohydrates: 4,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720463/002-avocado-chocolate_ejxsoj.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720463/002-avocado-chocolate_ejxsoj.jpg",
         tags: {
             th: ["คีโต", "ไขมันดี", "ไม่มีน้ำตาล", "ช็อกโกแลตเข้มข้น"],
             en: ["keto", "healthy-fats", "no-sugar", "rich-chocolate"],
@@ -617,7 +628,8 @@ export const menus = [
             fat: 28,
             carbohydrates: 4,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720464/003-keto-lemon_g5rxsy.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720464/003-keto-lemon_g5rxsy.jpg",
         tags: {
             th: ["คีโต", "ไม่มีน้ำตาล", "ไขมันดี", "เลมอนสดชื่น"],
             en: ["keto", "no-sugar", "healthy-fats", "lemon-refreshing"],
@@ -672,10 +684,23 @@ export const menus = [
             fat: 10,
             carbohydrates: 35,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720480/001-spicy-vegan-tacos_kgve5t.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720480/001-spicy-vegan-tacos_kgve5t.jpg",
         tags: {
-            th: ["วีแกน", "โปรตีนจากพืช", "ไฟเบอร์สูง", "ไม่มีนม", "ไม่มีเนื้อสัตว์"],
-            en: ["vegan", "plant-based protein", "high fiber", "dairy-free", "meat-free"],
+            th: [
+                "วีแกน",
+                "โปรตีนจากพืช",
+                "ไฟเบอร์สูง",
+                "ไม่มีนม",
+                "ไม่มีเนื้อสัตว์",
+            ],
+            en: [
+                "vegan",
+                "plant-based protein",
+                "high fiber",
+                "dairy-free",
+                "meat-free",
+            ],
         },
         available: true,
         servingSize: "2 tacos (approx. 300g)",
@@ -745,7 +770,8 @@ export const menus = [
             fat: 8,
             carbohydrates: 30,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720480/002-vegan-bbq_vis51h.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720480/002-vegan-bbq_vis51h.jpg",
         tags: {
             th: ["วีแกน", "ไม่มีเนื้อสัตว์", "คาร์บต่ำ", "รสเข้ม"],
             en: ["vegan", "meat-free", "low-carb", "bold-flavor"],
@@ -804,10 +830,16 @@ export const menus = [
             fat: 18,
             carbohydrates: 52,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720484/003-vegan-buddha_yg25yw.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720484/003-vegan-buddha_yg25yw.jpg",
         tags: {
             th: ["วีแกน", "โปรตีนจากพืช", "ไฟเบอร์สูง", "ซอสโฮมเมด"],
-            en: ["vegan", "plant-based protein", "high-fiber", "homemade sauce"],
+            en: [
+                "vegan",
+                "plant-based protein",
+                "high-fiber",
+                "homemade sauce",
+            ],
         },
         available: true,
         servingSize: "1 bowl (350g)",
@@ -867,10 +899,17 @@ export const menus = [
             fat: 10,
             carbohydrates: 15,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720469/001-vegan-chocolate_elwrh1.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720469/001-vegan-chocolate_elwrh1.jpg",
         tags: {
             th: ["วีแกน", "ไม่มีน้ำตาลทราย", "ไขมันดี", "ไม่มีนม ไม่มีไข่"],
-            en: ["vegan", "refined sugar-free", "healthy fats", "dairy-free", "egg-free"],
+            en: [
+                "vegan",
+                "refined sugar-free",
+                "healthy fats",
+                "dairy-free",
+                "egg-free",
+            ],
         },
         available: true,
         servingSize: "1 truffle (20g)",
@@ -916,10 +955,16 @@ export const menus = [
             fat: 8,
             carbohydrates: 28,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720481/002-vegan-raspberry_rjy1ro.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720481/002-vegan-raspberry_rjy1ro.jpg",
         tags: {
             th: ["วีแกน", "โอเมก้า 3 สูง", "ไม่มีน้ำตาลทราย", "หวานธรรมชาติ"],
-            en: ["vegan", "high in omega-3", "refined sugar-free", "naturally sweetened"],
+            en: [
+                "vegan",
+                "high in omega-3",
+                "refined sugar-free",
+                "naturally sweetened",
+            ],
         },
         available: true,
         servingSize: "1 bar (40g)",
@@ -969,10 +1014,21 @@ export const menus = [
             fat: 14,
             carbohydrates: 30,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720482/003-vegan-chocolate_u5ygma.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720482/003-vegan-chocolate_u5ygma.jpg",
         tags: {
-            th: ["วีแกน", "ไขมันดีจากอโวคาโด", "ไม่มีน้ำตาลทราย", "ช็อกโกแลตเข้มข้น"],
-            en: ["vegan", "healthy fats from avocado", "no refined sugar", "rich chocolate flavor"],
+            th: [
+                "วีแกน",
+                "ไขมันดีจากอโวคาโด",
+                "ไม่มีน้ำตาลทราย",
+                "ช็อกโกแลตเข้มข้น",
+            ],
+            en: [
+                "vegan",
+                "healthy fats from avocado",
+                "no refined sugar",
+                "rich chocolate flavor",
+            ],
         },
         available: true,
         servingSize: "1 cup (150g)",
@@ -1018,10 +1074,21 @@ export const menus = [
             fat: 18,
             carbohydrates: 34,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720482/001-grilled-vegetable_tjcnqv.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720482/001-grilled-vegetable_tjcnqv.jpg",
         tags: {
-            th: ["มังสวิรัติ 100%", "ผักสดหลากหลาย", "ไม่มีเนื้อสัตว์", "กัวคาโมเลโฮมเมด"],
-            en: ["100% Vegetarian", "Fresh vegetables", "Meat-free", "Homemade guacamole"],
+            th: [
+                "มังสวิรัติ 100%",
+                "ผักสดหลากหลาย",
+                "ไม่มีเนื้อสัตว์",
+                "กัวคาโมเลโฮมเมด",
+            ],
+            en: [
+                "100% Vegetarian",
+                "Fresh vegetables",
+                "Meat-free",
+                "Homemade guacamole",
+            ],
         },
         available: true,
         servingSize: "1 cup (150g)",
@@ -1041,7 +1108,14 @@ export const menus = [
                 "พริกจาลาเปโน่ (หั่นเล็ก) – 1 เม็ด (หากชอบเผ็ด)",
                 "เกลือ – 1/4 ช้อนชา",
             ],
-            en: ["Ripe avocados – 2", "Lime juice – 1 tbsp", "Chopped red onion – ¼ cup", "Fresh cilantro – 2 tbsp", "Jalapeno pepper (finely chopped) – 1 (optional for spice)", "Salt – ¼ tsp"],
+            en: [
+                "Ripe avocados – 2",
+                "Lime juice – 1 tbsp",
+                "Chopped red onion – ¼ cup",
+                "Fresh cilantro – 2 tbsp",
+                "Jalapeno pepper (finely chopped) – 1 (optional for spice)",
+                "Salt – ¼ tsp",
+            ],
         },
         createdAt: "2025-04-17T11:00:00Z",
         updatedAt: "2025-04-17T11:00:00Z",
@@ -1064,10 +1138,16 @@ export const menus = [
             fat: 20,
             carbohydrates: 48,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720485/002-vegan-buddha_qqrzmt.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720485/002-vegan-buddha_qqrzmt.jpg",
         tags: {
             th: ["วีแกน 100%", "โปรตีนจากพืช", "ไฟเบอร์สูง", "ไม่มีเนื้อสัตว์"],
-            en: ["100% Vegan", "Plant-based protein", "High in fiber", "Meat-free"],
+            en: [
+                "100% Vegan",
+                "Plant-based protein",
+                "High in fiber",
+                "Meat-free",
+            ],
         },
         available: true,
         servingSize: "1 cup (150g)",
@@ -1131,10 +1211,21 @@ export const menus = [
             fat: 24,
             carbohydrates: 20,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720483/003-thai-stir-fried_ahhmvz.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720483/003-thai-stir-fried_ahhmvz.jpg",
         tags: {
-            th: ["วีแกน 100%", "ไม่มีเนื้อสัตว", "โปรตีนจากพืช", "เผ็ดร้อนตามแบบฉบับไทย"],
-            en: ["100% Vegan", "Meat-free", "Plant-based protein", "Bold, spicy Thai flavors"],
+            th: [
+                "วีแกน 100%",
+                "ไม่มีเนื้อสัตว",
+                "โปรตีนจากพืช",
+                "เผ็ดร้อนตามแบบฉบับไทย",
+            ],
+            en: [
+                "100% Vegan",
+                "Meat-free",
+                "Plant-based protein",
+                "Bold, spicy Thai flavors",
+            ],
         },
         available: true,
         servingSize: "1 cup (150g)",
@@ -1188,7 +1279,8 @@ export const menus = [
             fat: 9,
             carbohydrates: 22,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720484/001-vegan-chip_mffvgb.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720484/001-vegan-chip_mffvgb.jpg",
         tags: {
             th: ["วีแกน 100%", "ไม่มีไข่", "ไม่มีนม", "หวานจากธรรมชาติ"],
             en: ["100% Vegan", "Egg-free", "Dairy-free", "Naturally sweetened"],
@@ -1241,17 +1333,35 @@ export const menus = [
             fat: 6,
             carbohydrates: 26,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720472/002-mango-coconut_k6vjxx.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720472/002-mango-coconut_k6vjxx.jpg",
         tags: {
             th: ["วีแกน 100%", "ไม่มีน้ำตาลทราย", "ไม่มีนม", "หวานจากธรรมชาติ"],
-            en: ["100% Vegan", "No refined sugar", "Dairy-free", "Naturally sweetened"],
+            en: [
+                "100% Vegan",
+                "No refined sugar",
+                "Dairy-free",
+                "Naturally sweetened",
+            ],
         },
         available: true,
         servingSize: "1 cup (150g)",
         dietary: ["vegetarian"],
         ingredients: {
-            th: ["มะม่วงสุก (ปอกเปลือกและหั่นเป็นชิ้น) – 2 ลูก", "กะทิ (เลือกชนิดที่ไม่หวาน) – 1/2 ถ้วย", "น้ำตาลมะพร้าว (หรือน้ำตาลทรายแดง) – 1/4 ถ้วย", "น้ำมะนาว – 2 ช้อนชา", "น้ำสะอาด – 1/4 ถ้วย"],
-            en: ["Ripe mangoes (peeled and chopped) – 2", "Coconut milk (unsweetened) – ½ cup", "Coconut sugar (or brown sugar) – ¼ cup", "Lime juice – 2 tsp", "Water – ¼ cup"],
+            th: [
+                "มะม่วงสุก (ปอกเปลือกและหั่นเป็นชิ้น) – 2 ลูก",
+                "กะทิ (เลือกชนิดที่ไม่หวาน) – 1/2 ถ้วย",
+                "น้ำตาลมะพร้าว (หรือน้ำตาลทรายแดง) – 1/4 ถ้วย",
+                "น้ำมะนาว – 2 ช้อนชา",
+                "น้ำสะอาด – 1/4 ถ้วย",
+            ],
+            en: [
+                "Ripe mangoes (peeled and chopped) – 2",
+                "Coconut milk (unsweetened) – ½ cup",
+                "Coconut sugar (or brown sugar) – ¼ cup",
+                "Lime juice – 2 tsp",
+                "Water – ¼ cup",
+            ],
         },
         createdAt: "2025-04-17T11:00:00Z",
         updatedAt: "2025-04-17T11:00:00Z",
@@ -1274,10 +1384,21 @@ export const menus = [
             fat: 18,
             carbohydrates: 28,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720474/003-vegan-chocolate-avocado_xklrzp.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720474/003-vegan-chocolate-avocado_xklrzp.jpg",
         tags: {
-            th: ["วีแกน 100%", "ไม่มีนม ไม่มีไข", "ใช้ไขมันดีจากอโวคาโด", "รสช็อกโกแลตเข้มข้น"],
-            en: ["100% Vegan", "Egg-free & Dairy-free", "Healthy fats from avocado", "Rich chocolate flavor"],
+            th: [
+                "วีแกน 100%",
+                "ไม่มีนม ไม่มีไข",
+                "ใช้ไขมันดีจากอโวคาโด",
+                "รสช็อกโกแลตเข้มข้น",
+            ],
+            en: [
+                "100% Vegan",
+                "Egg-free & Dairy-free",
+                "Healthy fats from avocado",
+                "Rich chocolate flavor",
+            ],
         },
         available: true,
         servingSize: "1 cup (150g)",
@@ -1335,7 +1456,8 @@ export const menus = [
             fat: 10,
             carbohydrates: 34,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720477/001-quinoa-salad_omoafm.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720477/001-quinoa-salad_omoafm.jpg",
         tags: {
             th: ["อาหารจากพืช", "วีแกน", "ปราศจากกลูเตน", "สลัด"],
             en: ["plant-based", "vegan", "salad", "gluten-free"],
@@ -1393,7 +1515,8 @@ export const menus = [
             fat: 5,
             carbohydrates: 30,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720478/002-plant-based-lentil_acf6lz.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720478/002-plant-based-lentil_acf6lz.jpg",
         tags: {
             th: ["อาหารจากพืช", "วีแกน", "ปราศจากกลูเตน", "ซุป"],
             en: ["plant-based", "vegan", "soup", "gluten-free"],
@@ -1454,10 +1577,17 @@ export const menus = [
             fat: 10,
             carbohydrates: 35,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720479/003-stuffed-zucchini_ekoe3j.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720479/003-stuffed-zucchini_ekoe3j.jpg",
         tags: {
             th: ["อาหารจากพืช", "วีแกน", "ปราศจากกลูเตน", "จานหลัก"],
-            en: ["plant-based", "vegan", "gluten-free", "healthy", "main course"],
+            en: [
+                "plant-based",
+                "vegan",
+                "gluten-free",
+                "healthy",
+                "main course",
+            ],
         },
         available: true,
         servingSize: "1 plate (2 zucchini halves)",
@@ -1509,10 +1639,23 @@ export const menus = [
             fat: 12,
             carbohydrates: 20,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720466/001-chia-pudding_llqwdd.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720466/001-chia-pudding_llqwdd.jpg",
         tags: {
-            th: ["อาหารจากพืช", "วีแกน", "ปราศจากกลูเตน", "ปราศจากนม", "ของหวานเพื่อสุขภาพ"],
-            en: ["plant-based", "vegan", "gluten-free", "dairy-free", "healthy dessert"],
+            th: [
+                "อาหารจากพืช",
+                "วีแกน",
+                "ปราศจากกลูเตน",
+                "ปราศจากนม",
+                "ของหวานเพื่อสุขภาพ",
+            ],
+            en: [
+                "plant-based",
+                "vegan",
+                "gluten-free",
+                "dairy-free",
+                "healthy dessert",
+            ],
         },
         available: true,
         servingSize: "1 cup (250ml)",
@@ -1558,17 +1701,44 @@ export const menus = [
             fat: 17,
             carbohydrates: 18,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720467/002-plant-based-chocolate_feihyb.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720467/002-plant-based-chocolate_feihyb.jpg",
         tags: {
-            th: ["อาหารจากพืช", "วีแกน", "ช็อกโกแลต", "ปราศจากนม", "ของหวานเพื่อสุขภาพ"],
-            en: ["plant-based", "vegan", "chocolate lover", "dairy-free", "healthy dessert"],
+            th: [
+                "อาหารจากพืช",
+                "วีแกน",
+                "ช็อกโกแลต",
+                "ปราศจากนม",
+                "ของหวานเพื่อสุขภาพ",
+            ],
+            en: [
+                "plant-based",
+                "vegan",
+                "chocolate lover",
+                "dairy-free",
+                "healthy dessert",
+            ],
         },
         available: true,
         servingSize: "1 cup (200ml)",
         dietary: ["plant-based", "dairy-free"],
         ingredients: {
-            th: ["อะโวคาโดสุก – 1 ผล", "ผงโกโก้ดิบ – 2 ช้อนโต๊ะ", "เมเปิ้ลไซรัป – 1½ ช้อนโต๊ะ", "นมอัลมอนด์ไม่หวาน – 2 ช้อนโต๊ะ", "วานิลลาสกัด – 1/2 ช้อนชา", "เกลือหิมาลายัน – 1 หยิบมือ"],
-            en: ["Ripe avocado – 1 piece", "Raw cacao powder – 2 tbsp", "Maple syrup – 1½ tbsp", "Unsweetened almond milk – 2 tbsp", "Vanilla extract – 1/2 tsp", "Himalayan salt – a pinch"],
+            th: [
+                "อะโวคาโดสุก – 1 ผล",
+                "ผงโกโก้ดิบ – 2 ช้อนโต๊ะ",
+                "เมเปิ้ลไซรัป – 1½ ช้อนโต๊ะ",
+                "นมอัลมอนด์ไม่หวาน – 2 ช้อนโต๊ะ",
+                "วานิลลาสกัด – 1/2 ช้อนชา",
+                "เกลือหิมาลายัน – 1 หยิบมือ",
+            ],
+            en: [
+                "Ripe avocado – 1 piece",
+                "Raw cacao powder – 2 tbsp",
+                "Maple syrup – 1½ tbsp",
+                "Unsweetened almond milk – 2 tbsp",
+                "Vanilla extract – 1/2 tsp",
+                "Himalayan salt – a pinch",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16T10:00:00Z",
@@ -1591,17 +1761,38 @@ export const menus = [
             fat: 12,
             carbohydrates: 50,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720468/003-vegan-mango-sticky_pgsbu0.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720468/003-vegan-mango-sticky_pgsbu0.jpg",
         tags: {
             th: ["อาหารจากพืช", "วีแกน", "ขนมไทย", "ปราศจากกลูเตน", "กะทิ"],
-            en: ["plant-based", "vegan", "thai dessert", "gluten-free", "coconut lover"],
+            en: [
+                "plant-based",
+                "vegan",
+                "thai dessert",
+                "gluten-free",
+                "coconut lover",
+            ],
         },
         available: true,
         servingSize: "1 plate (200g)",
         dietary: ["gluten-free", "plant-based"],
         ingredients: {
-            th: ["ข้าวเหนียวมูน – 1/2 ถ้วย", "มะม่วงน้ำดอกไม้สุกหั่น – 1/2 ผล", "กะทิ – 1/2 ถ้วย", "น้ำตาลมะพร้าว – 1 ช้อนโต๊ะ", "เกลือทะเล – 1/4 ช้อนชา", "งาคั่ว – 1 ช้อนชา"],
-            en: ["Sweet sticky rice – 1/2 cup", "Sliced ripe Nam Dok Mai mango – 1/2 fruit", "Coconut milk – 1/2 cup", "Coconut sugar – 1 tbsp", "Sea salt – 1/4 tsp", "Toasted sesame seeds – 1 tsp"],
+            th: [
+                "ข้าวเหนียวมูน – 1/2 ถ้วย",
+                "มะม่วงน้ำดอกไม้สุกหั่น – 1/2 ผล",
+                "กะทิ – 1/2 ถ้วย",
+                "น้ำตาลมะพร้าว – 1 ช้อนโต๊ะ",
+                "เกลือทะเล – 1/4 ช้อนชา",
+                "งาคั่ว – 1 ช้อนชา",
+            ],
+            en: [
+                "Sweet sticky rice – 1/2 cup",
+                "Sliced ripe Nam Dok Mai mango – 1/2 fruit",
+                "Coconut milk – 1/2 cup",
+                "Coconut sugar – 1 tbsp",
+                "Sea salt – 1/4 tsp",
+                "Toasted sesame seeds – 1 tsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16T10:00:00Z",
@@ -1624,7 +1815,8 @@ export const menus = [
             fat: 18,
             carbohydrates: 8,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720476/001-paleo-chicken_jzabzb.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720476/001-paleo-chicken_jzabzb.jpg",
         tags: {
             th: ["โลว์คาร์บ", "พาเลโอ", "ปราศจากกลูเตน", "เพื่อสุขภาพ", "ไก่"],
             en: ["low carb", "paleo", "gluten-free", "healthy", "chicken"],
@@ -1677,7 +1869,8 @@ export const menus = [
             fat: 22,
             carbohydrates: 10,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720475/002-zucchini-noodles_jfuufi.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720475/002-zucchini-noodles_jfuufi.jpg",
         tags: {
             th: ["โลว์คาร์บ", "พาเลโอ", "ปราศจากกลูเตน", "ไก่", "ซูกินี"],
             en: ["low carb", "paleo", "gluten-free", "chicken", "zucchini"],
@@ -1730,7 +1923,8 @@ export const menus = [
             fat: 28,
             carbohydrates: 5,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720479/003-grilled-lamb-chops_fzoh1e.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720479/003-grilled-lamb-chops_fzoh1e.jpg",
         tags: {
             th: ["โลว์คาร์บ", "เนื้อแกะ", "ย่าง", "มินต์", "เพื่อสุขภาพ"],
             en: ["low carb", "lamb", "grilled", "mint", "healthy"],
@@ -1783,17 +1977,36 @@ export const menus = [
             fat: 10,
             carbohydrates: 4,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720473/001-low-carb-chocolate_lcetpd.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720473/001-low-carb-chocolate_lcetpd.jpg",
         tags: {
             th: ["โลว์คาร์บ", "คีโต", "เนยถั่ว", "ช็อกโกแลต", "ไร้น้ำตาล"],
-            en: ["low carb", "keto", "peanut butter", "chocolate", "sugar-free"],
+            en: [
+                "low carb",
+                "keto",
+                "peanut butter",
+                "chocolate",
+                "sugar-free",
+            ],
         },
         available: true,
         servingSize: "1 piece (3 pieces per pack)",
         dietary: ["low carb", "keto", "sugar-free"],
         ingredients: {
-            th: ["ดาร์กช็อกโกแลต (85% ขึ้นไป) – 100 กรัม", "เนยถั่วธรรมชาติ – 3 ช้อนโต๊ะ", "น้ำมันมะพร้าว – 1 ช้อนโต๊ะ", "สารให้ความหวาน (erythritol) – 1 ช้อนชา", "เกลือหิมาลายัน – 1 หยิบมือ"],
-            en: ["Dark chocolate (85% or higher) – 100g", "Natural peanut butter – 3 tbsp", "Coconut oil – 1 tbsp", "Sweetener (erythritol) – 1 tsp", "Himalayan salt – a pinch"],
+            th: [
+                "ดาร์กช็อกโกแลต (85% ขึ้นไป) – 100 กรัม",
+                "เนยถั่วธรรมชาติ – 3 ช้อนโต๊ะ",
+                "น้ำมันมะพร้าว – 1 ช้อนโต๊ะ",
+                "สารให้ความหวาน (erythritol) – 1 ช้อนชา",
+                "เกลือหิมาลายัน – 1 หยิบมือ",
+            ],
+            en: [
+                "Dark chocolate (85% or higher) – 100g",
+                "Natural peanut butter – 3 tbsp",
+                "Coconut oil – 1 tbsp",
+                "Sweetener (erythritol) – 1 tsp",
+                "Himalayan salt – a pinch",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16T10:00:00Z",
@@ -1816,7 +2029,8 @@ export const menus = [
             fat: 12,
             carbohydrates: 4,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720474/002-keto-cheesecake-bites_ijnaot.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720474/002-keto-cheesecake-bites_ijnaot.jpg",
         tags: {
             th: ["โลว์คาร์บ", "คีโต", "ชีสเค้ก", "ไม่อบ", "ฐานอัลมอนด์"],
             en: ["low carb", "keto", "cheesecake", "no-bake", "almond crust"],
@@ -1865,9 +2079,16 @@ export const menus = [
             fat: 12,
             carbohydrates: 5,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720475/003-low-carb-coconut-lime_lly2zl.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720475/003-low-carb-coconut-lime_lly2zl.jpg",
         tags: {
-            th: ["โลว์คาร์บ", "มะพร้าว", "มะนาว", "ปราศจากกลูเตน", "เพื่อสุขภาพ"],
+            th: [
+                "โลว์คาร์บ",
+                "มะพร้าว",
+                "มะนาว",
+                "ปราศจากกลูเตน",
+                "เพื่อสุขภาพ",
+            ],
             en: ["low carb", "coconut", "lime", "gluten-free", "healthy"],
         },
         available: true,
@@ -1883,7 +2104,15 @@ export const menus = [
                 "น้ำมันมะพร้าว – 2 ช้อนโต๊ะ",
                 "สารให้ความหวาน (erythritol) – 1½ ช้อนโต๊ะ",
             ],
-            en: ["Almond flour – 3/4 cup", "Shredded dried coconut – 1/2 cup", "Egg – 1", "Fresh lime juice – 2 tbsp", "Lime zest – 1 tsp", "Coconut oil – 2 tbsp", "Sweetener (erythritol) – 1½ tbsp"],
+            en: [
+                "Almond flour – 3/4 cup",
+                "Shredded dried coconut – 1/2 cup",
+                "Egg – 1",
+                "Fresh lime juice – 2 tbsp",
+                "Lime zest – 1 tsp",
+                "Coconut oil – 2 tbsp",
+                "Sweetener (erythritol) – 1½ tbsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16T10:00:00Z",
@@ -1906,10 +2135,21 @@ export const menus = [
             fat: 18,
             carbohydrates: 12,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720457/001-grilled-lemon-herb_i7voq4.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720457/001-grilled-lemon-herb_i7voq4.jpg",
         tags: {
-            th: ["ปราศจากกลูเตน", "ไขมันดีจากชีส", "รสชาติอิตาเลียนแท้", "เมนูไร้กังวลสำหรับคนทานกลูเตนฟรี"],
-            en: ["Gluten-free", "Healthy fats from cheese", "Authentic Italian flavor", "A worry-free meal for gluten-sensitive individuals"],
+            th: [
+                "ปราศจากกลูเตน",
+                "ไขมันดีจากชีส",
+                "รสชาติอิตาเลียนแท้",
+                "เมนูไร้กังวลสำหรับคนทานกลูเตนฟรี",
+            ],
+            en: [
+                "Gluten-free",
+                "Healthy fats from cheese",
+                "Authentic Italian flavor",
+                "A worry-free meal for gluten-sensitive individuals",
+            ],
         },
         available: true,
         servingSize: "1 plate (380g)",
@@ -1959,10 +2199,21 @@ export const menus = [
             fat: 6,
             carbohydrates: 24,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720461/002-quinoa-stuffed-r02_njydk4.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720461/002-quinoa-stuffed-r02_njydk4.jpg",
         tags: {
-            th: ["ปราศจากกลูเตน", "โปรตีนสูงจากควินัว", "อุดมไปด้วยวิตามินและไฟเบอร์", "เหมาะสำหรับคนทานอาหารเพื่อสุขภาพ"],
-            en: ["Gluten-free", "High in protein from quinoa", "Packed with vitamins and fiber", "Perfect for health-conscious eaters"],
+            th: [
+                "ปราศจากกลูเตน",
+                "โปรตีนสูงจากควินัว",
+                "อุดมไปด้วยวิตามินและไฟเบอร์",
+                "เหมาะสำหรับคนทานอาหารเพื่อสุขภาพ",
+            ],
+            en: [
+                "Gluten-free",
+                "High in protein from quinoa",
+                "Packed with vitamins and fiber",
+                "Perfect for health-conscious eaters",
+            ],
         },
         available: true,
         servingSize: "2 pieces (380g)",
@@ -2020,10 +2271,21 @@ export const menus = [
             fat: 22,
             carbohydrates: 2,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720462/003-qrilled-salmon-r02_tnj1r3.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720462/003-qrilled-salmon-r02_tnj1r3.jpg",
         tags: {
-            th: ["ปราศจากกลูเตน", "โปรตีนสูงจากแซลมอน", "ไขมันดีจากโอเมก้า 3", "อร่อยและดีต่อสุขภาพ"],
-            en: ["Gluten-free", "High in protein from salmon", "Healthy omega-3 fats", "Delicious and heart-healthy"],
+            th: [
+                "ปราศจากกลูเตน",
+                "โปรตีนสูงจากแซลมอน",
+                "ไขมันดีจากโอเมก้า 3",
+                "อร่อยและดีต่อสุขภาพ",
+            ],
+            en: [
+                "Gluten-free",
+                "High in protein from salmon",
+                "Healthy omega-3 fats",
+                "Delicious and heart-healthy",
+            ],
         },
         available: true,
         servingSize: "1 plate (380g)",
@@ -2038,7 +2300,15 @@ export const menus = [
                 "เกลือ – ¼ ช้อนชา",
                 "พริกไทยดำ – ¼ ช้อนชา",
             ],
-            en: ["Salmon fillet – 1 piece (180g)", "Lemon juice – 1½ tbsp", "Minced garlic – 1 tsp", "Chopped parsley – 1 tbsp", "Olive oil – 1 tbsp", "Salt – ¼ tsp", "Black pepper – ¼ tsp"],
+            en: [
+                "Salmon fillet – 1 piece (180g)",
+                "Lemon juice – 1½ tbsp",
+                "Minced garlic – 1 tsp",
+                "Chopped parsley – 1 tbsp",
+                "Olive oil – 1 tbsp",
+                "Salt – ¼ tsp",
+                "Black pepper – ¼ tsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16Tz10:00:00Z",
@@ -2061,17 +2331,42 @@ export const menus = [
             fat: 18,
             carbohydrates: 8,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720459/001-gluten-free-almond-r02_tioagg.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720459/001-gluten-free-almond-r02_tioagg.jpg",
         tags: {
-            th: ["ปราศจากกลูเตน", "ไม่มีน้ำตาล", "โปรตีนสูงจากอัลมอนด์", "เค้กเนื้อฟูอร่อยหอม"],
-            en: ["Gluten-free", "No refined sugar", "High in protein from almonds", "Light, fluffy, and nutty"],
+            th: [
+                "ปราศจากกลูเตน",
+                "ไม่มีน้ำตาล",
+                "โปรตีนสูงจากอัลมอนด์",
+                "เค้กเนื้อฟูอร่อยหอม",
+            ],
+            en: [
+                "Gluten-free",
+                "No refined sugar",
+                "High in protein from almonds",
+                "Light, fluffy, and nutty",
+            ],
         },
         available: true,
         servingSize: "1 piece (380g)",
         dietary: ["gluten-free"],
         ingredients: {
-            th: ["แป้งอัลมอนด์ – 1 ถ้วย", "ไข่ไก่ – 2 ฟอง", "น้ำมันมะพร้าว – 2 ช้อนโต๊ะ", "สารให้ความหวาน (เช่น erythritol) – 2 ช้อนโต๊ะ", "ผงฟู (ปลอดกลูเตน) – ½ ช้อนชา", "วานิลลาสกัด – ½ ช้อนชา"],
-            en: ["Almond flour – 1 cup", "Eggs – 2", "Coconut oil – 2 tbsp", "Sweetener (e.g. erythritol) – 2 tbsp", "Baking powder (gluten-free) – ½ tsp", "Vanilla extract – ½ tsp"],
+            th: [
+                "แป้งอัลมอนด์ – 1 ถ้วย",
+                "ไข่ไก่ – 2 ฟอง",
+                "น้ำมันมะพร้าว – 2 ช้อนโต๊ะ",
+                "สารให้ความหวาน (เช่น erythritol) – 2 ช้อนโต๊ะ",
+                "ผงฟู (ปลอดกลูเตน) – ½ ช้อนชา",
+                "วานิลลาสกัด – ½ ช้อนชา",
+            ],
+            en: [
+                "Almond flour – 1 cup",
+                "Eggs – 2",
+                "Coconut oil – 2 tbsp",
+                "Sweetener (e.g. erythritol) – 2 tbsp",
+                "Baking powder (gluten-free) – ½ tsp",
+                "Vanilla extract – ½ tsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16Tz10:00:00Z",
@@ -2094,17 +2389,40 @@ export const menus = [
             fat: 7,
             carbohydrates: 5,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720460/002-gluten-free-coconut-r02_o1hjz8.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720460/002-gluten-free-coconut-r02_o1hjz8.jpg",
         tags: {
-            th: ["ปราศจากกลูเตน", "ไม่มีแป้งสาลี", "ไฟเบอร์สูงจากมะพร้าว", "รสหวานหอมและกรอบ"],
-            en: ["Gluten-free", "No wheat flour", "High in fiber from coconut", "Sweet, crunchy, and chewy"],
+            th: [
+                "ปราศจากกลูเตน",
+                "ไม่มีแป้งสาลี",
+                "ไฟเบอร์สูงจากมะพร้าว",
+                "รสหวานหอมและกรอบ",
+            ],
+            en: [
+                "Gluten-free",
+                "No wheat flour",
+                "High in fiber from coconut",
+                "Sweet, crunchy, and chewy",
+            ],
         },
         available: true,
         servingSize: "3 pieces (380g)",
         dietary: ["gluten-free"],
         ingredients: {
-            th: ["มะพร้าวขูดอบแห้ง – 1 ถ้วย", "ไข่ขาว – 2 ฟอง", "สารให้ความหวาน (เช่น erythritol) – 2 ช้อนโต๊ะ", "วานิลลาสกัด – ¼ ช้อนชา", "เกลือ – หยิบมือ"],
-            en: ["Unsweetened shredded coconut – 1 cup", "Egg whites – 2", "Sweetener (e.g. erythritol) – 2 tbsp", "Vanilla extract – ¼ tsp", "Salt – a pinch"],
+            th: [
+                "มะพร้าวขูดอบแห้ง – 1 ถ้วย",
+                "ไข่ขาว – 2 ฟอง",
+                "สารให้ความหวาน (เช่น erythritol) – 2 ช้อนโต๊ะ",
+                "วานิลลาสกัด – ¼ ช้อนชา",
+                "เกลือ – หยิบมือ",
+            ],
+            en: [
+                "Unsweetened shredded coconut – 1 cup",
+                "Egg whites – 2",
+                "Sweetener (e.g. erythritol) – 2 tbsp",
+                "Vanilla extract – ¼ tsp",
+                "Salt – a pinch",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16Tz10:00:00Z",
@@ -2127,17 +2445,40 @@ export const menus = [
             fat: 15,
             carbohydrates: 25,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720460/003-raw-chocolate-cake-r02_zsabbt.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720460/003-raw-chocolate-cake-r02_zsabbt.jpg",
         tags: {
-            th: ["ปราศจากกลูเตน", "ไม่มีการอบ", "ใช้น้ำตาลจากธรรมชาติ", "รสชาติช็อกโกแลตเข้มข้นและดีต่อสุขภาพ"],
-            en: ["Gluten-free", "No baking required", "Sweetened with natural sugars", "Rich, chocolatey, and healthy"],
+            th: [
+                "ปราศจากกลูเตน",
+                "ไม่มีการอบ",
+                "ใช้น้ำตาลจากธรรมชาติ",
+                "รสชาติช็อกโกแลตเข้มข้นและดีต่อสุขภาพ",
+            ],
+            en: [
+                "Gluten-free",
+                "No baking required",
+                "Sweetened with natural sugars",
+                "Rich, chocolatey, and healthy",
+            ],
         },
         available: true,
         servingSize: "1 piece (380g)",
         dietary: ["gluten-free"],
         ingredients: {
-            th: ["อินทผาลัม – ½ ถ้วย", "อัลมอนด์ดิบ – ½ ถ้วย", "ผงโกโก้ดิบ – 2 ช้อนโต๊ะ", "น้ำมันมะพร้าว – 1 ช้อนโต๊ะ", "เกลือหิมาลายัน – หยิบมือ"],
-            en: ["Dates – ½ cup", "Raw almonds – ½ cup", "Raw cacao powder – 2 tbsp", "Coconut oil – 1 tbsp", "Himalayan salt – a pinch"],
+            th: [
+                "อินทผาลัม – ½ ถ้วย",
+                "อัลมอนด์ดิบ – ½ ถ้วย",
+                "ผงโกโก้ดิบ – 2 ช้อนโต๊ะ",
+                "น้ำมันมะพร้าว – 1 ช้อนโต๊ะ",
+                "เกลือหิมาลายัน – หยิบมือ",
+            ],
+            en: [
+                "Dates – ½ cup",
+                "Raw almonds – ½ cup",
+                "Raw cacao powder – 2 tbsp",
+                "Coconut oil – 1 tbsp",
+                "Himalayan salt – a pinch",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16Tz10:00:00Z",
@@ -2160,17 +2501,42 @@ export const menus = [
             fat: 10,
             carbohydrates: 20,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720465/001-qrilled-chicken-quinoa-r02_xc50fe.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720465/001-qrilled-chicken-quinoa-r02_xc50fe.jpg",
         tags: {
-            th: ["โปรตีนสูงจากไก่และควินัว", "ผักเต็มไปด้วยวิตามินและไฟเบอร์", "เมนูเพื่อสุขภาพและเติมพลัง"],
-            en: ["High in protein from chicken and quinoa", "Packed with vitamins and fiber from vegetables", "A healthy, filling, and balanced meal"],
+            th: [
+                "โปรตีนสูงจากไก่และควินัว",
+                "ผักเต็มไปด้วยวิตามินและไฟเบอร์",
+                "เมนูเพื่อสุขภาพและเติมพลัง",
+            ],
+            en: [
+                "High in protein from chicken and quinoa",
+                "Packed with vitamins and fiber from vegetables",
+                "A healthy, filling, and balanced meal",
+            ],
         },
         available: true,
         servingSize: "1 plate (380g)",
         dietary: ["high-protein"],
         ingredients: {
-            th: ["อกไก่ย่าง – 150 กรัม", "ควินัวหุงสุก – ½ ถ้วย", "บร็อคโคลี่นึ่ง – ¼ ถ้วย", "แครอทนึ่ง – ¼ ถ้วย", "น้ำมันมะกอก – 1 ช้อนชา", "เกลือ – ¼ ช้อนชา", "พริกไทยดำ – ⅛ ช้อนชา"],
-            en: ["Grilled chicken breast – 150 g", "Cooked quinoa – ½ cup", "Steamed broccoli – ¼ cup", "Steamed carrots – ¼ cup", "Olive oil – 1 tsp", "Salt – ¼ tsp", "Black pepper – ⅛ tsp"],
+            th: [
+                "อกไก่ย่าง – 150 กรัม",
+                "ควินัวหุงสุก – ½ ถ้วย",
+                "บร็อคโคลี่นึ่ง – ¼ ถ้วย",
+                "แครอทนึ่ง – ¼ ถ้วย",
+                "น้ำมันมะกอก – 1 ช้อนชา",
+                "เกลือ – ¼ ช้อนชา",
+                "พริกไทยดำ – ⅛ ช้อนชา",
+            ],
+            en: [
+                "Grilled chicken breast – 150 g",
+                "Cooked quinoa – ½ cup",
+                "Steamed broccoli – ¼ cup",
+                "Steamed carrots – ¼ cup",
+                "Olive oil – 1 tsp",
+                "Salt – ¼ tsp",
+                "Black pepper – ⅛ tsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16T10:00:00Z",
@@ -2193,10 +2559,21 @@ export const menus = [
             fat: 18,
             carbohydrates: 10,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720467/002-tuna-salad-r02_dmmu3d.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720467/002-tuna-salad-r02_dmmu3d.jpg",
         tags: {
-            th: ["โปรตีนสูงจากทูน่า", "ไขมันดีจากอะโวคาโดและเมล็ดเชีย", "อุดมไปด้วยไฟเบอร์และโอเมก้า 3", "อาหารเพื่อสุขภาพที่สมดุล"],
-            en: ["High in protein from tuna", "Healthy fats from avocado and chia seeds", "Packed with fiber and omega-3", "A nutritious and balanced meal"],
+            th: [
+                "โปรตีนสูงจากทูน่า",
+                "ไขมันดีจากอะโวคาโดและเมล็ดเชีย",
+                "อุดมไปด้วยไฟเบอร์และโอเมก้า 3",
+                "อาหารเพื่อสุขภาพที่สมดุล",
+            ],
+            en: [
+                "High in protein from tuna",
+                "Healthy fats from avocado and chia seeds",
+                "Packed with fiber and omega-3",
+                "A nutritious and balanced meal",
+            ],
         },
         available: true,
         servingSize: "1 plate (380g)",
@@ -2242,17 +2619,42 @@ export const menus = [
             fat: 18,
             carbohydrates: 8,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720469/003-beef-stir-fry-r02_aonrhi.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720469/003-beef-stir-fry-r02_aonrhi.jpg",
         tags: {
-            th: ["โปรตีนสูงจากเนื้อวัว", "ไฟเบอร์จากบร็อคโคลี", "อุดมไปด้วยวิตามินและแร่ธาตุ", "อาหารที่ช่วยเติมพลังให้กับร่างกาย"],
-            en: ["High in protein from beef", "Fiber-rich broccoli", "Packed with vitamins and minerals", "A nourishing and energizing meal"],
+            th: [
+                "โปรตีนสูงจากเนื้อวัว",
+                "ไฟเบอร์จากบร็อคโคลี",
+                "อุดมไปด้วยวิตามินและแร่ธาตุ",
+                "อาหารที่ช่วยเติมพลังให้กับร่างกาย",
+            ],
+            en: [
+                "High in protein from beef",
+                "Fiber-rich broccoli",
+                "Packed with vitamins and minerals",
+                "A nourishing and energizing meal",
+            ],
         },
         available: true,
         servingSize: "1 plate (380g)",
         dietary: ["high-protein"],
         ingredients: {
-            th: ["เนื้อวัวสไลซ์บาง – 120 กรัม", "บร็อคโคลี่หั่น – ½ ถ้วย", "ซอสโชยุ (gluten-free) – 1 ช้อนโต๊ะ", "กระเทียมสับ – 1 ช้อนชา", "น้ำมันรำข้าว – 1 ช้อนชา", "พริกไทยดำ – ⅛ ช้อนชา"],
-            en: ["Thinly sliced beef – 120 g", "Chopped broccoli – ½ cup", "Gluten-free soy sauce – 1 tbsp", "Minced garlic – 1 tsp", "Rice bran oil – 1 tsp", "Black pepper – ⅛ tsp"],
+            th: [
+                "เนื้อวัวสไลซ์บาง – 120 กรัม",
+                "บร็อคโคลี่หั่น – ½ ถ้วย",
+                "ซอสโชยุ (gluten-free) – 1 ช้อนโต๊ะ",
+                "กระเทียมสับ – 1 ช้อนชา",
+                "น้ำมันรำข้าว – 1 ช้อนชา",
+                "พริกไทยดำ – ⅛ ช้อนชา",
+            ],
+            en: [
+                "Thinly sliced beef – 120 g",
+                "Chopped broccoli – ½ cup",
+                "Gluten-free soy sauce – 1 tbsp",
+                "Minced garlic – 1 tsp",
+                "Rice bran oil – 1 tsp",
+                "Black pepper – ⅛ tsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16T10:00:00Z",
@@ -2275,17 +2677,40 @@ export const menus = [
             fat: 11,
             carbohydrates: 12,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720462/001-protein-packed-chocolate-r02_obwnnu.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720462/001-protein-packed-chocolate-r02_obwnnu.jpg",
         tags: {
-            th: ["โปรตีนสูง", "รสช็อกโกแลตเข้มข้น", "เหมาะสำหรับทานหลังออกกำลังกาย", "ช่วยเพิ่มพลังงานและโปรตีน"],
-            en: ["High in protein", "Rich chocolate flavor", "Perfect for post-workout recovery", "A delicious and energizing snack"],
+            th: [
+                "โปรตีนสูง",
+                "รสช็อกโกแลตเข้มข้น",
+                "เหมาะสำหรับทานหลังออกกำลังกาย",
+                "ช่วยเพิ่มพลังงานและโปรตีน",
+            ],
+            en: [
+                "High in protein",
+                "Rich chocolate flavor",
+                "Perfect for post-workout recovery",
+                "A delicious and energizing snack",
+            ],
         },
         available: true,
         servingSize: "2 piece (380g)",
         dietary: ["high-protein"],
         ingredients: {
-            th: ["ผงโปรตีนรสช็อกโกแลต – 2 ช้อนโต๊ะ", "เนยอัลมอนด์ – 2 ช้อนโต๊ะ", "ข้าวโอ๊ตบด – ¼ ถ้วย", "น้ำผึ้ง – 1 ช้อนโต๊ะ", "ดาร์กช็อกโกแลตละลาย – 2 ช้อนโต๊ะ"],
-            en: ["Chocolate-flavored protein powder – 2 tbsp", "Almond butter – 2 tbsp", "Rolled oats (blended) – ¼ cup", "Honey – 1 tbsp", "Melted dark chocolate – 2 tbsp"],
+            th: [
+                "ผงโปรตีนรสช็อกโกแลต – 2 ช้อนโต๊ะ",
+                "เนยอัลมอนด์ – 2 ช้อนโต๊ะ",
+                "ข้าวโอ๊ตบด – ¼ ถ้วย",
+                "น้ำผึ้ง – 1 ช้อนโต๊ะ",
+                "ดาร์กช็อกโกแลตละลาย – 2 ช้อนโต๊ะ",
+            ],
+            en: [
+                "Chocolate-flavored protein powder – 2 tbsp",
+                "Almond butter – 2 tbsp",
+                "Rolled oats (blended) – ¼ cup",
+                "Honey – 1 tbsp",
+                "Melted dark chocolate – 2 tbsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16Tz10:00:00Z",
@@ -2308,17 +2733,38 @@ export const menus = [
             fat: 8,
             carbohydrates: 14,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720463/002-greek-yogurt-parfait-r02_xfqobw.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720463/002-greek-yogurt-parfait-r02_xfqobw.jpg",
         tags: {
-            th: ["โปรตีนสูงจากโยเกิร์ตกรีก", "วิตามินจากเบอร์รี่สด", "รสชาติหวานธรรมชาติจากน้ำผึ้ง", "อาหารเพื่อสุขภาพที่สมดุลและเติมพลัง"],
-            en: ["High in protein from Greek yogurt", "Packed with vitamins from fresh berries", "Naturally sweetened with honey", "A nutritious and energizing treat"],
+            th: [
+                "โปรตีนสูงจากโยเกิร์ตกรีก",
+                "วิตามินจากเบอร์รี่สด",
+                "รสชาติหวานธรรมชาติจากน้ำผึ้ง",
+                "อาหารเพื่อสุขภาพที่สมดุลและเติมพลัง",
+            ],
+            en: [
+                "High in protein from Greek yogurt",
+                "Packed with vitamins from fresh berries",
+                "Naturally sweetened with honey",
+                "A nutritious and energizing treat",
+            ],
         },
         available: true,
         servingSize: "1 plate (380g)",
         dietary: ["high-protein"],
         ingredients: {
-            th: ["โยเกิร์ตกรีก – ¾ ถ้วย", "เบอร์รี่รวม – ½ ถ้วย", "กราโนล่าไร้น้ำตาล – 2 ช้อนโต๊ะ", "น้ำผึ้ง (optional) – 1 ช้อนชา"],
-            en: ["Greek yogurt – ¾ cup", "Mixed berries – ½ cup", "Sugar-free granola – 2 tbsp", "Honey (optional) – 1 tsp"],
+            th: [
+                "โยเกิร์ตกรีก – ¾ ถ้วย",
+                "เบอร์รี่รวม – ½ ถ้วย",
+                "กราโนล่าไร้น้ำตาล – 2 ช้อนโต๊ะ",
+                "น้ำผึ้ง (optional) – 1 ช้อนชา",
+            ],
+            en: [
+                "Greek yogurt – ¾ cup",
+                "Mixed berries – ½ cup",
+                "Sugar-free granola – 2 tbsp",
+                "Honey (optional) – 1 tsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16Tz10:00:00Z",
@@ -2341,17 +2787,42 @@ export const menus = [
             fat: 10,
             carbohydrates: 12,
         },
-        imageUrl: "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720465/003-protein-packed-banana-r02_q9loin.jpg",
+        imageUrl:
+            "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720465/003-protein-packed-banana-r02_q9loin.jpg",
         tags: {
-            th: ["โปรตีนสูงจากถั่วและธัญพืช", "รสชาติหวานหอมจากกล้วยสุก", "เหมาะสำหรับของว่างหรือมื้อเช้า", "อาหารที่ให้พลังงานและโปรตีน"],
-            en: ["High in protein from nuts and whole grains", "Naturally sweetened with ripe bananas", "Perfect for a snack or breakfast", "A nutritious and energizing treat"],
+            th: [
+                "โปรตีนสูงจากถั่วและธัญพืช",
+                "รสชาติหวานหอมจากกล้วยสุก",
+                "เหมาะสำหรับของว่างหรือมื้อเช้า",
+                "อาหารที่ให้พลังงานและโปรตีน",
+            ],
+            en: [
+                "High in protein from nuts and whole grains",
+                "Naturally sweetened with ripe bananas",
+                "Perfect for a snack or breakfast",
+                "A nutritious and energizing treat",
+            ],
         },
         available: true,
         servingSize: "1 plate (380g)",
         dietary: ["high-protein"],
         ingredients: {
-            th: ["กล้วยสุกบด – ½ ถ้วย", "แป้งอัลมอนด์ – ½ ถ้วย", "ผงโปรตีนวานิลลา – 2 ช้อนโต๊ะ", "ไข่ไก่ – 1 ฟอง", "น้ำมันมะพร้าว – 1 ช้อนโต๊ะ", "ผงฟู – ½ ช้อนชา"],
-            en: ["Mashed ripe banana – ½ cup", "Almond flour – ½ cup", "Vanilla protein powder – 2 tbsp", "Egg – 1", "Coconut oil – 1 tbsp", "Baking powder – ½ tsp"],
+            th: [
+                "กล้วยสุกบด – ½ ถ้วย",
+                "แป้งอัลมอนด์ – ½ ถ้วย",
+                "ผงโปรตีนวานิลลา – 2 ช้อนโต๊ะ",
+                "ไข่ไก่ – 1 ฟอง",
+                "น้ำมันมะพร้าว – 1 ช้อนโต๊ะ",
+                "ผงฟู – ½ ช้อนชา",
+            ],
+            en: [
+                "Mashed ripe banana – ½ cup",
+                "Almond flour – ½ cup",
+                "Vanilla protein powder – 2 tbsp",
+                "Egg – 1",
+                "Coconut oil – 1 tbsp",
+                "Baking powder – ½ tsp",
+            ],
         },
         createdAt: "2025-04-16T10:00:00Z",
         updatedAt: "2025-04-16Tz10:00:00Z",
