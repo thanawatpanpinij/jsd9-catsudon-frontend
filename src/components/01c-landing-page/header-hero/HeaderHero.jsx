@@ -12,6 +12,7 @@ import {
   RiShieldStarFill,
   RiArrowRightUpLine,
 } from "react-icons/ri";
+import { Link } from "react-router";
 
 const HeaderHero = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,26 +44,29 @@ const HeaderHero = () => {
               </span>
             </h1>
 
-              <img
-                className="w-[120px] max-[843px]:hidden absolute left-[370px] top-[120px] max-[972px]:left-[200px] max-[972px]:top-[95px] max-[1128px]:top-[110px] max-[1128px]:left-[290px] max-[1231px]:left-[320px] max-[1049px]:left-[250px]"
-                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720527/arrow-heading_rq35dc.png"
-                alt="Arrow"
-              />
+            <img
+              className="w-[120px] max-[843px]:hidden absolute left-[370px] top-[120px] max-[972px]:left-[200px] max-[972px]:top-[95px] max-[1128px]:top-[110px] max-[1128px]:left-[290px] max-[1231px]:left-[320px] max-[1049px]:left-[250px]"
+              src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720527/arrow-heading_rq35dc.png"
+              alt="Arrow"
+            />
           </div>
         </div>
 
         <p className="text-normal-size text-gray-600 mt-[130px] max-[1001px]:text-base max-[843px]:mt-[48px] max-[972px]:mt-[100px] max-[843px]:text-center">
-          CalNoy – Seamless Clean Eating, Tailored for You. Eat smarter with
-          personalized menus, precise calorie tracking, and effortless
-          ordering—all designed for your lifestyle. Get complete nutrition
-          insights and fresh, wholesome meals delivered to your door, making
-          clean eating easier and more accessible than ever.
+          CalNoy – Seamless Clean Eating, Tailored for You. Eat smarter
+          with personalized menus, precise calorie tracking, and
+          effortless ordering—all designed for your lifestyle. Get
+          complete nutrition insights and fresh, wholesome meals
+          delivered to your door, making clean eating easier and more
+          accessible than ever.
         </p>
 
         <div className="flex items-center max-[843px]:flex-col mt-[50px] gap-[12px] w-full max-[843px]:w-fit">
-          <button className="bg-primary px-8 py-3 rounded-full text-base text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200">
-            Calorie Calculator
-          </button>
+          <Link to="/calories-calculator">
+            <button className="bg-primary px-8 py-3 rounded-full text-base text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200">
+              Calorie Calculator
+            </button>
+          </Link>
 
           <div
             className={`relative h-[60px] flex bg-white shadow-[0_4px_24px_rgba(13,12,11,0.1)] rounded-full px-4 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)]
@@ -71,15 +75,13 @@ const HeaderHero = () => {
             <input
               type="text"
               placeholder="Search your menu..."
-              className={`w-full h-full rounded-full px-4 text-sm font-medium opacity-0 border-none outline-none transition-opacity duration-[1500ms] ${
-                isOpen ? "opacity-100 pointer-events-auto" : ""
-              }`}
+              className={`w-full h-full rounded-full px-4 text-sm font-medium opacity-0 border-none outline-none transition-opacity duration-[1500ms] ${isOpen ? "opacity-100 pointer-events-auto" : ""
+                }`}
             />
 
             <button
-              className={`absolute top-0 bottom-0 right-1 m-auto w-[52px] h-[52px] rounded-full grid place-items-center cursor-pointer transition-transform duration-[600ms] ease-[cubic-bezier(0.25, 1, 0.5, 1)] ${
-                isOpen ? "rotate-90 bg-primary" : "bg-third"
-              } hover:bg-primary`}
+              className={`absolute top-0 bottom-0 right-1 m-auto w-[52px] h-[52px] rounded-full grid place-items-center cursor-pointer transition-transform duration-[600ms] ease-[cubic-bezier(0.25, 1, 0.5, 1)] ${isOpen ? "rotate-90 bg-primary" : "bg-third"
+                } hover:bg-primary`}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? (
@@ -110,20 +112,53 @@ const HeaderHero = () => {
             }}
           >
             {[
-              { name: "Clean Eating", rating: "3.98", bgColor: "bg-third" },
-              { name: "Keto Diet", rating: "3.25", bgColor: "bg-secondary" },
-              { name: "Vegetarian", rating: "4.98", bgColor: "bg-third" },
-              { name: "Vegan", rating: "4.45", bgColor: "bg-secondary" },
-              { name: "Plant Based", rating: "4.35", bgColor: "bg-third" },
-              { name: "Gluten Free", rating: "4.28", bgColor: "bg-secondary" },
-              { name: "Low Carb", rating: "4.58", bgColor: "bg-third" },
-              { name: "High-Protein", rating: "4.86", bgColor: "bg-secondary" },
+              {
+                name: "Clean Eating",
+                rating: "3.98",
+                bgColor: "bg-third",
+              },
+              {
+                name: "Keto Diet",
+                rating: "3.25",
+                bgColor: "bg-secondary",
+              },
+              {
+                name: "Vegetarian",
+                rating: "4.98",
+                bgColor: "bg-third",
+              },
+              {
+                name: "Vegan",
+                rating: "4.45",
+                bgColor: "bg-secondary",
+              },
+              {
+                name: "Plant Based",
+                rating: "4.35",
+                bgColor: "bg-third",
+              },
+              {
+                name: "Gluten Free",
+                rating: "4.28",
+                bgColor: "bg-secondary",
+              },
+              {
+                name: "Low Carb",
+                rating: "4.58",
+                bgColor: "bg-third",
+              },
+              {
+                name: "High-Protein",
+                rating: "4.86",
+                bgColor: "bg-secondary",
+              },
             ].map((item, index) => (
               <SwiperSlide
                 key={index}
-                className={`flex justify-center items-center w-auto py-[20px] ${
-                  swiperInstance?.realIndex === index ? styles.activeSlide : ""
-                }`}
+                className={`flex justify-center items-center w-auto py-[20px] ${swiperInstance?.realIndex === index
+                  ? styles.activeSlide
+                  : ""
+                  }`}
               >
                 <article
                   className={`flex flex-col items-center justify-center max-[393px]:py-2 px-1 py-3 w-auto rounded-full ${item.bgColor} transition-all duration-300`}

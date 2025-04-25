@@ -11,6 +11,7 @@ import CheckoutPage from "./pages/04-checkout/CheckoutPage.jsx";
 import EditInformationPage from "./pages/08-edit-information/EditInformationPage.jsx";
 import DashboardPage from "./pages/09-dashboard/DashboardPage.jsx";
 import AboutUsPage from "./pages/05-about-us/AboutUsPage.jsx";
+import ContactUsPage from "./pages/10-contact-us/ContactUsPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
             { path: "/edit-information", Component: EditInformationPage },
             { path: "/dashboard", Component: DashboardPage },
             { path: "/about-us", Component: AboutUsPage },
+            { path: "/contact-us", Component: ContactUsPage },
         ],
     },
     { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },
