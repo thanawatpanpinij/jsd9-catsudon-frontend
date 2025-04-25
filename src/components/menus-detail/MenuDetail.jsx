@@ -40,7 +40,13 @@ export default function MenuDetail() {
             max-w-[1440px] mx-auto mb-16 pt-14
             576px:px-8"
         >
-            <Breadcrumbs breadcrumb="All menus" detailPage={menuDetail} />
+            <Breadcrumbs
+                style="
+                mx-8 mb-8 text-[#b9b9b9] font-medium
+                576px:mx-0 576px:p-0"
+                breadcrumb="All menus"
+                detailPage={menuDetail}
+            />
             <div className="1023px:flex 1023px:gap-8">
                 <div
                     className="
