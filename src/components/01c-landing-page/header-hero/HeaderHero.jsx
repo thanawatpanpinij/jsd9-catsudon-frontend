@@ -60,7 +60,7 @@ const HeaderHero = () => {
         </p>
 
         <div className="flex items-center max-[843px]:flex-col mt-[50px] gap-[12px] w-full max-[843px]:w-fit">
-          <button className="bg-primary px-8 h-[60px] rounded-full text-base text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200">
+          <button className="bg-primary px-8 py-3 rounded-full text-base text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200">
             Calorie Calculator
           </button>
 

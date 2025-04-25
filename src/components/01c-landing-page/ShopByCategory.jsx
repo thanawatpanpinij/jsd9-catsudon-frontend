@@ -97,6 +97,7 @@ const ShopByCategory = () => {
                 className="w-full rounded-[32px] mb-3 max-[390px]:rounded-[24px]"
                 src={imageUrl}
                 alt={category}
+                loading="lazy"
               />
               <p className="text-small-size font-semibold text-third">
                 {category}
