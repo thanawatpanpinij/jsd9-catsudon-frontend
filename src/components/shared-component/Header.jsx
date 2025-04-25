@@ -11,6 +11,7 @@ import {
   RiRestaurantFill,
 } from "react-icons/ri";
 import { menus } from "../../utils/data/menus";
+import { Link } from "react-router";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -58,7 +59,7 @@ const Header = () => {
 
   const icons = [
     { icon: <RiRestaurantFill className="text-xl" />, count: null },
-    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 12 },
+    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
     { icon: <RiHeartFill className="text-xl" />, count: 0 },
     { icon: <RiNotification4Fill className="text-xl" />, count: 0 },
   ];
@@ -103,7 +104,7 @@ const Header = () => {
                 </div>
 
                 {/* Search Icon */}
-                <button className="bg-third text-white p-2 rounded-full mr-[3px] hover:bg-primary transition-all duration-100 ease">
+                <button className="bg-third text-white p-2 rounded-full mr-[3px] hover:bg-primary transition-all duration-100 ease cursor-pointer">
                   <RiSearch2Line />
                 </button>
               </div>
@@ -156,12 +157,12 @@ const Header = () => {
                 </div>
               </div>
 
-              <a
+              <Link
                 href="#"
-                className="bg-primary text-white rounded-full px-[24px] py-[5px]  hover:bg-secondary transition-all duration-300 ease-in-out"
+                className="bg-primary text-white rounded-full px-10 py-[7px]  hover:bg-secondary transition-all duration-300 ease-in-out"
               >
                 Sign In
-              </a>
+              </Link>
             </div>
             <div
               className="hidden max-[968px]:block w-7 cursor-pointer text-medium-size text-third"
@@ -174,18 +175,18 @@ const Header = () => {
           <div className="hidden min-[969px]:block">
             <ul className="group flex items-center gap-1 py-[12px] text-third font-medium-weight w-fit">
               <li className="px-5 py-1 rounded-full bg-primary text-white transition-all duration-300 ease hover:bg-primary hover:text-white group-hover:bg-transparent group-hover:text-third">
-                <a href="">Home</a>
+                <Link href="">Home</Link>
               </li>
 
               {["All Menus", "About Us", "Health Blog", "Contact Us"].map(
                 (label, index) => (
                   <li key={index}>
-                    <a
+                    <Link
                       href=""
                       className="transition-all duration-300 ease hover:bg-primary hover:text-white px-5 py-1 rounded-full"
                     >
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 )
               )}
@@ -211,24 +212,24 @@ const Header = () => {
                 "Contact Us",
               ].map((label, index) => (
                 <li key={index}>
-                  <a
+                  <Link
                     onClick={() => setShowMobileMenu(false)}
                     href="#"
                     className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
 
               <li>
-                <a
+                <Link
                   href="#"
                   onClick={() => setShowMobileMenu(false)}
-                  className="bg-primary text-white rounded-full px-[24px] py-[5px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
+                  className="bg-primary text-white rounded-full px-10 py-[7px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
                 >
                   Sign In
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -239,8 +240,8 @@ const Header = () => {
 
       <div className="hidden max-[968px]:flex cursor-pointer fixed bottom-0 left-0 right-0 bg-primary w-[300px] mx-auto mb-[48px] rounded-full py-3 px-5 items-center justify-around text-white z-[999]">
         {icons.map(({ icon, count }, index) => (
-          <div key={index} className="relative">
-            <div className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease">
+          <Link key={index} className="relative">
+            <div className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer">
               {icon}
             </div>
             {count !== null && (
@@ -248,7 +249,7 @@ const Header = () => {
                 {count}
               </span>
             )}
-          </div>
+          </Link>
         ))}
       </div>
     </>
