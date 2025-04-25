@@ -1659,7 +1659,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 cup (250ml)",
-        dietary: [ "plant-based", "dairy-free"],
+        dietary: ["plant-based", "dairy-free"],
         ingredients: {
             th: [
                 "เมล็ดเจีย – 3 ช้อนโต๊ะ",
@@ -1877,7 +1877,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: [ "low carb", "paleo"],
+        dietary: ["low carb", "paleo"],
         ingredients: {
             th: [
                 "ซูกินี – 2 ผล (หั่นเป็นเส้น)",
