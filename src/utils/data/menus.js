@@ -24,7 +24,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "high-protein"],
+        dietary: ["Clean Eating", "high-protein"],
         ingredients: {
             th: [
                 "อกไก่ลอกหนัง – 2 ชิ้น",
@@ -76,11 +76,11 @@ export const menus = [
             "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720458/002-roasted-salmon_mjobgq.jpg",
         tags: {
             th: ["ดีต่อหัวใจ", "โอเมก้า 3", "ปราศจากกลูเตน", "ไม่มีน้ำตาล"],
-            en: ["heart-healthy", "omega-3", "gluten-free", "no-sugar"],
+            en: ["Clean Eating", "omega-3", "gluten-free", "no-sugar"],
         },
         available: true,
         servingSize: "1 plate (320g)",
-        dietary: ["gluten-free"],
+        dietary: ["Clean Eating"],
         ingredients: {
             th: [
                 "แซลมอนสด (เน้นปลาเลี้ยงธรรมชาติ) – 2 ชิ้น",
@@ -138,7 +138,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 bowl (300g)",
-        dietary: ["vegan"],
+        dietary: ["Clean Eating"],
         ingredients: {
             th: [
                 "เต้าหู้แข็งออร์แกนิก – 1 ก้อน (หั่นเต๋า)",
@@ -194,7 +194,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 bowl (300g)",
-        dietary: ["vegan"],
+        dietary: ["Clean Eating"],
         ingredients: {
             th: [
                 "ผงอาซาอิแช่แข็ง หรือแบบผงชนิดไม่เติมน้ำตาล – 1 ซอง (ประมาณ 100 กรัม)",
@@ -254,7 +254,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 cup (250g)",
-        dietary: ["vegan", "gluten-free"],
+        dietary: ["Clean Eating", "gluten-free"],
         ingredients: {
             th: [
                 "เมล็ดเจีย – 3 ช้อนโต๊ะ",
@@ -310,7 +310,7 @@ export const menus = [
         },
         available: true,
         servingSize: "3 pieces (60g)",
-        dietary: ["vegan", "gluten-free"],
+        dietary: ["Clean Eating", "gluten-free"],
         ingredients: {
             th: [
                 "อินทผาลัมไร้เมล็ด (แบบแห้งนิ่ม) – 1 ถ้วย",
@@ -1464,7 +1464,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ควินัว – 1 ถ้วย",
@@ -1523,7 +1523,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 bowl (400ml)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ถั่วเลนทิลสีเขียว – 1 ถ้วย",
@@ -1591,7 +1591,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (2 zucchini halves)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ซูกินีผ่าครึ่ง – 2 ลูก",
@@ -1659,7 +1659,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 cup (250ml)",
-        dietary: ["gluten-free", "plant-based", "dairy-free"],
+        dietary: [ "plant-based", "dairy-free"],
         ingredients: {
             th: [
                 "เมล็ดเจีย – 3 ช้อนโต๊ะ",
@@ -1775,7 +1775,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (200g)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ข้าวเหนียวมูน – 1/2 ถ้วย",
@@ -1823,7 +1823,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "low carb", "paleo"],
+        dietary: ["low carb", "paleo"],
         ingredients: {
             th: [
                 "ไก่ย่าง (อกไก่) – 150 กรัม",
@@ -1877,7 +1877,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "low carb", "paleo"],
+        dietary: [ "low carb", "paleo"],
         ingredients: {
             th: [
                 "ซูกินี – 2 ผล (หั่นเป็นเส้น)",

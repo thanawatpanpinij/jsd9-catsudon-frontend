@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = ({ menu }) => {
+const MenuCart = ({ menu }) => {
   const { name, price, imageUrl, tags, dietary } = menu;
 
   return (
@@ -59,4 +59,4 @@ const Cart = ({ menu }) => {
   );
 };
 
-export default Cart;
+export default MenuCart;
