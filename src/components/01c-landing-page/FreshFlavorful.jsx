@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { RiArrowDownSLine } from "react-icons/ri";
 
 const FreshFlavorful = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const sectionRef = useRef(null); // Create a reference for the section
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -43,10 +44,24 @@ const FreshFlavorful = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (sectionRef.current && !sectionRef.current.contains(e.target)) {
+        setOpenIndex(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
   return (
-    <div className="max-w-[1440px] mx-auto px-[32px] mb-[56px]">
+    <section
+      ref={sectionRef}
+      className="max-w-[1440px] mx-auto px-[32px] mb-[56px]"
+    >
       <div className="mb-[32px] flex flex-col leading-tight">
-        <p className="text-[10px] text-primary max-[433px]:text-[10px]">
+        <p className="text-small-size whitespace-nowrap text-primary max-[433px]:text-[10px]">
           Handpicked for pure, delicious living.
         </p>
         <h2 className="text-[42px] font-semibold text-third max-[631px]:text-large-size max-[433px]:text-medium-size">
@@ -55,9 +70,9 @@ const FreshFlavorful = () => {
       </div>
 
       <div className="w-full">
-        <div className="w-full grid grid-cols-2 gap-8">
+        <div className="w-full flex gap-5 max-[577px]:gap-3">
           <Swiper
-            className="w-full"
+            className="w-full max-[551px]:hidden"
             slidesPerView={1}
             spaceBetween={20}
             centeredSlides={true}
@@ -72,54 +87,37 @@ const FreshFlavorful = () => {
               pauseOnMouseEnter: false,
             }}
           >
-            <SwiperSlide>
-              <img
-                className="w-full h-[512px] object-cover rounded-4xl"
-                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720550/001-fresh-flavoful_gpgwlj.jpg"
-                alt=""
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <img
-                className="w-full h-[512px] object-cover rounded-4xl"
-                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720550/002-fresh-flavoful_pmqe8a.webp"
-                alt=""
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <img
-                className="w-full h-[512px] object-cover rounded-4xl"
-                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978247/003-leaf-lettuce_q3d1qs.avif"
-                alt=""
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <img
-                className="w-full h-[512px] object-cover rounded-4xl"
-                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978248/004-cherry-tomatoes_yxzerl.avif"
-                alt=""
-              />
-            </SwiperSlide>
+            {[ 
+              "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720550/001-fresh-flavoful_gpgwlj.jpg",
+              "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720550/002-fresh-flavoful_pmqe8a.webp",
+              "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978247/003-leaf-lettuce_q3d1qs.avif",
+              "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978248/004-cherry-tomatoes_yxzerl.avif"
+            ].map((src, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  className="w-full h-[464px] object-cover rounded-4xl max-[740px]:h-[344px] max-[558px]:h-[320px] max-[472px]:h-[200px] max-[472px]:rounded-2xl max-[558px]:rounded-3xl"
+                  src={src}
+                  alt=""
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
 
-          <div className="bg-secondary w-full rounded-4xl p-6 flex flex-col justify-center gap-4">
+          <div className="bg-secondary w-full h-fit rounded-4xl p-6 flex flex-col gap-4 max-[472px]:gap-2 max-[558px]:p-3 max-[472px]:p-2 max-[472px]:rounded-2xl max-[558px]:rounded-3xl">
             {items.map((item, index) => (
               <div
                 key={index}
-                className={`bg-white p-5 rounded-3xl flex flex-col transition-all duration-300 ${
-                    openIndex === index ? "gap-2" : "gap-0"
-                }`}
+                className={`item-container bg-white p-4 rounded-2xl flex flex-col transition-all duration-300 max-[740px]:p-2 max-[472px]:pr-1 max-[472px]:py-1 ${openIndex === index ? "gap-2" : "gap-0"}`}
               >
                 <div
                   className="flex items-center justify-between text-third cursor-pointer"
                   onClick={() => handleToggle(index)}
                 >
-                  <h3 className="font-semibold">{item.title}</h3>
+                  <h3 className="font-semibold max-[740px]:text-small-size max-[472px]:text-[10px] max-[441px]:text-[8px] max-[356px]:text-[6.5px]">
+                    {item.title}
+                  </h3>
                   <RiArrowDownSLine
-                    className={`bg-gray-300 text-normal-size rounded-full text-white hover:bg-primary transition-all duration-300 transform ${
+                    className={`bg-gray-300 text-normal-size max-[472px]:text-base rounded-full text-white hover:bg-primary transition-all duration-300 transform ${
                       openIndex === index ? "rotate-180 bg-primary" : "rotate-0"
                     }`}
                   />
@@ -139,7 +137,7 @@ const FreshFlavorful = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

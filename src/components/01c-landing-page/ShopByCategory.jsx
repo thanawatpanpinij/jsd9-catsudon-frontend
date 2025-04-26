@@ -51,8 +51,8 @@ const ShopByCategory = () => {
       <div className="mb-[40px]">
         <div className="mb-[32px]">
           <div className="flex flex-col leading-tight">
-            <p className="text-[10px] text-primary">
-              Browse the best categories for your health.
+            <p className="text-small-size text-primary">
+              Browse top health categories.
             </p>
             <div className="flex items-center justify-between">
               <h2 className="text-[42px] font-semibold text-third max-[631px]:text-large-size max-[433px]:text-medium-size">
@@ -114,7 +114,7 @@ const ShopByCategory = () => {
         </Swiper>
       </div>
 
-      <div className="grid grid-cols-2 gap-8 max-[843px]:grid-cols-1">
+      <div className="grid grid-cols-2 gap-5 max-[843px]:grid-cols-1">
         {cardData.map(({ title, bgColor, btnColor, img }, index) => (
           <div
             key={index}

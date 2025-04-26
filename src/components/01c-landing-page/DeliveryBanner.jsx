@@ -9,10 +9,10 @@ const DeliveryBanner = () => {
         {/* Left Section */}
         <div className="flex flex-col gap-8">
           <div className="space-y-2">
-            <h3 className="text-heading03-size font-semibold leading-[1.2] text-white max-[801px]:text-medium-size max-[721px]:text-large-size min-[1200px]:text-[45px]">
+            <h3 className="text-heading03-size font-semibold leading-[1.2] text-white max-[801px]:text-medium-size max-[721px]:text-large-size max-[426px]:text-medium-size min-[1200px]:text-[45px]">
               Delivery service available from 10:00 AM to 08:00 PM
             </h3>
-            <p className="text-white max-[801px]:text-small-size max-[721px]:text-base">
+            <p className="text-white max-[801px]:text-small-size max-[426px]:text-[10.5px] max-[721px]:text-base">
               Free delivery for purchases over 200 THB
             </p>
           </div>
