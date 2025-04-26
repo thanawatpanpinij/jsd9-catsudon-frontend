@@ -46,10 +46,10 @@ const FreshFlavorful = () => {
   return (
     <div className="max-w-[1440px] mx-auto px-[32px] mb-[56px]">
       <div className="mb-[32px] flex flex-col leading-tight">
-        <p className="text-small-size text-primary">
+        <p className="text-[10px] text-primary max-[433px]:text-[10px]">
           Handpicked for pure, delicious living.
         </p>
-        <h2 className="text-heading02-size font-semibold text-third max-[631px]:text-heading03-size">
+        <h2 className="text-[42px] font-semibold text-third max-[631px]:text-large-size max-[433px]:text-medium-size">
           Fresh & Flavorful organic goods
         </h2>
       </div>
@@ -126,7 +126,7 @@ const FreshFlavorful = () => {
                 </div>
 
                 <div
-                  className={`grid overflow-hidden transition-all duration-500 ease-in-out ${
+                  className={`grid overflow-hidden transition-all duration-400 ease-in-out ${
                     openIndex === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
