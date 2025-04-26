@@ -12,7 +12,7 @@ const TextScroller = () => {
         {Array.from({ length: repeatCount }).map((_, index) => (
           <li key={index} className="flex items-center gap-[16px]">
             <p>{message}</p>
-            <RiGeminiFill />
+            <RiGeminiFill className="text-normal-size" />
           </li>
         ))}
       </ul>
