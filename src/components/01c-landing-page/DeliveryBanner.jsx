@@ -4,13 +4,13 @@ import { RiShoppingBag3Fill } from "react-icons/ri";
 const DeliveryBanner = () => {
   return (
     <section className="max-w-[1440px] mx-auto px-[32px] mb-[56px]">
-      <div className="bg-secondary grid grid-cols-2 rounded-[32px] py-10 px-[56px] relative max-[991px]:py-6">
+      <div className="bg-secondary grid grid-cols-2 rounded-[32px] py-6 px-[56px] max-[721px]:px-[32px] relative max-[991px]:py-6 max-[721px]:grid-cols-1 min-[1019px]:py-8">
         <div className="flex flex-col gap-8">
           <div>
-            <h3 className="text-heading03-size font-semibold leading-[1.2] text-white">
+            <h3 className="text-heading03-size font-semibold leading-[1.2] text-white max-[801px]:text-medium-size max-[721px]:text-large-size min-[1200px]:text-[45px]">
               Delivery service available from 10:00 AM to 08:00 PM
             </h3>
-            <p className="text-white">
+            <p className="text-white max-[801px]:text-small-size max-[721px]:text-base">
               Free delivery for purchases over 200 THB
             </p>
           </div>
@@ -24,7 +24,7 @@ const DeliveryBanner = () => {
 
         <div className="relative">
           <img
-            className="absolute max-w-[460px] left-[60px] bottom-[-100px] max-[1109px]:left-[0] max-[991px]:left-[-30px] max-[991px]:w-[430px]"
+            className="absolute w-[460px] max-w-[500px] left-[60px] bottom-[-90px] max-[769px]:bottom-[-80px] max-[1109px]:left-[0] max-[991px]:left-[-30px] max-[751px]:left-[-50px] max-[991px]:w-[430px] max-[801px]:w-[400px] max-[721px]:hidden"
             src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720543/001-vector-r02_fs21ei.webp"
           />
         </div>
