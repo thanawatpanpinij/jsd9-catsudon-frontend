@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { FiShoppingBag } from "react-icons/fi";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 
 const MenuCart = ({ menu }) => {
   const { name, price, imageUrl, tags, dietary } = menu;
+  const [liked, setLiked] = useState(false);
+
+  const toggleLike = () => {
+    setLiked(!liked);
+  };
 
   return (
     <div className="w-[250px] rounded-2xl border border-gray-200 p-4 shadow bg-white relative">
@@ -10,7 +17,13 @@ const MenuCart = ({ menu }) => {
         <div className="bg-red-500 text-white text-sm px-3 py-0.5 rounded-full">
           Hot
         </div>
-        <div className="text-red-500 text-xl">❤️</div>
+        <button onClick={toggleLike}>
+          {liked ? (
+            <IoIosHeart size={25} color="red" />
+          ) : (
+            <IoIosHeartEmpty size={25} color="gray" />
+          )}
+        </button>
       </div>
 
       {/* Image */}
@@ -51,8 +64,8 @@ const MenuCart = ({ menu }) => {
       {/* Price & Cart button */}
       <div className="flex items-center justify-between">
         <span className="text-black font-bold text-xl">{price}.00 THB</span>
-        <button className="bg-green-600  hover:bg-green-700 text-white p-2 w-10 h-10 rounded-full text-lg">
-          🛒
+        <button className="bg-[var(--color-primary)] hover:bg-green-700 text-white p-2 w-10 h-10 rounded-full text-lg flex items-center justify-center">
+          <FiShoppingBag />
         </button>
       </div>
     </div>
