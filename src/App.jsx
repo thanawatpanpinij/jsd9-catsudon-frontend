@@ -20,10 +20,10 @@ const router = createBrowserRouter([
         children: [
             { index: true, Component: HomePage },
             { path: "/menus", Component: MenusPage },
-            { path: "/menus/:slug", Component: MenuDetailPage },
+            { path: "/menus/:menuSlugId", Component: MenuDetailPage },
             { path: "/calories-calculator", Component: CaloriesCalculatorPage },
             { path: "/blog", Component: BlogPage },
-            { path: "/blog/:slug", Component: BlogDetail },
+            { path: "/blog/:blogSlugId", Component: BlogDetail },
             { path: "/checkout", Component: CheckoutPage },
             { path: "/edit-information", Component: EditInformationPage },
             { path: "/dashboard", Component: DashboardPage },
