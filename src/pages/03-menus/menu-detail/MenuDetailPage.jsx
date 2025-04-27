@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { menus } from "../../utils/data/menus";
-import Breadcrumbs from "../shared-component/Breadcrumbs";
-import RecommendedDish from "./RecommendedDish";
-import UserComment from "./UserComment";
+import { menus } from "../../../utils/data/menus";
+import Breadcrumbs from "../../../components/shared-component/Breadcrumbs";
+import RecommendedDish from "../../../components/menus-detail/RecommendedDish";
+import UserComment from "../../../components/menus-detail/UserComment";
 
 const users = [
     {
@@ -23,7 +23,7 @@ const users = [
 
 const id = 2; // Mock id
 
-export default function MenuDetail() {
+export default function MenuDetailPage() {
     const menuDetail = menus.find((menu) => menu.id === id);
 
     let recommendedDishes;

@@ -3,7 +3,7 @@ import Layout from "../src/components/shared-component/Layout.jsx";
 import HomePage from "./pages/01-landing-page/HomePage.jsx";
 import SignInAndSignUpPage from "./pages/02-sign-in-sign-up/SignInAndSignUpPage.jsx";
 import MenusPage from "./pages/03-menus/MenusPage.jsx";
-import MenuDetail from "./components/menus-detail/MenuDetail.jsx";
+import MenuDetailPage from "./pages/03-menus/menu-detail/MenuDetailPage.jsx";
 import CaloriesCalculatorPage from "./pages/06-calories-calculator/CaloriesCalculatorPage.jsx";
 import BlogPage from "./pages/07-blog/BlogPage.jsx";
 import BlogDetail from "./components/blog-detail/BlogDetail.jsx";
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, Component: HomePage },
             { path: "/menus", Component: MenusPage },
-            { path: "/menus/:slug", Component: MenuDetail },
+            { path: "/menus/:slug", Component: MenuDetailPage },
             { path: "/calories-calculator", Component: CaloriesCalculatorPage },
             { path: "/blog", Component: BlogPage },
             { path: "/blog/:slug", Component: BlogDetail },
