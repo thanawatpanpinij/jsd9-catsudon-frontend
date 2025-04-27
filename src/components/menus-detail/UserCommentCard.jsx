@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function UserComment({ name, imageUrl, comment, date }) {
+export default function UserCommentCard({ name, imageUrl, comment, date }) {
     return (
         <article className="320px:p-5 320px:border-[1.5px] 320px:border-bright-grey 320px:rounded-4xl 320px:shadow-[0_0_5px_0_rgba(0,0,0,0.1)]">
             <section className="flex justify-between items-center mb-4">
