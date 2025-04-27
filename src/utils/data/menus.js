@@ -24,7 +24,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "high-protein"],
+        dietary: ["Clean Eating", "high-protein"],
         ingredients: {
             th: [
                 "อกไก่ลอกหนัง – 2 ชิ้น",
@@ -76,11 +76,11 @@ export const menus = [
             "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720458/002-roasted-salmon_mjobgq.jpg",
         tags: {
             th: ["ดีต่อหัวใจ", "โอเมก้า 3", "ปราศจากกลูเตน", "ไม่มีน้ำตาล"],
-            en: ["heart-healthy", "omega-3", "gluten-free", "no-sugar"],
+            en: ["Clean Eating", "omega-3", "gluten-free", "no-sugar"],
         },
         available: true,
         servingSize: "1 plate (320g)",
-        dietary: ["gluten-free"],
+        dietary: ["Clean Eating"],
         ingredients: {
             th: [
                 "แซลมอนสด (เน้นปลาเลี้ยงธรรมชาติ) – 2 ชิ้น",
@@ -138,7 +138,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 bowl (300g)",
-        dietary: ["vegan"],
+        dietary: ["Clean Eating"],
         ingredients: {
             th: [
                 "เต้าหู้แข็งออร์แกนิก – 1 ก้อน (หั่นเต๋า)",
@@ -194,7 +194,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 bowl (300g)",
-        dietary: ["vegan"],
+        dietary: ["Clean Eating"],
         ingredients: {
             th: [
                 "ผงอาซาอิแช่แข็ง หรือแบบผงชนิดไม่เติมน้ำตาล – 1 ซอง (ประมาณ 100 กรัม)",
@@ -254,7 +254,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 cup (250g)",
-        dietary: ["vegan", "gluten-free"],
+        dietary: ["Clean Eating", "gluten-free"],
         ingredients: {
             th: [
                 "เมล็ดเจีย – 3 ช้อนโต๊ะ",
@@ -310,7 +310,7 @@ export const menus = [
         },
         available: true,
         servingSize: "3 pieces (60g)",
-        dietary: ["vegan", "gluten-free"],
+        dietary: ["Clean Eating", "gluten-free"],
         ingredients: {
             th: [
                 "อินทผาลัมไร้เมล็ด (แบบแห้งนิ่ม) – 1 ถ้วย",
@@ -671,7 +671,7 @@ export const menus = [
         id: 13,
         name: "Spicy Vegan Tacos with Tempeh",
         slug: "spicy-vegan-tacos-with-tempeh",
-        category: "Vegan Nutrition",
+        category: "Vegan",
         type: "Savory",
         price: 165,
         description: {
@@ -757,7 +757,7 @@ export const menus = [
         id: 14,
         name: "Vegan BBQ Cauliflower Wings",
         slug: "vegan-bbq-cauliflower-wings",
-        category: "Vegan Nutrition",
+        category: "Vegan",
         type: "Savory",
         price: 185,
         description: {
@@ -817,7 +817,7 @@ export const menus = [
         id: 15,
         name: "Vegan Buddha Bowl with Tahini Dressing",
         slug: "vegan-buddha-bowl-with-tahini-dressing",
-        category: "Vegan Nutrition",
+        category: "Vegan",
         type: "Savory",
         price: 185,
         description: {
@@ -886,7 +886,7 @@ export const menus = [
         id: 16,
         name: "Vegan Chocolate Coconut Truffles",
         slug: "vegan-chocolate-coconut-truffles",
-        category: "Vegan Nutrition",
+        category: "Vegan",
         type: "dessert",
         price: 90,
         description: {
@@ -942,7 +942,7 @@ export const menus = [
         id: 17,
         name: "Vegan Raspberry Chia Bars",
         slug: "vegan-raspberry-chia-bars",
-        category: "Vegan Nutrition",
+        category: "Vegan",
         type: "dessert",
         price: 85,
         description: {
@@ -1001,7 +1001,7 @@ export const menus = [
         id: 18,
         name: "Vegan Chocolate Avocado Pudding",
         slug: "vegan-chocolate-avocado-pudding",
-        category: "Vegan Nutrition",
+        category: "Vegan",
         type: "dessert",
         price: 90,
         description: {
@@ -1061,7 +1061,7 @@ export const menus = [
         id: 19,
         name: "Grilled Vegetable Tacos with Guacamole",
         slug: "grilled-vegetable-tacos-with-guacamole",
-        category: "Vegetarian Nutrition",
+        category: "Vegetarian",
         type: "Savory",
         price: 160,
         description: {
@@ -1125,7 +1125,7 @@ export const menus = [
         id: 20,
         name: "Vegan Buddha Bowl",
         slug: "vegan-buddha-bowl",
-        category: "Vegetarian Nutrition",
+        category: "Vegetarian",
         type: "Savory",
         price: 180,
         description: {
@@ -1198,7 +1198,7 @@ export const menus = [
         id: 21,
         name: "Thai Stir-Fried Basil with Tofu",
         slug: "thai-stir-fried-basil-with-tofu",
-        category: "Vegetarian Nutrition",
+        category: "Vegetarian",
         type: "Savory",
         price: 150,
         description: {
@@ -1266,7 +1266,7 @@ export const menus = [
         id: 22,
         name: "Vegan Chocolate Chip Cookies",
         slug: "vegan-chocolate-chip-cookies",
-        category: "Vegetarian Nutrition",
+        category: "Vegetarian",
         type: "Dessert",
         price: 75,
         description: {
@@ -1320,7 +1320,7 @@ export const menus = [
         id: 23,
         name: "Mango Coconut Sorbet",
         slug: "mango-coconut-sorbet",
-        category: "Vegetarian Nutrition",
+        category: "Vegetarian",
         type: "Dessert",
         price: 85,
         description: {
@@ -1371,7 +1371,7 @@ export const menus = [
         id: 24,
         name: "Vegan Chocolate Avocado Cake",
         slug: "vegan-chocolate-avocado-cake",
-        category: "Vegetarian Nutrition",
+        category: "Vegetarian",
         type: "Dessert",
         price: 95,
         description: {
@@ -1443,7 +1443,7 @@ export const menus = [
         id: 25,
         name: "Quinoa Salad with Roasted Vegetables",
         slug: "quinoa-salad-with-roasted-vegetables",
-        category: "Plant-based",
+        category: "Plant Based",
         type: "Savory",
         price: 180,
         description: {
@@ -1464,7 +1464,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ควินัว – 1 ถ้วย",
@@ -1502,7 +1502,7 @@ export const menus = [
         id: 26,
         name: "Plant-Based Lentil Soup",
         slug: "plant-based-lentil-soup",
-        category: "Plant-based",
+        category: "Plant Based",
         type: "Savory",
         price: 150,
         description: {
@@ -1523,7 +1523,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 bowl (400ml)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ถั่วเลนทิลสีเขียว – 1 ถ้วย",
@@ -1564,7 +1564,7 @@ export const menus = [
         id: 27,
         name: "Stuffed Zucchini Boats with Chickpeas",
         slug: "stuffed-zucchini-boats-with-chickpeas",
-        category: "Plant-based",
+        category: "Plant Based",
         type: "Savory",
         price: 160,
         description: {
@@ -1591,7 +1591,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (2 zucchini halves)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ซูกินีผ่าครึ่ง – 2 ลูก",
@@ -1626,7 +1626,7 @@ export const menus = [
         id: 28,
         name: "Chia Pudding with Mixed Berries",
         slug: "chia-pudding-with-mixed-berries",
-        category: "Plant-based",
+        category: "Plant Based",
         type: "dessert",
         price: 120,
         description: {
@@ -1659,7 +1659,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 cup (250ml)",
-        dietary: ["gluten-free", "plant-based", "dairy-free"],
+        dietary: ["plant-based", "dairy-free"],
         ingredients: {
             th: [
                 "เมล็ดเจีย – 3 ช้อนโต๊ะ",
@@ -1688,7 +1688,7 @@ export const menus = [
         id: 29,
         name: "Plant-Based Chocolate Avocado Mousse",
         slug: "plant-based-chocolate-avocado-mousse",
-        category: "Plant-based",
+        category: "Plant Based",
         type: "dessert",
         price: 130,
         description: {
@@ -1748,7 +1748,7 @@ export const menus = [
         id: 30,
         name: "Vegan Mango Sticky Rice",
         slug: "vegan-mango-sticky-rice",
-        category: "Plant-based",
+        category: "Plant Based",
         type: "dessert",
         price: 150,
         description: {
@@ -1775,7 +1775,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (200g)",
-        dietary: ["gluten-free", "plant-based"],
+        dietary: ["plant-based"],
         ingredients: {
             th: [
                 "ข้าวเหนียวมูน – 1/2 ถ้วย",
@@ -1823,7 +1823,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "low carb", "paleo"],
+        dietary: ["low carb", "paleo"],
         ingredients: {
             th: [
                 "ไก่ย่าง (อกไก่) – 150 กรัม",
@@ -1877,7 +1877,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["gluten-free", "low carb", "paleo"],
+        dietary: ["low carb", "paleo"],
         ingredients: {
             th: [
                 "ซูกินี – 2 ผล (หั่นเป็นเส้น)",
@@ -2122,7 +2122,7 @@ export const menus = [
         id: 37,
         name: "Gluten-Free Chicken Parmesan",
         slug: "gluten-free-chicken-parmesan",
-        category: "Gluten-Free Nutrition",
+        category: "Gluten Free",
         type: "Savory",
         price: 220,
         description: {
@@ -2186,7 +2186,7 @@ export const menus = [
         id: 38,
         name: "Quinoa-Stuffed Bell Peppers",
         slug: "quinoa-stuffed-bell-peppers",
-        category: "Gluten-Free Nutrition",
+        category: "Gluten Free",
         type: "Savory",
         price: 180,
         description: {
@@ -2258,7 +2258,7 @@ export const menus = [
         id: 39,
         name: "Grilled Salmon with Lemon Herb Sauce",
         slug: "grilled-salmon-with-lemon-herb-sauce",
-        category: "Gluten-Free Nutrition",
+        category: "Gluten Free",
         type: "Savory",
         price: 290,
         description: {
@@ -2318,7 +2318,7 @@ export const menus = [
         id: 40,
         name: "Gluten-Free Almond Flour Cake",
         slug: "gluten-free-almond-flour-cake",
-        category: "Gluten-Free Nutrition",
+        category: "Gluten Free",
         type: "Dessert",
         price: 150,
         description: {
@@ -2376,7 +2376,7 @@ export const menus = [
         id: 41,
         name: "Gluten-Free Coconut Macaroons",
         slug: "gluten-free-coconut-macaroons",
-        category: "Gluten-Free Nutrition",
+        category: "Gluten Free",
         type: "Dessert",
         price: 120,
         description: {
@@ -2432,7 +2432,7 @@ export const menus = [
         id: 42,
         name: "Raw Chocolate Cake",
         slug: "raw-chocolate-cake",
-        category: "Gluten-Free Nutrition",
+        category: "Gluten Free",
         type: "Dessert",
         price: 160,
         description: {
@@ -2488,7 +2488,7 @@ export const menus = [
         id: 43,
         name: "Grilled Chicken with Quinoa and Veggies",
         slug: "grilled-chicken-with-quinoa-and-veggies",
-        category: "High-Protein Nutrition",
+        category: "High Protein",
         type: "Savory",
         price: 180,
         description: {
@@ -2546,7 +2546,7 @@ export const menus = [
         id: 44,
         name: "Tuna Salad with Avocado and Chia",
         slug: "tuna-salad-with-avocado-and-chia",
-        category: "High-Protein Nutrition",
+        category: "High Protein",
         type: "Savory",
         price: 160,
         description: {
@@ -2606,7 +2606,7 @@ export const menus = [
         id: 45,
         name: "Beef Stir-Fry with Broccoli",
         slug: "beef-stir-fry-with-broccoli",
-        category: "High-Protein Nutrition",
+        category: "High Protein",
         type: "Savory",
         price: 190,
         description: {
@@ -2664,7 +2664,7 @@ export const menus = [
         id: 46,
         name: "Protein-Packed Chocolate Bars",
         slug: "protein-packed-chocolate-bars",
-        category: "High-Protein Nutrition",
+        category: "High Protein",
         type: "Dessert",
         price: 120,
         description: {
@@ -2720,7 +2720,7 @@ export const menus = [
         id: 47,
         name: "Greek Yogurt Parfait with Berries",
         slug: "greek-yogurt-parfait-with-berries",
-        category: "High-Protein Nutrition",
+        category: "High Protein",
         type: "Dessert",
         price: 130,
         description: {
@@ -2774,7 +2774,7 @@ export const menus = [
         id: 48,
         name: "Protein-Packed Banana Bread",
         slug: "protein-packed-banana-bread",
-        category: "High-Protein Nutrition",
+        category: "High Protein",
         type: "Dessert",
         price: 140,
         description: {
