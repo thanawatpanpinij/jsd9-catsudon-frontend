@@ -5,6 +5,8 @@ import FarmFreshMenus from "../../components/01c-landing-page/FarmFreshMenus"
 import DeliveryBanner from "../../components/01c-landing-page/DeliveryBanner";
 import FreshFlavorful from "../../components/01c-landing-page/FreshFlavorful";
 import PromotionBanner from "../../components/01c-landing-page/PromotionBanner";
+import ContactUs from "../../components/01c-landing-page/ContactUs";
+import ClientReviews from "../../components/01c-landing-page/client-reviews/ClientReviews";
 
 
 export default function HomePage() {
@@ -16,6 +18,8 @@ export default function HomePage() {
       <DeliveryBanner/>
       <FreshFlavorful/>
       <PromotionBanner/>
+      <ClientReviews/>
+      <ContactUs/>
     </div>
   );
 }

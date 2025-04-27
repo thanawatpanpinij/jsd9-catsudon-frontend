@@ -72,7 +72,7 @@ const FreshFlavorful = () => {
       <div className="w-full">
         <div className="w-full flex gap-5 max-[577px]:gap-3">
           <Swiper
-            className="w-full max-[551px]:hidden"
+            className="w-full"
             slidesPerView={1}
             spaceBetween={20}
             centeredSlides={true}
@@ -97,7 +97,7 @@ const FreshFlavorful = () => {
                 <img
                   className="w-full h-[464px] object-cover rounded-4xl max-[740px]:h-[344px] max-[558px]:h-[320px] max-[472px]:h-[200px] max-[472px]:rounded-2xl max-[558px]:rounded-3xl"
                   src={src}
-                  alt=""
+                  loading="lazy"
                 />
               </SwiperSlide>
             ))}

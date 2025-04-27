@@ -24,22 +24,22 @@ const PromotionBanner = () => {
         {items.map((item, index) => (
           <div
             key={index}
-            className={`relative h-full overflow-hidden rounded-[32px] transition-all duration-800
+            className={`relative h-full overflow-hidden rounded-[32px] transition-all duration-600
               ${hoveredIndex === index ? "flex-[3] max-[335px]:flex-[5]" : "flex-1"}
             `}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <img className="w-full h-full object-cover" src={item.src} alt="" />
+            <img className="w-full h-full object-cover" src={item.src} loading="lazy"/>
 
             <div
-              className={`absolute inset-0 bg-black/40 transition-opacity duration-800
+              className={`absolute inset-0 bg-black/40 transition-opacity duration-600
                 ${hoveredIndex === index ? "opacity-100" : "opacity-0"}
               `}
             />
 
             <p
-              className={`absolute top-8 right-5 left-8 text-3xl font-semibold text-white leading-tight z-10 transition-opacity duration-800 max-[648px]:text-medium-size max-[451px]:text-normal-size max-[376px]:text-base
+              className={`absolute top-8 right-5 left-8 text-3xl font-semibold text-white leading-tight z-10 transition-opacity duration-600 max-[648px]:text-medium-size max-[451px]:text-normal-size max-[376px]:text-base
                 ${hoveredIndex === index ? "opacity-100" : "opacity-0"}
               `}
             >

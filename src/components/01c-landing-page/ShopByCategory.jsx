@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import {
   RiArrowLeftSLine,
@@ -82,7 +81,6 @@ const ShopByCategory = () => {
           spaceBetween={16}
           loop={true}
           speed={600}
-          modules={[Navigation]}
           breakpoints={{
             320: {
               slidesPerView: 3,
@@ -137,6 +135,7 @@ const ShopByCategory = () => {
               className="w-full max-w-[200px] max-h-[250px] object-cover rounded-[32px] max-[501px]:w-[160px] max-[430px]:w-[120px] max-[390px]:w-[100px] max-[390px]:rounded-[24px]"
               src={img}
               alt="category"
+               loading="lazy"
             />
           </div>
         ))}
