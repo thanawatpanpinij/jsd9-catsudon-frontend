@@ -5,7 +5,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 
 const FreshFlavorful = () => {
   const [openIndex, setOpenIndex] = useState(null);
-  const sectionRef = useRef(null); // Create a reference for the section
+  const sectionRef = useRef(null);
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
