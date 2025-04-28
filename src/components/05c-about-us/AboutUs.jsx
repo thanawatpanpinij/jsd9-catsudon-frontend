@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { RiArrowRightUpLine } from "react-icons/ri";
@@ -15,10 +15,6 @@ const AboutUs = () => {
     "Building your confidence in every meal with transparent, accurate information",
     "Helping you enjoy eating without stress — just health, balance, and happiness",
   ];
-
-  useEffect(() => {
-    document.title = `CalNoy | ${AboutUs.name}`;
-  }, []);
 
   return (
     <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[32px] mb-[56px] mt-[48px]">
