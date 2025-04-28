@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeaderHero from "../../components/01c-landing-page/header-hero/HeaderHero";
 import ShopByCategory from "../../components/01c-landing-page/ShopByCategory"
 import FarmFreshMenus from "../../components/01c-landing-page/FarmFreshMenus"
@@ -10,16 +10,20 @@ import ClientReviews from "../../components/01c-landing-page/client-reviews/Clie
 
 
 export default function HomePage() {
+  useEffect(() => {
+    document.title = `CalNoy | ${HomePage.name}`;
+  }, []);
+
   return (
     <div>
-      <HeaderHero/>
-      <ShopByCategory/>
-      <FarmFreshMenus/>
-      <DeliveryBanner/>
-      <FreshFlavorful/>
-      <PromotionBanner/>
-      <ClientReviews/>
-      <ContactUs/>
+      <HeaderHero />
+      <ShopByCategory />
+      <FarmFreshMenus />
+      <DeliveryBanner />
+      <FreshFlavorful />
+      <PromotionBanner />
+      <ClientReviews />
+      <ContactUs />
     </div>
   );
 }
