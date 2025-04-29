@@ -128,7 +128,7 @@ const FreshFlavorful = () => {
                     openIndex === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
-                  <div className="text-pretty text-small-size text-gray-600 overflow-hidden">
+                  <div className="text-pretty text-small-size max-[500px]:text-[10px] text-gray-600 overflow-hidden">
                     {item.description}
                   </div>
                 </div>
