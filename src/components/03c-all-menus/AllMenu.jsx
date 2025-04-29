@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MenuCard from "../shared-component/MenuCard";
 import { menus } from "../../utils/data/menus";
 import { LuListFilter } from "react-icons/lu";
 import { GiAchievement } from "react-icons/gi";
 
-// เอาไว้แมป key => category name ที่ใช้ใน menus
 const categoryMap = {
   clean: "Clean Eating",
   keto: "Keto Diet",
@@ -16,10 +15,9 @@ const categoryMap = {
   glutenfree: "Gluten-Free Nutrition",
 };
 
-// ข้อมูล category
 const categories = [
   {
-    label: "ALL MENU",
+    label: "All Menu",
     key: "all",
     icon: <img src="../public/allmenu.png" alt="allmenu" className="w-8" />,
   },
@@ -71,7 +69,8 @@ const categories = [
   },
 ];
 
-// ฟังก์ชันนับจำนวนเมนูตามหมวด
+const savoryDessertOptions = ["All", "Savory", "Dessert"];
+
 const getCountByCategory = (key) => {
   if (key === "all") {
     return menus.length;
@@ -83,21 +82,56 @@ const getCountByCategory = (key) => {
 const AllMenus = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [showAll, setShowAll] = useState(false);
+  const [savoryDessertFilter, setSavoryDessertFilter] = useState("All");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const filteredMenus =
-    activeTab === "all"
-      ? menus
-      : menus.filter((menu) => menu.category === categoryMap[activeTab]);
+  const dropdownRef = useRef(); 
+
+  const filteredMenus = menus.filter((menu) => {
+    const matchCategory =
+      activeTab === "all" || menu.category === categoryMap[activeTab];
+    const matchType =
+      savoryDessertFilter === "All" ||
+      savoryDessertFilter.toLowerCase() === (menu.type || "").toLowerCase();
+    return matchCategory && matchType;
+  });
 
   const visibleMenu = showAll ? filteredMenus : filteredMenus.slice(0, 4);
 
+  const handleSavoryDessertSelect = (type) => {
+    setSavoryDessertFilter(type);
+    setDropdownOpen(false);
+    setShowAll(false);
+  };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="bg-white min-h-screen font-poppins">
-      <div className="max-w-[1440px] px-[32px] mx-auto">
+      <div className="max-w-[1440px] px-[32px] mx-auto pt">
         {/* Banner */}
-        <div className="w-full h-[200px] bg-gray-200 flex items-center justify-center text-2xl font-bold text-gray-700">
-          Explore <span className="text-orange-500 mx-2">Culinary</span>{" "}
-          Insights
+        <div
+          className="w-full h-[200px] flex items-center justify-start text-2xl font-bold text-gray-700 bg-cover bg-center px-8 rounded-2xl"
+          style={{
+            backgroundImage:
+              "url('https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978192/005-salad-plate-on-right_yewv5d.avif')",
+          }}
+        >
+          <div className="bg-white bg-opacity-70 px-4 py-2 rounded">
+            Explore <span className="text-orange-500 mx-2">Culinary</span>{" "}
+            Insights
+          </div>
         </div>
 
         {/* Filter Tabs */}
@@ -127,38 +161,76 @@ const AllMenus = () => {
         </div>
 
         {/* Section Header */}
-        <div className="flex items-center justify-between px-6 pt-6">
+        <div className="flex items-center justify-between px-6 pt-6 relative">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
             <span className="text-[var(--color-primary)] text-2xl">
               <GiAchievement size={40} />
             </span>{" "}
             Explore Our Menus
           </h2>
-          <div className="text-sm bg-green-100 text-green-800 px-4 py-1 rounded-full cursor-pointer">
-            MunuFilter <LuListFilter />
+
+          {/* Dropdown Button */}
+          <div className="relative" ref={dropdownRef}>
+            {" "}
+            <div
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="text-sm bg-[var(--color-primary)] text-[var(--color-light)] px-4 py-1 rounded-full cursor-pointer flex items-center gap-2"
+            >
+              {savoryDessertFilter === "All"
+                ? "MenuFilter"
+                : savoryDessertFilter}
+              <LuListFilter />
+            </div>
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 w-[150px] bg-white border border-gray-200 rounded-md shadow-md z-50">
+                {savoryDessertOptions.map((option, index) => (
+                  <div
+                    key={index}
+                    onClick={() => handleSavoryDessertSelect(option)}
+                    className="cursor-pointer px-4 py-2 text-sm font-medium-weight hover:bg-green-100"
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {/* Menu Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 py-6 justify-items-center">
-          {visibleMenu.map((menu) => (
-            <div key={menu.id} className="w-full max-w-[280px]">
-              <MenuCard menu={menu} />
-            </div>
-          ))}
-        </div>
+        <div className="px-6 py-6">
+          {activeTab === "all" ? (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+                {visibleMenu.map((menu) => (
+                  <div key={menu.id} className="w-full max-w-[280px]">
+                    <MenuCard menu={menu} />
+                  </div>
+                ))}
+              </div>
 
-        {/* View More */}
-        {!showAll && visibleMenu.length < filteredMenus.length && (
-          <div className="text-center pb-10">
-            <button
-              onClick={() => setShowAll(true)}
-              className="bg-[var(--color-primary)] hover:bg-green-700 text-white font-medium py-2 px-6 rounded-full"
-            >
-              View more
-            </button>
-          </div>
-        )}
+              {/* View More */}
+              {!showAll && visibleMenu.length < filteredMenus.length && (
+                <div className="text-center pt-6 pb-10">
+                  <button
+                    onClick={() => setShowAll(true)}
+                    className="bg-[var(--color-primary)] hover:bg-green-700 text-white font-medium py-2 px-6 rounded-full"
+                  >
+                    View more
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="flex gap-4 overflow-x-auto pb-6">
+              {filteredMenus.map((menu) => (
+                <div key={menu.id} className="flex-shrink-0 w-[250px]">
+                  <MenuCard menu={menu} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
