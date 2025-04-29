@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TextScroller from "./text-scroller/TextScroller";
 import {
   RiArrowDownWideLine,
@@ -11,6 +11,7 @@ import {
   RiRestaurantFill,
 } from "react-icons/ri";
 import { menus } from "../../utils/data/menus";
+import { Link } from "react-router";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -18,6 +19,8 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showShadow, setShowShadow] = useState(false);
+  const dropdownRef = useRef(null);
+  const dropdownButtonRef = useRef(null);
 
   useEffect(() => {
     const uniqueCategories = [
@@ -58,10 +61,29 @@ const Header = () => {
 
   const icons = [
     { icon: <RiRestaurantFill className="text-xl" />, count: null },
-    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 12 },
+    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
     { icon: <RiHeartFill className="text-xl" />, count: 0 },
     { icon: <RiNotification4Fill className="text-xl" />, count: 0 },
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownOpen &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        dropdownButtonRef.current &&
+        !dropdownButtonRef.current.contains(event.target)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   return (
     <>
@@ -82,7 +104,7 @@ const Header = () => {
             />
 
             {/* Search Area Container */}
-            <div className="relative w-[500px] hidden min-[969px]:block">
+            <div className="relative w-[500px] hidden min-[969px]:block" ref={dropdownRef}>
               <div className="flex items-center border-[1.5px] border-gray-300 rounded-full overflow-hidden">
                 <input
                   type="text"
@@ -94,16 +116,17 @@ const Header = () => {
                 <div
                   className="flex items-center gap-1 px-1 text-small-size font-medium-weight text-third cursor-pointe"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
+                  ref={dropdownButtonRef}
                 >
                   {selectedCategory}
                   <RiArrowDownWideLine
                     className={`transition-transform duration-300
-              ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
+                      ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
                   />
                 </div>
 
                 {/* Search Icon */}
-                <button className="bg-third text-white p-2 rounded-full mr-[3px] hover:bg-primary transition-all duration-100 ease">
+                <button className="bg-third text-white p-2 rounded-full mr-[3px] hover:bg-primary transition-all duration-100 ease cursor-pointer">
                   <RiSearch2Line />
                 </button>
               </div>
@@ -130,7 +153,7 @@ const Header = () => {
               <div className="flex gap-2">
                 <div className="relative">
                   <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer">
-                    <RiShoppingBag3Fill className="text-normal-size" />
+                    <RiShoppingBag3Fill className="text-xl" />
                   </div>
                   <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
                     0
@@ -139,7 +162,7 @@ const Header = () => {
 
                 <div className="relative">
                   <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer">
-                    <RiHeartFill className="text-normal-size" />
+                    <RiHeartFill className="text-xl" />
                   </div>
                   <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
                     0
@@ -148,7 +171,7 @@ const Header = () => {
 
                 <div className="relative">
                   <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer">
-                    <RiNotification4Fill className="text-normal-size" />
+                    <RiNotification4Fill className="text-xl" />
                   </div>
                   <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
                     0
@@ -156,12 +179,12 @@ const Header = () => {
                 </div>
               </div>
 
-              <a
-                href="#"
-                className="bg-primary text-white rounded-full px-[24px] py-[5px]  hover:bg-secondary transition-all duration-300 ease-in-out"
+              <Link
+                to="#" // เปลี่ยนจาก 'href' เป็น 'to' สำหรับ React Router
+                className="bg-primary text-white rounded-full px-10 py-[7px]  hover:bg-secondary transition-all duration-300 ease-in-out"
               >
                 Sign In
-              </a>
+              </Link>
             </div>
             <div
               className="hidden max-[968px]:block w-7 cursor-pointer text-medium-size text-third"
@@ -174,18 +197,18 @@ const Header = () => {
           <div className="hidden min-[969px]:block">
             <ul className="group flex items-center gap-1 py-[12px] text-third font-medium-weight w-fit">
               <li className="px-5 py-1 rounded-full bg-primary text-white transition-all duration-300 ease hover:bg-primary hover:text-white group-hover:bg-transparent group-hover:text-third">
-                <a href="">Home</a>
+                <Link to="">Home</Link> {/* เปลี่ยนจาก 'href' เป็น 'to' */}
               </li>
 
               {["All Menus", "About Us", "Health Blog", "Contact Us"].map(
                 (label, index) => (
                   <li key={index}>
-                    <a
-                      href=""
+                    <Link
+                      to="" // เปลี่ยนจาก 'href' เป็น 'to'
                       className="transition-all duration-300 ease hover:bg-primary hover:text-white px-5 py-1 rounded-full"
                     >
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 )
               )}
@@ -194,9 +217,9 @@ const Header = () => {
 
           {/* ------------------------ Mobile Menu ------------------------ */}
           <div
-            className={`hidden max-[968px]:block ${
-              showMobileMenu ? "fixed w-[60%]" : "h-0 w-0"
-            } right-0 top-0 bottom-0 overflow-hidden bg-third transition-all duration-200 z-200`}
+            className={`fixed right-0 top-0 bottom-0 overflow-hidden bg-third transition-[width] duration-300 ease-in-out z-200 max-[968px]:block hidden ${
+              showMobileMenu ? "w-[60%]" : "w-0"
+            }`}
           >
             <div className="flex justify-end p-6 cursor-pointer text-medium-size text-white">
               <RiCloseLine onClick={() => setShowMobileMenu(false)} />
@@ -211,24 +234,24 @@ const Header = () => {
                 "Contact Us",
               ].map((label, index) => (
                 <li key={index}>
-                  <a
+                  <Link
+                    to="#" // เปลี่ยนจาก 'href' เป็น 'to'
                     onClick={() => setShowMobileMenu(false)}
-                    href="#"
                     className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease"
                   >
                     {label}
-                  </a>
+                  </Link>
                 </li>
               ))}
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="#" // เปลี่ยนจาก 'href' เป็น 'to'
                   onClick={() => setShowMobileMenu(false)}
-                  className="bg-primary text-white rounded-full px-[24px] py-[5px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
+                  className="bg-primary text-white rounded-full px-10 py-[7px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
                 >
                   Sign In
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -239,8 +262,8 @@ const Header = () => {
 
       <div className="hidden max-[968px]:flex cursor-pointer fixed bottom-0 left-0 right-0 bg-primary w-[300px] mx-auto mb-[48px] rounded-full py-3 px-5 items-center justify-around text-white z-[999]">
         {icons.map(({ icon, count }, index) => (
-          <div key={index} className="relative">
-            <div className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease">
+          <Link key={index} to="#" className="relative"> {/* เปลี่ยนจาก 'href' เป็น 'to' */}
+            <div className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer">
               {icon}
             </div>
             {count !== null && (
@@ -248,7 +271,7 @@ const Header = () => {
                 {count}
               </span>
             )}
-          </div>
+          </Link>
         ))}
       </div>
     </>
