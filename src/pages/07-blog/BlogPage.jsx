@@ -1,6 +1,6 @@
 import React from "react";
 import Blog from "../../components/07c-blog/Blog";
-import { blogs } from "/Users/nuttanon/Desktop/project/Catsudon_React/src/utils/data/blogs.js";
+import { blogs } from "../../utils/data/blogs";
 
 const BlogPage = () => {
   return (
