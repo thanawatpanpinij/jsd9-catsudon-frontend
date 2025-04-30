@@ -4,6 +4,7 @@ import { RiArrowDownWideLine, RiSearch2Line, RiShoppingBag3Fill, RiHeartFill, Ri
 import { menus } from "../../utils/data/menus";
 import { Link } from "react-router";
 import { SidebarCartContext } from "../../contexts/sidebarCartContext/SidebarCartContext";
+import { SidebarFavContext } from "../../contexts/sidebarFavContext/SidebarFavContext";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -11,7 +12,8 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showShadow, setShowShadow] = useState(false);
-  const { cartRef, favRef, handleClickCart, handleClickFavourite } = useContext(SidebarCartContext);
+  const { cartRef, handleClickCart } = useContext(SidebarCartContext);
+  const { favRef, handleClickFav } = useContext(SidebarFavContext);
 
   useEffect(() => {
     const uniqueCategories = ["All Categories", ...new Set(menus.map((menu) => menu.category))];
@@ -49,8 +51,8 @@ const Header = () => {
 
   const icons = [
     { icon: <RiRestaurantFill className="text-xl" />, count: null },
-    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0, ref: cartRef, onClick: handleClickCart },
-    { icon: <RiHeartFill className="text-xl" />, count: 0, ref: favRef, onClick: handleClickFavourite },
+    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
+    { icon: <RiHeartFill className="text-xl" />, count: 0 },
     { icon: <RiNotification4Fill className="text-xl" />, count: 0 },
   ];
 
@@ -110,11 +112,7 @@ const Header = () => {
                 </div>
 
                 <div className="relative">
-                  <div
-                    className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer"
-                    ref={favRef}
-                    onClick={handleClickFavourite}
-                  >
+                  <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer" ref={favRef} onClick={handleClickFav}>
                     <RiHeartFill className="text-normal-size" />
                   </div>
                   <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">0</span>
@@ -139,7 +137,7 @@ const Header = () => {
 
           <div className="hidden min-[969px]:block">
             <ul className="group flex items-center gap-1 py-[12px] text-third font-medium-weight w-fit">
-              <li className="px-5 py-1 rounded-full bg-primary text-white transition-all duration-300 ease hover:bg-primary group-hover:bg-transparent group-hover:text-third">
+              <li className="px-5 py-1 rounded-full bg-primary text-white transition-all duration-300 ease hover:bg-primary hover:text-white group-hover:bg-transparent group-hover:text-third">
                 <Link to="/">Home</Link>
               </li>
 

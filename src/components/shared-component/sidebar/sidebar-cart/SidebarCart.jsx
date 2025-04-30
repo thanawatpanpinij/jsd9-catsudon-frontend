@@ -1,17 +1,17 @@
-import "./sidebarCart.css";
-import React, { useContext, useEffect } from "react";
+import "../sidebar.css";
+import React, { useContext, useEffect, useRef } from "react";
 import { Link } from "react-router";
-import MyCartLists from "./MyCartLists";
-import { SidebarCartContext } from "../../../contexts/sidebarCartContext/SidebarCartContext";
-import MyFavouriteLists from "./MyFavouriteLists";
+import CartItem from "./CartItem.jsx";
+import { SidebarCartContext } from "../../../../contexts/sidebarCartContext/SidebarCartContext.jsx";
 
 export default function SidebarCart() {
-  const { showSidebarCart, setShowSidebarCart, tab, setTab, cartRef, favRef, sidebarCartRef } = useContext(SidebarCartContext);
+  const sidebarCartRef = useRef();
+  const { showSidebarCart, setShowSidebarCart, cartRef } = useContext(SidebarCartContext);
 
   useEffect(() => {
     function handleClickOutside(e) {
       const target = e.target;
-      if (!cartRef.current.contains(target) && !favRef.current.contains(target) && !sidebarCartRef.current.contains(target)) {
+      if (!cartRef.current.contains(target) && !sidebarCartRef.current.contains(target)) {
         setShowSidebarCart(false);
       }
     }
@@ -25,20 +25,22 @@ export default function SidebarCart() {
   return (
     <aside
       ref={sidebarCartRef}
-      className={`z-200 fixed top-[100.44px] bottom-0 ${
-        showSidebarCart ? "right-0 animate-[slide-in_0.4s_cubic-bezier(0.4,0,0.2,1)]" : "right-[-483px] animate-[slide-out_0.4s_cubic-bezier(0.4,0,0.2,1)]"
-      } flex flex-col justify-between w-[min(100%,483px)] p-8 pt-0 bg-white 969px:top-[157.44px]`}
+      className={`z-200 fixed top-[100.44px] ${
+        showSidebarCart ? "opacity-100 right-0 animate-[slide-in_0.4s_cubic-bezier(0.4,0,0.2,1)]" : "opacity-0 right-[-483px] animate-[slide-out_0.4s_cubic-bezier(0.4,0,0.2,1)]"
+      } bottom-0 flex flex-col justify-between w-[min(100%,483px)] p-8 pt-0 bg-white transition-opacity duration-200`}
     >
       <section className="flex flex-col overflow-hidden">
-        <div className="grid grid-cols-2 text-center text-grey text-medium-size font-semibold">
-          <p className={`cursor-pointer ${tab === "My Cart" ? "text-primary" : ""} border-r-2 border-bright-grey transition-colors duration-200`} onClick={() => setTab("My Cart")}>
-            My Cart
-          </p>
-          <p className={`cursor-pointer ${tab === "My Favourite" ? "text-primary" : ""} transition-colors duration-200`} onClick={() => setTab("My Favourite")}>
-            My Favorite
-          </p>
+        <div className="flex justify-between items-end text-grey font-semibold">
+          <p className={`text-third text-medium-size transition-colors duration-200`}>My cart</p>
+          <p className={`transition-colors duration-200`}>0 item</p>
         </div>
-        <section className="overflow-y-auto grid gap-4 py-8">{tab === "My Cart" ? <MyCartLists /> : <MyFavouriteLists />}</section>
+        <section className="overflow-y-auto grid gap-4 py-8">
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+        </section>
       </section>
       <section>
         <div className="grid gap-4 mb-8 pt-8 text-third border-t-2 border-bright-grey">

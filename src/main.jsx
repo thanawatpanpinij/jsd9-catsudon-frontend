@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import SidebarCartProvider from "./contexts/sidebarCartContext/SidebarCartProvider.jsx";
+import SidebarFavProvider from "./contexts/sidebarFavContext/SidebarFavProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <SidebarCartProvider>
-      <App />
-    </SidebarCartProvider>
+    <SidebarFavProvider>
+      <SidebarCartProvider>
+        <App />
+      </SidebarCartProvider>
+    </SidebarFavProvider>
   </StrictMode>
 );

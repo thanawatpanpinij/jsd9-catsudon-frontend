@@ -1,7 +1,7 @@
-@import "tailwindcss";
-
-@theme {
-  --breakpoint-969px: 969px;
+@media screen and (width >= 969px) {
+  aside {
+    top: 157.44px;
+  }
 }
 
 @keyframes slide-in {
