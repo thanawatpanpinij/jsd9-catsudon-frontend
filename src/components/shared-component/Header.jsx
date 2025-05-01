@@ -11,7 +11,7 @@ import {
   RiRestaurantFill,
 } from "react-icons/ri";
 import { menus } from "../../utils/data/menus";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -63,7 +63,7 @@ const Header = () => {
     { icon: <RiRestaurantFill className="text-xl" />, count: null },
     { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
     { icon: <RiHeartFill className="text-xl" />, count: 0 },
-    { icon: <RiNotification4Fill className="text-xl" />, count: 0 },
+    { icon: <RiNotification4Fill className="text-xl" />, count: 9 },
   ];
 
   useEffect(() => {
@@ -97,14 +97,19 @@ const Header = () => {
         <div className="flex-col justify-center w-full px-[32px] bg-white max-w-[1440px] mx-auto">
           <div className="flex items-center justify-between border-b-[1.5px] py-[12px] border-gray-300 max-[968px]:border-0">
             {/* Nav-Logo */}
-            <img
-              className="w-[130px]"
-              src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720548/logo-navbar_lbsakr.png"
-              alt="logo"
-            />
+            <Link to="/">
+              <img
+                className="w-[130px]"
+                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720548/logo-navbar_lbsakr.png"
+                alt="logo"
+              />
+            </Link>
 
             {/* Search Area Container */}
-            <div className="relative w-[500px] hidden min-[969px]:block" ref={dropdownRef}>
+            <div
+              className="relative w-[500px] hidden min-[969px]:block"
+              ref={dropdownRef}
+            >
               <div className="flex items-center border-[1.5px] border-gray-300 rounded-full overflow-hidden">
                 <input
                   type="text"
@@ -174,13 +179,13 @@ const Header = () => {
                     <RiNotification4Fill className="text-xl" />
                   </div>
                   <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    0
+                    9
                   </span>
                 </div>
               </div>
 
               <Link
-                to="#" // เปลี่ยนจาก 'href' เป็น 'to' สำหรับ React Router
+                to="/sign-in-and-sign-up"
                 className="bg-primary text-white rounded-full px-10 py-[7px]  hover:bg-secondary transition-all duration-300 ease-in-out"
               >
                 Sign In
@@ -196,19 +201,39 @@ const Header = () => {
 
           <div className="hidden min-[969px]:block">
             <ul className="group flex items-center gap-1 py-[12px] text-third font-medium-weight w-fit">
-              <li className="px-5 py-1 rounded-full bg-primary text-white transition-all duration-300 ease hover:bg-primary hover:text-white group-hover:bg-transparent group-hover:text-third">
-                <Link to="">Home</Link> {/* เปลี่ยนจาก 'href' เป็น 'to' */}
+              <li className="px-5 py-1 rounded-full">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${
+                      isActive ? "bg-primary text-white" : "text-third"
+                    }`
+                  }
+                  end
+                >
+                  Home
+                </NavLink>
               </li>
 
               {["All Menus", "About Us", "Health Blog", "Contact Us"].map(
                 (label, index) => (
                   <li key={index}>
-                    <Link
-                      to="" // เปลี่ยนจาก 'href' เป็น 'to'
-                      className="transition-all duration-300 ease hover:bg-primary hover:text-white px-5 py-1 rounded-full"
+                    <NavLink
+                      to={
+                        label === "All Menus"
+                          ? "/menus"
+                          : label === "Health Blog"
+                          ? "/blog"
+                          : `/${label.toLowerCase().replace(/ /g, "-")}`
+                      }
+                      className={({ isActive }) =>
+                        `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${
+                          isActive ? "bg-primary text-white" : "text-third"
+                        }`
+                      }
                     >
                       {label}
-                    </Link>
+                    </NavLink>
                   </li>
                 )
               )}
@@ -234,19 +259,31 @@ const Header = () => {
                 "Contact Us",
               ].map((label, index) => (
                 <li key={index}>
-                  <Link
-                    to="#" // เปลี่ยนจาก 'href' เป็น 'to'
+                  <NavLink
+                    to={
+                      label === "Home"
+                        ? "/"
+                        : label === "All Menus"
+                        ? "/menus"
+                        : label === "About Us"
+                        ? "/about-us"
+                        : label === "Health Blog"
+                        ? "/blog"
+                        : label === "Contact Us"
+                        ? "/contact-us"
+                        : "#"
+                    }
                     onClick={() => setShowMobileMenu(false)}
                     className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease"
                   >
                     {label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
 
               <li>
                 <Link
-                  to="#" // เปลี่ยนจาก 'href' เป็น 'to'
+                  to="/sign-in-and-sign-up"
                   onClick={() => setShowMobileMenu(false)}
                   className="bg-primary text-white rounded-full px-10 py-[7px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
                 >
@@ -262,16 +299,22 @@ const Header = () => {
 
       <div className="hidden max-[968px]:flex cursor-pointer fixed bottom-0 left-0 right-0 bg-primary w-[300px] mx-auto mb-[48px] rounded-full py-3 px-5 items-center justify-around text-white z-[999]">
         {icons.map(({ icon, count }, index) => (
-          <Link key={index} to="#" className="relative"> {/* เปลี่ยนจาก 'href' เป็น 'to' */}
-            <div className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer">
-              {icon}
-            </div>
+          <NavLink
+            key={index}
+            to={index === 0 ? "/menus" : "#"}
+            className={({ isActive }) =>
+              `relative p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer ${
+                isActive ? "bg-gray-200 text-primary" : ""
+              }`
+            }
+          >
+            {icon}
             {count !== null && (
               <span className="absolute top-0 right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
                 {count}
               </span>
             )}
-          </Link>
+          </NavLink>
         ))}
       </div>
     </>
