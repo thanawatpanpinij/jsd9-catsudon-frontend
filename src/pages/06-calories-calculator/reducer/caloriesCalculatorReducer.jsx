@@ -39,27 +39,21 @@ export default function caloriesCalculatorReducer(state, action) {
     case "calculate_all": {
       const bmr = calculateBMR({
         gender: state.gender,
-        age: state.age,
-        weight: state.weight,
-        height: state.height,
+        age: Number(state.age),
+        weight: Number(state.weight),
+        height: Number(state.height),
       });
-      // console.log(bmr);
       const tdee = calculateTDEE(bmr, state.activityLevel);
-      // console.log(tdee);
       const goal = userGoal(state.weight, state.goalWeight);
-      // console.log(goal);
       const dailyCal = calculateDailyCal(tdee, goal, state.intensity);
-      // console.log(dailyCal);
-      const totalCalories = calculateTotalCalories(state.weight, state.goalWeight);
-      // console.log(totalCalories);
-      const estimatedDays = estimateDays(state.goalWeight, dailyCal);
-      // console.log(estimatedDays);
+      const totalCalories = calculateTotalCalories(Number(state.weight), Number(state.goalWeight));
+      const estimatedDays = estimateDays(Number(state.goalWeight), dailyCal);
       const nutrition = calculateNutrition(dailyCal, goal);
-      // console.log(nutrition);
       return {
         ...state,
         bmr,
         tdee,
+        goal,
         dailyCal,
         totalCalories,
         estimatedDays,
