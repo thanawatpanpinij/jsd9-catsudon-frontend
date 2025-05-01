@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { RiShoppingBag3Fill } from "react-icons/ri";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 
 const MenuCart = ({ menu }) => {
   const { name, price, imageUrl, tags, dietary } = menu;
+  const [liked, setLiked] = useState(false);
+
+  const toggleLike = () => {
+    setLiked(!liked);
+  };
 
   return (
     <div className="w-[250px] rounded-2xl border border-gray-200 p-4 shadow bg-white relative">
@@ -10,7 +17,13 @@ const MenuCart = ({ menu }) => {
         <div className="bg-red-500 text-white text-sm px-3 py-0.5 rounded-full">
           Hot
         </div>
-        <div className="text-red-500 text-xl">❤️</div>
+        <button onClick={toggleLike}>
+          {liked ? (
+            <IoIosHeart size={25} color="red" />
+          ) : (
+            <IoIosHeartEmpty size={25} color="gray" />
+          )}
+        </button>
       </div>
 
       {/* Image */}
@@ -19,11 +32,11 @@ const MenuCart = ({ menu }) => {
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-2 mt-3 mb-2">
-        {tags?.en.map((tag) => (
+      <div className="flex flex-nowrap overflow-hidden gap-1 mt-3 mb-2">
+        {tags?.en.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="border border-orange-500 text-orange-500 text-xs px-3 py-1 rounded-full"
+            className="border border-orange-500 text-orange-500 text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap"
           >
             {tag}
           </span>
@@ -32,7 +45,7 @@ const MenuCart = ({ menu }) => {
 
       {/* Dietary Label */}
       {dietary?.[0] && (
-        <div className="text-green-600 text-sm font-medium mb-1">
+        <div className="text-green-600 text-sm  font-medium mt-3 mb-1">
           {dietary[0]
             .replace("-", " ")
             .replace(/\b\w/g, (l) => l.toUpperCase())}
@@ -40,7 +53,9 @@ const MenuCart = ({ menu }) => {
       )}
 
       {/* Title */}
-      <div className="text-black font-bold text-lg mb-2">{name}</div>
+      <div className="text-black font-bold text-lg mb-2 line-clamp-2 overflow-hidden min-h-[3.5rem]">
+        {name}
+      </div>
 
       {/* Rating */}
       <div className="flex items-center text-sm mb-3">
@@ -51,8 +66,8 @@ const MenuCart = ({ menu }) => {
       {/* Price & Cart button */}
       <div className="flex items-center justify-between">
         <span className="text-black font-bold text-xl">{price}.00 THB</span>
-        <button className="bg-green-600  hover:bg-green-700 text-white p-2 w-10 h-10 rounded-full text-lg">
-          🛒
+        <button className="bg-[var(--color-primary)] hover:bg-green-700 text-white p-2 w-10 h-10 rounded-full text-lg flex items-center justify-center">
+        <RiShoppingBag3Fill />
         </button>
       </div>
     </div>
