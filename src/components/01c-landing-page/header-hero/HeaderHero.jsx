@@ -12,6 +12,7 @@ import {
   RiShieldStarFill,
   RiArrowRightUpLine,
 } from "react-icons/ri";
+import { Link } from "react-router";
 
 const HeaderHero = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,11 +44,11 @@ const HeaderHero = () => {
               </span>
             </h1>
 
-              <img
-                className="w-[120px] max-[843px]:hidden absolute left-[370px] top-[120px] max-[972px]:left-[200px] max-[972px]:top-[95px] max-[1128px]:top-[110px] max-[1128px]:left-[290px] max-[1231px]:left-[320px] max-[1049px]:left-[250px]"
-                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720527/arrow-heading_rq35dc.png"
-                alt="Arrow"
-              />
+            <img
+              className="w-[120px] max-[843px]:hidden absolute left-[370px] top-[120px] max-[972px]:left-[200px] max-[972px]:top-[95px] max-[1128px]:top-[110px] max-[1128px]:left-[290px] max-[1231px]:left-[320px] max-[1049px]:left-[250px]"
+              src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720527/arrow-heading_rq35dc.png"
+              alt="Arrow"
+            />
           </div>
         </div>
 
@@ -60,9 +61,15 @@ const HeaderHero = () => {
         </p>
 
         <div className="flex items-center max-[843px]:flex-col mt-[50px] gap-[12px] w-full max-[843px]:w-fit">
-          <button className="bg-primary px-8 py-3 rounded-full text-base text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200">
+          <Link
+            to={"/calories-calculator"}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="bg-primary px-8 py-3 rounded-full text-base text-white max-[843px]:text-base cursor-pointer hover:bg-secondary transition-all duration-200"
+          >
             Calorie Calculator
-          </button>
+          </Link>
 
           <div
             className={`relative h-[60px] flex bg-white shadow-[0_4px_24px_rgba(13,12,11,0.1)] rounded-full px-4 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25, 1, 0.5, 1)]

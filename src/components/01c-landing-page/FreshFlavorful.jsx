@@ -95,7 +95,7 @@ const FreshFlavorful = () => {
             ].map((src, index) => (
               <SwiperSlide key={index}>
                 <img
-                  className="w-full h-[464px] object-cover rounded-4xl max-[740px]:h-[344px] max-[558px]:h-[320px] max-[472px]:h-[200px] max-[472px]:rounded-2xl max-[558px]:rounded-3xl"
+                  className="w-full h-[464px] object-cover rounded-4xl max-[740px]:h-[344px] max-[558px]:h-[320px] max-[481px]:h-[308px] max-[472px]:h-[195px] max-[441px]:h-[176px] max-[356px]:h-[167px] max-[472px]:rounded-2xl max-[558px]:rounded-3xl"
                   src={src}
                   loading="lazy"
                 />
@@ -113,11 +113,11 @@ const FreshFlavorful = () => {
                   className="flex items-center justify-between text-third cursor-pointer"
                   onClick={() => handleToggle(index)}
                 >
-                  <h3 className="font-semibold max-[740px]:text-small-size max-[472px]:text-[10px] max-[441px]:text-[8px] max-[356px]:text-[6.5px]">
+                  <h3 className="font-semibold max-[740px]:text-small-size max-[472px]:text-[10px] max-[441px]:text-[8px] max-[356px]:text-[7px]">
                     {item.title}
                   </h3>
                   <RiArrowDownSLine
-                    className={`bg-gray-300 text-normal-size max-[472px]:text-base rounded-full text-white hover:bg-primary transition-all duration-300 transform ${
+                    className={`bg-gray-300 text-normal-size max-[481px]:text-[14.5px] max-[472px]:text-[10px] rounded-full text-white hover:bg-primary transition-all duration-300 transform ${
                       openIndex === index ? "rotate-180 bg-primary" : "rotate-0"
                     }`}
                   />
@@ -128,7 +128,7 @@ const FreshFlavorful = () => {
                     openIndex === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
-                  <div className="text-pretty text-small-size max-[500px]:text-[10px] text-gray-600 overflow-hidden">
+                  <div className="text-pretty text-small-size max-[472px]:text-[10px] max-[441px]:text-[8px] max-[356px]:text-[7px] text-gray-600 overflow-hidden">
                     {item.description}
                   </div>
                 </div>
