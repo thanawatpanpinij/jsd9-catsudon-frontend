@@ -4,7 +4,7 @@ import { GiSlicedBread } from "react-icons/gi";
 import { LuCandy } from "react-icons/lu";
 import formatNumber from "../../../utils/formatNumber.js";
 import { IconContext } from "react-icons/lib";
-import { CaloriesCalculatorContext } from "../context/caloriesCalculatorContext.jsx";
+import { CaloriesCalculatorContext } from "../context/CaloriesCalculatorContext.jsx";
 
 export default function CaloriesResult() {
   const { state } = useContext(CaloriesCalculatorContext);
