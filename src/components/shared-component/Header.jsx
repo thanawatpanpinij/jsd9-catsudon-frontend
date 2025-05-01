@@ -12,8 +12,8 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showShadow, setShowShadow] = useState(false);
-  const { cartRef, handleClickCart } = useContext(SidebarCartContext);
-  const { favRef, handleClickFav } = useContext(SidebarFavContext);
+  const { cartRef, mobileCartRef, handleClickCart } = useContext(SidebarCartContext);
+  const { favRef, mobileFavRef, handleClickFav } = useContext(SidebarFavContext);
 
   useEffect(() => {
     const uniqueCategories = ["All Categories", ...new Set(menus.map((menu) => menu.category))];
@@ -51,8 +51,8 @@ const Header = () => {
 
   const icons = [
     { icon: <RiRestaurantFill className="text-xl" />, count: null },
-    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
-    { icon: <RiHeartFill className="text-xl" />, count: 0 },
+    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0, ref: mobileCartRef, onClick: handleClickCart },
+    { icon: <RiHeartFill className="text-xl" />, count: 0, ref: mobileFavRef, onClick: handleClickFav },
     { icon: <RiNotification4Fill className="text-xl" />, count: 0 },
   ];
 
@@ -193,9 +193,15 @@ const Header = () => {
       {/* ------------------------ Mobile Bottom Menu ------------------------ */}
 
       <div className="hidden max-[968px]:flex cursor-pointer fixed bottom-0 left-0 right-0 bg-primary w-[300px] mx-auto mb-[48px] rounded-full py-3 px-5 items-center justify-around text-white z-[999]">
-        {icons.map(({ icon, count }, index) => (
+        {icons.map(({ icon, count, ref, onClick }, index) => (
           <Link key={index} className="relative">
-            <div className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer">{icon}</div>
+            <div
+              className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer"
+              ref={ref || null}
+              onClick={onClick ?? undefined}
+            >
+              {icon}
+            </div>
             {count !== null && <span className="absolute top-0 right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">{count}</span>}
           </Link>
         ))}
