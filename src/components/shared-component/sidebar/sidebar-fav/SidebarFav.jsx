@@ -7,12 +7,12 @@ import { RiShoppingBag3Fill } from "react-icons/ri";
 
 export default function SidebarFav() {
   const sidebarFavRef = useRef();
-  const { showSidebarFav, setShowSidebarFav, favRef } = useContext(SidebarFavContext);
+  const { showSidebarFav, setShowSidebarFav, favRef, mobileFavRef } = useContext(SidebarFavContext);
 
   useEffect(() => {
     function handleClickOutside(e) {
       const target = e.target;
-      if (!favRef.current.contains(target) && !sidebarFavRef.current.contains(target)) {
+      if (!favRef.current.contains(target) && !mobileFavRef.current.contains(target) && !sidebarFavRef.current.contains(target)) {
         setShowSidebarFav(false);
       }
     }
