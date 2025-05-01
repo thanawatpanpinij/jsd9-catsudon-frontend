@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AllMenus from "../../components/03c-all-menus/AllMenu";
 
 export default function MenusPage() {
-  return <div>
-    <AllMenus />
-  </div>;
+  useEffect(() => {
+    document.title = `CalNoy | All menus`;
+  }, []);
+  return (
+    <main>
+      <AllMenus />
+    </main>
+  );
 }
