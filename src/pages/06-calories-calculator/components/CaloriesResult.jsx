@@ -1,13 +1,13 @@
-import React from "react";
-import useCaloriesCalculator from "./hook/useCaloriesCalculator";
+import React, { useContext } from "react";
 import { GiMeat } from "react-icons/gi";
 import { GiSlicedBread } from "react-icons/gi";
 import { LuCandy } from "react-icons/lu";
-import formatNumber from "../../utils/formatNumber.js";
+import formatNumber from "../../../utils/formatNumber.js";
 import { IconContext } from "react-icons/lib";
+import { CaloriesCalculatorContext } from "../context/caloriesCalculatorContext.jsx";
 
 export default function CaloriesResult() {
-  const { state } = useCaloriesCalculator();
+  const { state } = useContext(CaloriesCalculatorContext);
   const nutritionData = [
     {
       label: "Protein",

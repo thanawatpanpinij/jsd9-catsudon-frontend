@@ -1,11 +1,10 @@
-import React from "react";
-import useCaloriesCalculator from "./hook/useCaloriesCalculator";
+import React, { useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdCalculate } from "react-icons/md";
+import { CaloriesCalculatorContext } from "../context/caloriesCalculatorContext";
 
 export default function CaloriesCalculatorForm({ isError, setIsError }) {
-  const { state, setGender, setAge, setWeight, setHeight, setGoalWeight, setActivityLevel, setIntensity, calculateAll } = useCaloriesCalculator();
-  console.log(state);
+  const { state, setGender, setAge, setWeight, setHeight, setGoalWeight, setActivityLevel, setIntensity, calculateAll } = useContext(CaloriesCalculatorContext);
   return (
     <section className="p-8 text-grey 1440px:flex 1440px:gap-8 1440px:flex-col 1440px:justify-between 1440px:w-[min(60%,825.6px)]">
       <h1 className="text-third text-large-size font-semibold">Calculate Your Calories</h1>
@@ -35,7 +34,7 @@ export default function CaloriesCalculatorForm({ isError, setIsError }) {
               min={0}
               onChange={(event) => {
                 setIsError(false);
-                setAge(event.target.value);
+                setAge(Number(event.target.value));
               }}
             />
           </div>
@@ -52,7 +51,7 @@ export default function CaloriesCalculatorForm({ isError, setIsError }) {
               min={0}
               onChange={(event) => {
                 setIsError(false);
-                setWeight(event.target.value);
+                setWeight(Number(event.target.value));
               }}
             />
           </div>
@@ -69,7 +68,7 @@ export default function CaloriesCalculatorForm({ isError, setIsError }) {
               placeholder="Your height"
               value={state.height}
               min={0}
-              onChange={(event) => setHeight(event.target.value)}
+              onChange={(event) => setHeight(Number(event.target.value))}
             />
           </div>
           {state.height === "" && isError && <p className="text-secondary">Please enter your height</p>}
@@ -85,7 +84,7 @@ export default function CaloriesCalculatorForm({ isError, setIsError }) {
               min={0}
               onChange={(event) => {
                 setIsError(false);
-                setGoalWeight(event.target.value);
+                setGoalWeight(Number(event.target.value));
               }}
             />
           </div>
@@ -117,30 +116,6 @@ export default function CaloriesCalculatorForm({ isError, setIsError }) {
         </label>
         {state.activityLevel === "" && isError && <p className="text-secondary">Please choose your activity level</p>}
       </div>
-      {/* <fieldset>
-                <legend className="mb-3">What is your goal?</legend>
-                <div className="relative grid grid-cols-3 bg-[#f3f3f3] rounded-full">
-                    {["Lose", "Maintain", "Gain"].map((goalOptions) => (
-                        <label
-                            key={goalOptions}
-                            className={`cursor-pointer px-7 py-3 text-center text-third font-medium ${state.goal === goalOptions
-                                ? "bg-primary-background"
-                                : ""
-                                } rounded-full transition-colors duration-300`}
-                        >
-                            <input
-                                className="absolute opacity-0"
-                                type="radio"
-                                name="goal"
-                                value={goalOptions}
-                                checked={state.goal === goalOptions}
-                                onChange={() => setGoal(goalOptions)}
-                            />
-                            {goalOptions}
-                        </label>
-                    ))}
-                </div>
-            </fieldset> */}
       <fieldset>
         <legend className="mb-3">How fast do you want to reach your goal?</legend>
         <div className="relative grid grid-cols-3 bg-[#f3f3f3] rounded-full">
