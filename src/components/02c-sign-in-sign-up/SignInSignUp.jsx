@@ -25,7 +25,7 @@ const SignInSignUp = () => {
   };
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-x-hidden h-screen" style={{ background: "linear-gradient(90deg, #ededee, #cff2cf)" }}>
       <div className="flex gap-1.5 items-center justify-start w-full ml-[32px] text-gray-300 group mt-[24px]">
         <Link
           to="/"
