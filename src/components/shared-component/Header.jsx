@@ -11,7 +11,7 @@ import {
   RiRestaurantFill,
 } from "react-icons/ri";
 import { menus } from "../../utils/data/menus";
-import { Link } from "react-router";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -21,6 +21,23 @@ const Header = () => {
   const [showShadow, setShowShadow] = useState(false);
   const dropdownRef = useRef(null);
   const dropdownButtonRef = useRef(null);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [activeSection, setActiveSection] = useState("");
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setDropdownOpen(false);
+  };
+
+  const icons = [
+    { icon: <RiRestaurantFill className="text-xl" />, count: null },
+    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
+    { icon: <RiHeartFill className="text-xl" />, count: 0 },
+    { icon: <RiNotification4Fill className="text-xl" />, count: 9 },
+  ];
 
   useEffect(() => {
     const uniqueCategories = [
@@ -54,18 +71,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    setDropdownOpen(false);
-  };
-
-  const icons = [
-    { icon: <RiRestaurantFill className="text-xl" />, count: null },
-    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
-    { icon: <RiHeartFill className="text-xl" />, count: 0 },
-    { icon: <RiNotification4Fill className="text-xl" />, count: 0 },
-  ];
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -85,6 +90,20 @@ const Header = () => {
     };
   }, [dropdownOpen]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (
+      params.get("scroll") === "contact-us" ||
+      location.hash === "#contact-us"
+    ) {
+      setActiveSection("contact-us");
+    } else if (location.pathname === "/") {
+      setActiveSection("home");
+    } else {
+      setActiveSection(location.pathname);
+    }
+  }, [location]);
+
   return (
     <>
       <div
@@ -97,14 +116,22 @@ const Header = () => {
         <div className="flex-col justify-center w-full px-[32px] bg-white max-w-[1440px] mx-auto">
           <div className="flex items-center justify-between border-b-[1.5px] py-[12px] border-gray-300 max-[968px]:border-0">
             {/* Nav-Logo */}
-            <img
-              className="w-[130px]"
-              src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720548/logo-navbar_lbsakr.png"
-              alt="logo"
-            />
+            <Link to="/">
+              <img
+                className="w-[130px]"
+                onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720548/logo-navbar_lbsakr.png"
+                alt="logo"
+              />
+            </Link>
 
             {/* Search Area Container */}
-            <div className="relative w-[500px] hidden min-[969px]:block" ref={dropdownRef}>
+            <div
+              className="relative w-[500px] hidden min-[969px]:block"
+              ref={dropdownRef}
+            >
               <div className="flex items-center border-[1.5px] border-gray-300 rounded-full overflow-hidden">
                 <input
                   type="text"
@@ -174,13 +201,13 @@ const Header = () => {
                     <RiNotification4Fill className="text-xl" />
                   </div>
                   <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    0
+                    9
                   </span>
                 </div>
               </div>
 
               <Link
-                to="#" // เปลี่ยนจาก 'href' เป็น 'to' สำหรับ React Router
+                to="/sign-in-and-sign-up"
                 className="bg-primary text-white rounded-full px-10 py-[7px]  hover:bg-secondary transition-all duration-300 ease-in-out"
               >
                 Sign In
@@ -196,21 +223,86 @@ const Header = () => {
 
           <div className="hidden min-[969px]:block">
             <ul className="group flex items-center gap-1 py-[12px] text-third font-medium-weight w-fit">
-              <li className="px-5 py-1 rounded-full bg-primary text-white transition-all duration-300 ease hover:bg-primary hover:text-white group-hover:bg-transparent group-hover:text-third">
-                <Link to="">Home</Link> {/* เปลี่ยนจาก 'href' เป็น 'to' */}
+              <li className="px-5 py-1 rounded-full">
+                <NavLink
+                  to="/"
+                  onClick={() => {
+                    setActiveSection("home");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className={() =>
+                    `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${
+                      activeSection === "home"
+                        ? "bg-primary text-white"
+                        : "text-third"
+                    }`
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
 
               {["All Menus", "About Us", "Health Blog", "Contact Us"].map(
-                (label, index) => (
-                  <li key={index}>
-                    <Link
-                      to="" // เปลี่ยนจาก 'href' เป็น 'to'
-                      className="transition-all duration-300 ease hover:bg-primary hover:text-white px-5 py-1 rounded-full"
-                    >
-                      {label}
-                    </Link>
-                  </li>
-                )
+                (label, index) => {
+                  const path =
+                    label === "All Menus"
+                      ? "/menus"
+                      : label === "Health Blog"
+                      ? "/blog"
+                      : `/${label.toLowerCase().replace(/ /g, "-")}`;
+
+                  if (label === "Contact Us") {
+                    return (
+                      <li key={index}>
+                        <button
+                          onClick={() => {
+                            setActiveSection("contact-us");
+                            if (location.pathname !== "/") {
+                              navigate("/?scroll=contact-us");
+                            } else {
+                              setTimeout(() => {
+                                document
+                                  .getElementById("contact-us")
+                                  ?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                  });
+                              }, 100);
+                            }
+                          }}
+                          className={`transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full cursor-pointer ${
+                            activeSection === "contact-us"
+                              ? "bg-primary text-white"
+                              : "text-third"
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li key={index}>
+                      <NavLink
+                        to={path}
+                        onClick={() => {
+                          setActiveSection(path);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={() =>
+                          `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${
+                            activeSection === path
+                              ? "bg-primary text-white"
+                              : "text-third"
+                          }`
+                        }
+                      >
+                        {label}
+                      </NavLink>
+                    </li>
+                  );
+                }
               )}
             </ul>
           </div>
@@ -232,21 +324,59 @@ const Header = () => {
                 "About Us",
                 "Health Blog",
                 "Contact Us",
-              ].map((label, index) => (
-                <li key={index}>
-                  <Link
-                    to="#" // เปลี่ยนจาก 'href' เป็น 'to'
-                    onClick={() => setShowMobileMenu(false)}
-                    className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              ].map((label, index) => {
+                if (label === "Contact Us") {
+                  return (
+                    <li key={index}>
+                      <button
+                        onClick={() => {
+                          setShowMobileMenu(false);
+                          if (location.pathname !== "/") {
+                            navigate("/?scroll=contact-us");
+                          } else {
+                            document
+                              .getElementById("contact-us")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }}
+                        className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease text-left"
+                      >
+                        {label}
+                      </button>
+                    </li>
+                  );
+                }
+
+                const path =
+                  label === "Home"
+                    ? "/"
+                    : label === "All Menus"
+                    ? "/menus"
+                    : label === "About Us"
+                    ? "/about-us"
+                    : label === "Health Blog"
+                    ? "/blog"
+                    : "#";
+
+                return (
+                  <li key={index}>
+                    <NavLink
+                      to={path}
+                      onClick={() => {
+                        setShowMobileMenu(false);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease"
+                    >
+                      {label}
+                    </NavLink>
+                  </li>
+                );
+              })}
 
               <li>
                 <Link
-                  to="#" // เปลี่ยนจาก 'href' เป็น 'to'
+                  to="/sign-in-and-sign-up"
                   onClick={() => setShowMobileMenu(false)}
                   className="bg-primary text-white rounded-full px-10 py-[7px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
                 >
@@ -259,19 +389,29 @@ const Header = () => {
       </div>
 
       {/* ------------------------ Mobile Bottom Menu ------------------------ */}
-
       <div className="hidden max-[968px]:flex cursor-pointer fixed bottom-0 left-0 right-0 bg-primary w-[300px] mx-auto mb-[48px] rounded-full py-3 px-5 items-center justify-around text-white z-[999]">
         {icons.map(({ icon, count }, index) => (
-          <Link key={index} to="#" className="relative"> {/* เปลี่ยนจาก 'href' เป็น 'to' */}
-            <div className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer">
-              {icon}
-            </div>
+          <NavLink
+            key={index}
+            to={index === 0 ? "/menus" : "#"}
+            onClick={() => {
+              if (index === 0) {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className={({ isActive }) =>
+              `relative p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer ${
+                isActive ? "bg-gray-200 text-primary" : ""
+              }`
+            }
+          >
+            {icon}
             {count !== null && (
               <span className="absolute top-0 right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
                 {count}
               </span>
             )}
-          </Link>
+          </NavLink>
         ))}
       </div>
     </>
