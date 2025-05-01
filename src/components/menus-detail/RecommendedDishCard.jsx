@@ -1,7 +1,6 @@
 import React from "react";
 
-export default function RecommendedDish({ recommendedDish }) {
-    console.log(recommendedDish);
+export default function RecommendedDishCard({ recommendedDish }) {
     return (
         <article
             className="
