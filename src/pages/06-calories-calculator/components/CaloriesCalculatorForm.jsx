@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdCalculate } from "react-icons/md";
-import { CaloriesCalculatorContext } from "../context/caloriesCalculatorContext";
+import { CaloriesCalculatorContext } from "../context/CaloriesCalculatorContext.jsx";
 
 export default function CaloriesCalculatorForm({ setStartCount }) {
   const { state, setGender, setAge, setWeight, setHeight, setGoalWeight, setActivityLevel, setIntensity, calculateAll } = useContext(CaloriesCalculatorContext);
