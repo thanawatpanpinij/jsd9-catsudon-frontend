@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMoneyBillWave, faCreditCard, faMobileAlt, faQrcode,
-  faMapMarkerAlt, faPlusCircle, faTrashAlt, faShoppingCart
-} from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoneyBillWave, faCreditCard, faMobileAlt, faQrcode, faMapMarkerAlt, faPlusCircle, faTrashAlt, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 function CartItem({ item, updateQuantity, removeItem }) {
   return (
@@ -13,14 +10,18 @@ function CartItem({ item, updateQuantity, removeItem }) {
         <div>
           <div className="font-semibold text-sm">{item.name}</div>
           <div className="text-green-500 text-sm">{item.price} THB</div>
-          <div className="text-gray-500 text-xs">{item.unit || '1 box'}</div>
+          <div className="text-gray-500 text-xs">{item.unit || "1 box"}</div>
         </div>
       </div>
       <div className="flex items-center gap-3">
         <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
-          <button onClick={() => updateQuantity(item.id, -1)} className="bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200">-</button>
+          <button onClick={() => updateQuantity(item.id, -1)} className="bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200">
+            -
+          </button>
           <span className="px-2 py-1 text-sm">{item.quantity}</span>
-          <button onClick={() => updateQuantity(item.id, 1)} className="bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200">+</button>
+          <button onClick={() => updateQuantity(item.id, 1)} className="bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200">
+            +
+          </button>
         </div>
         <button onClick={() => removeItem(item.id)} className="text-red-500 hover:text-red-600">
           <FontAwesomeIcon icon={faTrashAlt} size="sm" />
@@ -33,26 +34,36 @@ function CartItem({ item, updateQuantity, removeItem }) {
 function PaymentMethodOption({ method, paymentMethod, setPaymentMethod }) {
   const getIcon = (method) => {
     switch (method) {
-      case 'cash': return faMoneyBillWave;
-      case 'credit': return faCreditCard;
-      case 'mobile': return faMobileAlt;
-      case 'qr': return faQrcode;
-      default: return null;
+      case "cash":
+        return faMoneyBillWave;
+      case "credit":
+        return faCreditCard;
+      case "mobile":
+        return faMobileAlt;
+      case "qr":
+        return faQrcode;
+      default:
+        return null;
     }
   };
 
   const getDisplayName = (method) => {
     switch (method) {
-      case 'cash': return 'Cash';
-      case 'credit': return 'Credit card';
-      case 'mobile': return 'Mobile Banking';
-      case 'qr': return 'QR Code';
-      default: return '';
+      case "cash":
+        return "Cash";
+      case "credit":
+        return "Credit card";
+      case "mobile":
+        return "Mobile Banking";
+      case "qr":
+        return "QR Code";
+      default:
+        return "";
     }
   };
 
   return (
-    <label key={method} className={`flex items-center p-2 rounded-md cursor-pointer ${paymentMethod === method ? 'bg-gray-50' : 'hover:bg-gray-50'}`}>
+    <label key={method} className={`flex items-center p-2 rounded-md cursor-pointer ${paymentMethod === method ? "bg-gray-50" : "hover:bg-gray-50"}`}>
       <div className="flex items-center w-full justify-between">
         <div className="flex items-center">
           <FontAwesomeIcon icon={getIcon(method)} className="mr-2 text-gray-600" size="sm" />
@@ -73,19 +84,19 @@ function PaymentMethodOption({ method, paymentMethod, setPaymentMethod }) {
 
 export default function CheckoutPage() {
   const [address, setAddress] = useState(null);
-  const [paymentMethod, setPaymentMethod] = useState('cash');
-  const [discountCodeInput, setDiscountCodeInput] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState("cash");
+  const [discountCodeInput, setDiscountCodeInput] = useState("");
   const [appliedCodes, setAppliedCodes] = useState([]);
 
   const validCoupons = {
-    cal01: 0.10,
-    cal02: 0.20,
-    cal03: 0.30
+    cal01: 0.1,
+    cal02: 0.2,
+    cal03: 0.3,
   };
 
   const [cart, setCart] = useState([
-    { id: 1, name: 'Avocado & Egg Bowl', price: 120, quantity: 2, image: 'avocado_bowl.jpg' },
-    { id: 2, name: 'Banana Pancakes', price: 85, quantity: 1, image: 'banana_pancakes.jpg' }
+    { id: 1, name: "Avocado & Egg Bowl", price: 120, quantity: 2, image: "avocado_bowl.jpg" },
+    { id: 2, name: "Banana Pancakes", price: 85, quantity: 1, image: "banana_pancakes.jpg" },
   ]);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -96,15 +107,11 @@ export default function CheckoutPage() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const updateQuantity = (id, change) => {
-    setCart(prev =>
-      prev.map(item =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + change) } : item
-      )
-    );
+    setCart((prev) => prev.map((item) => (item.id === id ? { ...item, quantity: Math.max(1, item.quantity + change) } : item)));
   };
 
-  const removeItem = id => {
-    setCart(prev => prev.filter(item => item.id !== id));
+  const removeItem = (id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
   const removeAllItems = () => {
@@ -114,24 +121,24 @@ export default function CheckoutPage() {
   const applyDiscount = () => {
     const code = discountCodeInput.toLowerCase();
     if (validCoupons.hasOwnProperty(code) && !appliedCodes.includes(code)) {
-      setAppliedCodes(prev => [...prev, code]);
-      setDiscountCodeInput('');
+      setAppliedCodes((prev) => [...prev, code]);
+      setDiscountCodeInput("");
     }
   };
 
   const removeDiscountCode = (codeToRemove) => {
-    setAppliedCodes(prev => prev.filter(code => code !== codeToRemove));
+    setAppliedCodes((prev) => prev.filter((code) => code !== codeToRemove));
   };
 
   return (
-    <div className="mx-auto font-sans p-5">
-      <h1 className="text-2xl font-semibold mb-5">Checkout</h1>
+    <main className="max-w-[1440px] mx-auto mb-16 px-8">
+      <h1 className="text-2xl font-semibold mt-14 mb-4">Checkout</h1>
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-16">
         <div className="space-y-8">
           <div className="bg-white rounded-lg shadow-sm">
             <div className="flex flex-col lg:flex-row gap-4 p-5">
               <div className="border bg-[#F8F8F8] border-gray-100 rounded-lg p-6 flex-1 text-center flex flex-col items-center justify-between">
-                <h3 className="text-sm font-semibold mb-3">{address ? 'Delivery Address' : 'No address saved'}</h3>
+                <h3 className="text-sm font-semibold mb-3">{address ? "Delivery Address" : "No address saved"}</h3>
                 <FontAwesomeIcon icon={faMapMarkerAlt} size="2x" className="text-gray-400 mb-2" />
                 <p className="text-xs text-gray-600 mb-4">Add an address or select a saved address</p>
                 <button className="w-full py-2 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 cursor-pointer transition">
@@ -148,7 +155,7 @@ export default function CheckoutPage() {
                   </button>
                 </div>
                 <div className="space-y-2">
-                  {['cash', 'credit', 'mobile', 'qr'].map(method => (
+                  {["cash", "credit", "mobile", "qr"].map((method) => (
                     <PaymentMethodOption key={method} method={method} paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
                   ))}
                 </div>
@@ -171,7 +178,7 @@ export default function CheckoutPage() {
                   Remove all
                 </button>
               </div>
-              {cart.map(item => (
+              {cart.map((item) => (
                 <CartItem key={item.id} item={item} updateQuantity={updateQuantity} removeItem={removeItem} />
               ))}
             </div>
@@ -186,14 +193,11 @@ export default function CheckoutPage() {
               <input
                 type="text"
                 value={discountCodeInput}
-                onChange={e => setDiscountCodeInput(e.target.value)}
+                onChange={(e) => setDiscountCodeInput(e.target.value)}
                 className="flex-1 p-3 border border-gray-300 rounded-full text-sm"
                 placeholder="Enter discount code"
               />
-              <button
-                onClick={applyDiscount}
-                className="w-24 py-3 bg-green-600 text-white text-sm rounded-full hover:bg-green-700 cursor-pointer"
-              >
+              <button onClick={applyDiscount} className="w-24 py-3 bg-green-600 text-white text-sm rounded-full hover:bg-green-700 cursor-pointer">
                 Apply
               </button>
             </div>
@@ -201,10 +205,7 @@ export default function CheckoutPage() {
               {appliedCodes.map((code, index) => (
                 <div key={index} className="flex items-center bg-green-100 text-green-700 text-sm font-semibold px-3 py-1 rounded-full">
                   <span className="mr-2">{code.toUpperCase()}</span>
-                  <button
-                    onClick={() => removeDiscountCode(code)}
-                    className="text-red-500 text-xs hover:text-red-600 focus:outline-none"
-                  >
+                  <button onClick={() => removeDiscountCode(code)} className="text-red-500 text-xs hover:text-red-600 focus:outline-none">
                     Remove
                   </button>
                 </div>
@@ -238,22 +239,16 @@ export default function CheckoutPage() {
             </div>
             <button
               className={`w-full py-3 rounded-full text-sm font-semibold transition ${
-                !address || cart.length === 0
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-green-600 text-white hover:bg-green-700 cursor-pointer'
+                !address || cart.length === 0 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-green-600 text-white hover:bg-green-700 cursor-pointer"
               }`}
               disabled={!address || cart.length === 0}
             >
               Place Order
             </button>
-            {(!address || cart.length === 0) && (
-              <p className="text-xs text-red-500 mt-2">
-                Please add an address and make sure your cart is not empty.
-              </p>
-            )}
+            {(!address || cart.length === 0) && <p className="text-xs text-red-500 mt-2">Please add an address and make sure your cart is not empty.</p>}
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

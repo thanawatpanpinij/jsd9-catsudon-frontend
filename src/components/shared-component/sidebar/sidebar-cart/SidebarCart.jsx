@@ -6,12 +6,12 @@ import { SidebarCartContext } from "../../../../contexts/sidebarCartContext/Side
 
 export default function SidebarCart() {
   const sidebarCartRef = useRef();
-  const { showSidebarCart, setShowSidebarCart, cartRef } = useContext(SidebarCartContext);
+  const { showSidebarCart, setShowSidebarCart, cartRef, mobileCartRef } = useContext(SidebarCartContext);
 
   useEffect(() => {
     function handleClickOutside(e) {
       const target = e.target;
-      if (!cartRef.current.contains(target) && !sidebarCartRef.current.contains(target)) {
+      if (!cartRef.current.contains(target) && !mobileCartRef.current.contains(target) && !sidebarCartRef.current.contains(target)) {
         setShowSidebarCart(false);
       }
     }

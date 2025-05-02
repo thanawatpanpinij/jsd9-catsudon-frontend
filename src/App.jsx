@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Layout from "../src/components/shared-component/Layout.jsx";
-import HomePage from "./pages/01-landing-page/HomePage.jsx";
+import Home from "./pages/01-landing-page/Home.jsx";
 import SignInAndSignUpPage from "./pages/02-sign-in-sign-up/SignInAndSignUpPage.jsx";
 import MenusPage from "./pages/03-menus/MenusPage.jsx";
-import MenuDetailPage from "./pages/03.5-menu-detail/MenuDetailPage.jsx";
+import MenuDetailPage from "./pages/03-menus/menu-detail/MenuDetailPage.jsx";
 import CaloriesCalculatorPage from "./pages/06-calories-calculator/CaloriesCalculatorPage.jsx";
 import BlogPage from "./pages/07-blog/BlogPage.jsx";
 import BlogDetail from "./components/blog-detail/BlogDetail.jsx";
@@ -18,17 +18,16 @@ const router = createBrowserRouter([
     path: "/",
     Component: Layout,
     children: [
-      { index: true, Component: HomePage },
+      { index: true, Component: Home },
       { path: "/menus", Component: MenusPage },
       { path: "/menus/:menuSlugId", Component: MenuDetailPage },
       { path: "/calories-calculator", Component: CaloriesCalculatorPage },
       { path: "/blog", Component: BlogPage },
-      { path: "/blog/:blogSlugId", Component: BlogDetail },
+      { path: "/blog/blog-detail", Component: BlogDetail },
       { path: "/checkout", Component: CheckoutPage },
       { path: "/edit-information", Component: EditInformationPage },
       { path: "/dashboard", Component: DashboardPage },
       { path: "/about-us", Component: AboutUsPage },
-      { path: "/contact-us", Component: ContactUsPage },
     ],
   },
   { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },

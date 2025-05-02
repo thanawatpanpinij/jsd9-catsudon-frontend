@@ -1,13 +1,12 @@
 import { useContext, useEffect } from "react";
-import { useLocation } from "react-router";
 import { SidebarCartContext } from "../../contexts/sidebarCartContext/SidebarCartContext";
 import { SidebarFavContext } from "../../contexts/sidebarFavContext/SidebarFavContext";
+import { useLocation } from "react-router";
 
 export default function ScrollToTop_CloseSidebar() {
+  const { pathname } = useLocation();
   const { setShowSidebarCart } = useContext(SidebarCartContext);
   const { setShowSidebarFav } = useContext(SidebarFavContext);
-  const { pathname } = useLocation();
-
   useEffect(() => {
     setShowSidebarCart(false);
     setShowSidebarFav(false);
