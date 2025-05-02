@@ -12,7 +12,7 @@ const MenuCard = ({ menu }) => {
   };
 
   return (
-    <div className="w-[250px] rounded-2xl border border-gray-200 p-4 shadow bg-white relative">
+    <div className="w-[290px] rounded-[32px] border-[1.5px] p-5 border-gray-300  bg-white relative ">
       {/* Top row: Hot label + Heart icon */}
       <div className="flex justify-between items-center mb-3">
         <div className="bg-[var(--color-secondary)] text-white text-sm px-3 py-0.5 rounded-full">
@@ -29,21 +29,21 @@ const MenuCard = ({ menu }) => {
 
       {/* Image */}
       <Link to={`${slug}-${id}`}>
-        <div className="w-full h-[120px] bg-gray-100 rounded-lg flex items-center justify-center text-sm text-gray-600 overflow-hidden ">
+        <div className="w-full h-[160px]  bg-gray-100 rounded-[18px] flex items-center justify-center text-sm text-gray-600 overflow-hidden  ">
           <img
             src={imageUrl}
             alt={name}
-            className="w-full h-full object-cover"
+            className="w-full object-cover transition-transform duration-200 hover:scale-[1.1]"
           />
         </div>
       </Link>
 
       {/* Tags */}
-      <div className="flex flex-nowrap overflow-hidden gap-1 mt-3 mb-2">
+      <div className="flex gap-1 mt-3 mb-2">
         {tags?.en.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="border border-orange-500 text-orange-500 text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap"
+            className="flex justify-center border border-orange-500 text-orange-500 text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap"
           >
             {tag}
           </span>
@@ -61,7 +61,7 @@ const MenuCard = ({ menu }) => {
 
       {/* Title */}
       <Link to={`${slug}-${id}`}>
-        <div className="text-black font-bold text-lg mb-2 line-clamp-2 overflow-hidden min-h-[3.5rem]">
+        <div className="text-black font-semibold text-normal-size  text-lg mb-2 line-clamp-2 overflow-hidden min-h-[3.5rem]">
           {name}
         </div>
       </Link>
@@ -74,9 +74,11 @@ const MenuCard = ({ menu }) => {
 
       {/* Price & Cart button */}
       <div className="flex items-center justify-between">
-        <span className="text-black font-bold text-xl">{price}.00 THB</span>
+        <span className="text-black font-semibold text-medium-size ">
+          {price}.00 THB
+        </span>
         <button className="bg-[var(--color-primary)] hover:bg-green-900  hover:rotate-6 text-white p-2 w-10 h-10 rounded-full text-lg flex items-center justify-center">
-          <RiShoppingBag3Fill />
+          <RiShoppingBag3Fill className="w-10 h-10" />
         </button>
       </div>
     </div>

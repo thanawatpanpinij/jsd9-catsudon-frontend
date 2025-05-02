@@ -252,10 +252,7 @@ const AllMenus = () => {
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
                 {visibleMenu.map((menu) => (
-                  <div
-                    key={menu.id}
-                    className="transition-transform duration-300 hover:scale-105 "
-                  >
+                  <div key={menu.id} className="">
                     <MenuCard menu={menu} />
                   </div>
                 ))}
@@ -280,12 +277,12 @@ const AllMenus = () => {
               breakpoints={{
                 640: { slidesPerView: 2.2 },
                 768: { slidesPerView: 3.2 },
-                1024: { slidesPerView: 4.6 },
+                1024: { slidesPerView: 4.4 },
               }}
             >
               {filteredMenus.map((menu) => (
                 <SwiperSlide key={menu.id}>
-                  <div className="transition-transform duration-300 hover:scale-105  ">
+                  <div className="">
                     <MenuCard menu={menu} />
                   </div>
                 </SwiperSlide>
