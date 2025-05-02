@@ -217,7 +217,6 @@ const Header = () => {
                       to={path}
                       onClick={() => {
                         setActiveSection(path);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
                       className={() => `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${activeSection === path ? "bg-primary text-white" : "text-third"}`}
                     >
