@@ -41,6 +41,7 @@ const MenuCard = ({ menu }) => {
       {/* Tags */}
       <div className="flex gap-1 mt-3 mb-2">
         {tags?.en.slice(0, 3).map((tag) => (
+
           <span
             key={tag}
             className="flex justify-center border border-orange-500 text-orange-500 text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap"
@@ -51,13 +52,7 @@ const MenuCard = ({ menu }) => {
       </div>
 
       {/* Dietary Label */}
-      {dietary?.[0] && (
-        <div className="text-green-600 text-sm  font-medium mt-3 mb-1">
-          {dietary[0]
-            .replace("-", " ")
-            .replace(/\b\w/g, (l) => l.toUpperCase())}
-        </div>
-      )}
+      {dietary?.[0] && <div className="text-green-600 text-sm  font-medium mt-3 mb-1">{dietary[0].replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase())}</div>}
 
       {/* Title */}
       <Link to={`${slug}-${id}`}>

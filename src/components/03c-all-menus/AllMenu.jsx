@@ -138,11 +138,8 @@ const AllMenus = () => {
   const dropdownRef = useRef();
 
   const filteredMenus = menus.filter((menu) => {
-    const matchCategory =
-      activeTab === "all" || menu.category === categoryMap[activeTab];
-    const matchType =
-      savoryDessertFilter === "All" ||
-      savoryDessertFilter.toLowerCase() === (menu.type || "").toLowerCase();
+    const matchCategory = activeTab === "all" || menu.category === categoryMap[activeTab];
+    const matchType = savoryDessertFilter === "All" || savoryDessertFilter.toLowerCase() === (menu.type || "").toLowerCase();
     return matchCategory && matchType;
   });
 
@@ -174,13 +171,11 @@ const AllMenus = () => {
         <div
           className="w-full h-[200px] flex items-center justify-start text-2xl font-bold text-gray-700 bg-cover bg-center px-8 rounded-2xl"
           style={{
-            backgroundImage:
-              "url('https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978192/005-salad-plate-on-right_yewv5d.avif')",
+            backgroundImage: "url('https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978192/005-salad-plate-on-right_yewv5d.avif')",
           }}
         >
           <div className="bg-white bg-opacity-70 px-4 py-2 rounded">
-            Explore <span className="text-orange-500 mx-2">Culinary</span>{" "}
-            Insights
+            Explore <span className="text-orange-500 mx-2">Culinary</span> Insights
           </div>
         </div>
 
@@ -195,16 +190,12 @@ const AllMenus = () => {
                   setShowAll(false);
                 }}
                 className={`flex flex-col items-center justify-center px-2 py-3 rounded-xl text-center cursor-pointer transition duration-200 min-w-[110px] ${
-                  activeTab === cat.key
-                    ? "bg-[var(--color-primary)] text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-[var(--color-primary)] hover:text-white"
+                  activeTab === cat.key ? "bg-[var(--color-primary)] text-white" : "bg-gray-100 text-gray-700 hover:bg-[var(--color-primary)] hover:text-white"
                 }`}
               >
                 <div className="w-6 h-6">{cat.icon}</div>
                 <div className="font-semibold mt-1 text-xs">{cat.label}</div>
-                <div className="text-[10px]">
-                  {getCountByCategory(cat.key)} ITEMS
-                </div>
+                <div className="text-[10px]">{getCountByCategory(cat.key)} ITEMS</div>
               </div>
             ))}
           </div>
@@ -233,11 +224,7 @@ const AllMenus = () => {
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-[150px] bg-white border border-gray-200 rounded-md shadow-md z-50">
                 {savoryDessertOptions.map((option, index) => (
-                  <div
-                    key={index}
-                    onClick={() => handleSavoryDessertSelect(option)}
-                    className="cursor-pointer px-4 py-2 text-sm font-medium-weight hover:bg-green-100"
-                  >
+                  <div key={index} onClick={() => handleSavoryDessertSelect(option)} className="cursor-pointer px-4 py-2 text-sm font-medium-weight hover:bg-green-100">
                     {option}
                   </div>
                 ))}
@@ -261,10 +248,7 @@ const AllMenus = () => {
               {/* View More */}
               {!showAll && visibleMenu.length < filteredMenus.length && (
                 <div className="text-center pt-6 pb-10">
-                  <button
-                    onClick={() => setShowAll(true)}
-                    className="bg-[var(--color-primary)] hover:bg-green-700 text-white font-medium py-2 px-6 rounded-full"
-                  >
+                  <button onClick={() => setShowAll(true)} className="bg-[var(--color-primary)] hover:bg-green-700 text-white font-medium py-2 px-6 rounded-full">
                     View more
                   </button>
                 </div>
