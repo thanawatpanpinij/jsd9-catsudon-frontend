@@ -1,0 +1,436 @@
+.container_signIn_signUp {
+    position: relative;
+    width: 850px;
+    height: 600px;
+    background: var(--white-color);
+    border-radius: 32px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    margin: 1.25rem;
+    overflow: hidden;
+  }
+  
+  .formBox {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--white-color);
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-align: center;
+    padding: 2rem;
+    z-index: 1;
+    transition: 0.6s ease-in-out 1.2s, visibility 0s 1s;
+  }
+  
+  .containerActive .formBox {
+    right: 50%;
+  }
+  
+  .signUp {
+    visibility: hidden;
+  }
+  
+  .containerActive .signUp {
+    visibility: visible;
+  }
+  
+  .form {
+    width: 100%;
+  }
+  
+  .formTitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  .formTitle h1 {
+    font-size: var(--large-font-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--third-color);
+    margin: -10px 0;
+  }
+  
+  .formTitle h1 span {
+    color: var(--primary-color);
+  }
+  
+  .formTitle p {
+    color: var(--grey-color);
+    font-size: 14px;
+  }
+  
+  .socialIcons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .socialIcons a {
+    background: var(--white-color);
+    color: var(--third-color);
+    font-size: var(--normal-font-size);
+    padding: 0.3rem;
+    border-radius: 100%;
+    border: 1.2px solid var(--third-color);
+    transition: all 0.2s ease;
+  }
+  
+  .socialIcons a:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+  }
+  
+  .viaEmail {
+    position: relative;
+  }
+  
+  .viaEmail p {
+    font-size: var(--smaller-font-size);
+    color: var(--grey-color);
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0 0.25rem;
+  }
+  
+  .inputBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .emailAddress {
+    margin: 1rem 0 1rem 0;
+  }
+  
+  .inputBox input {
+    width: 100%;
+    padding: 0.6rem 3rem 0.6rem 1.25rem;
+    background: #eee;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    column-rule: var(--third-color);
+    font-size: 14px;
+    font-weight: var(--medium-weight);
+  }
+  
+  .inputBox input::placeholder {
+    color: #bab4b4;
+    font-weight: var(--regular-weight);
+    font-size: 14px;
+  }
+  
+  .inputBox i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--normal-font-size);
+    color: #888;
+  }
+  
+  .authOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0 2rem 0;
+    font-size: var(--smaller-font-size);
+  }
+  
+  .rememberMe {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--grey-color);
+  }
+  
+  .rememberMe input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+  }
+  
+  .forgotPassword a {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+  
+  .btn {
+    width: 100%;
+    border-radius: 50px;
+    padding: 0.6rem 0;
+    background: var(--secondary-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--medium-weight);
+    color: var(--white-color);
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: all 0.2s ease;
+  }
+  
+  .btn:hover {
+    background: var(--third-color);
+  }
+  
+  .signUpLink p {
+    color: var(--grey-color);
+    font-size: var(--smaller-font-size);
+  }
+  
+  .signUpLink a {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+  
+  .signUpBtn {
+    margin-top: 2.5rem;
+  }
+  
+  .toggleBox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .toggleBox::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    height: 100%;
+    background: var(--third-color);
+    left: -250%;
+    border-radius: 150px;
+    z-index: 2;
+    transition: 1.8s ease;
+  }
+  
+  .containerActive .toggleBox::before {
+    left: 50%;
+  }
+  
+  .togglePanel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--white-color);
+    z-index: 2;
+    transition: 0.6s ease-in-out;
+  }
+  
+  .toggleLeft {
+    left: 0;
+    transition-delay: 1.2s;
+  }
+  
+  .containerActive .toggleLeft {
+    left: -50%;
+    transition-delay: 0.6s;
+  }
+  
+  .toggleRight {
+    right: -50%;
+    transition-delay: 0.6s;
+  }
+  
+  .containerActive .toggleRight {
+    right: 0;
+    transition-delay: 1.2s;
+  }
+  
+  .togglePanel img {
+    width: 150px;
+    margin-bottom: 1rem;
+  }
+  
+  .togglePanel h1 {
+    font-size: 2rem;
+    font-weight: var(--medium-weight);
+  }
+  
+  .togglePanel p {
+    text-align: center;
+    width: 35ch;
+    font-size: 0.75rem;
+  }
+  
+  .togglePanel .btn {
+    width: 160px;
+    background: var(--primary-color);
+  }
+  
+  .toggleRight {
+    right: -50%;
+  }
+  
+  .toggleRight p {
+    width: 260px;
+  }
+  
+  .toggleRight .signInBtn {
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 650px) {
+    .container_signIn_signUp {
+      height: calc(100vh - 40px);
+    }
+  
+    .formBox {
+      width: 100%;
+      height: 70%;
+      bottom: 0;
+    }
+  
+    .containerActive .formBox {
+      right: 0;
+      bottom: 30%;
+    }
+  
+    .formTitle p {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .socialIcons {
+        margin-bottom: 1rem;
+    }
+
+    .viaEmail p {
+        font-size: 11px;
+    }
+  
+    .inputBox input {
+      font-size: 12px;
+    }
+
+    .inputBox input::placeholder {
+        font-size: 12px;
+    }
+  
+    .emailAddress {
+      margin-top: 0.75rem;
+    }
+  
+    .togglePanel h1 {
+      font-size: 24px;
+    }
+  
+    .togglePanel p {
+      font-size: 10px;
+    }
+  
+    .toggleBox::before {
+      left: 0;
+      top: -271%;
+      width: 100%;
+      height: 300%;
+      border-radius: 20vw;
+    }
+  
+    .containerActive .toggleBox::before {
+      left: 0;
+      top: 70%;
+    }
+  
+    .togglePanel {
+      width: 100%;
+      height: 30%;
+    }
+
+    .togglePanel .btn {
+        margin-bottom: 0.6rem;
+    }
+  
+    .toggleLeft {
+      top: 0;
+    }
+  
+    .containerActive .toggleLeft {
+      left: 0;
+      top: -30%;
+    }
+  
+    .containerActive .toggleRight {
+      bottom: 0;
+    }
+  
+    .toggleRight {
+      right: 0;
+      bottom: -30%;
+    }
+  
+    .togglePanel img {
+      width: 130px;
+      margin-bottom: 0.5rem;
+    }
+  
+    .togglePanel p {
+      width: 65%;
+    }
+  
+    .toggleRight .signInBtn {
+      margin-top: 0.75rem;
+    }
+  
+    .togglePanel .btn {
+      width: 130px;
+      font-size: 14px;
+      margin-top: 0.8rem;
+      padding: 0.5rem 0;
+    }
+
+    .rememberMe input {
+        width: 12px;
+        height: 12px;
+    }
+
+    .authOptions {
+        margin-bottom: 1.6rem;
+        font-size: 10px;
+    }
+
+    .signUpLink p {
+        font-size: 11px;
+    }
+
+    .btn {
+        margin-bottom: 1.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .formBox {
+      padding: 20px;
+    }
+  }
+
+  
+  @media screen and (max-width: 768px) {
+    .togglePanel h1 {
+        font-size: 24px;
+    }
+
+    .togglePanel p {
+      font-size: 10px;
+    }
+
+  .formTitle h1 {
+      font-size: 30px;
+      line-height: 1.2;
+  }
+
+  .formTitle p {
+      margin-top: 5px;
+  }
+}
