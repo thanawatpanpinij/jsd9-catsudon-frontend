@@ -69,7 +69,7 @@ const FarmFreshMenus = () => {
         >
           {firstItemsByCategory.map((menu, index) => (
             <SwiperSlide key={menu.id}>
-              <div className="w-[290px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-3 cursor-pointer">
+              <div className="w-[290px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-4 cursor-pointer">
                 <div className="flex items-center justify-between">
                   <p
                     className={`px-4 py-1 rounded-full text-small-size text-white cursor-pointer ${
@@ -97,7 +97,7 @@ const FarmFreshMenus = () => {
                 </div>
 
                 <Link to={`${menu.slug}-${menu.id}`}>
-                  <div className="w-full h-[160px] overflow-hidden rounded-[24px]">
+                  <div className="w-full h-[160px] overflow-hidden rounded-[18px]">
                     <img
                       className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
                       src={menu.imageUrl}
@@ -107,7 +107,7 @@ const FarmFreshMenus = () => {
                   </div>
 
                   {menu.tags?.en && (
-                    <div className="flex text-[10px] items-center gap-1 mt-2">
+                    <div className="flex text-[10px] items-center gap-1 mt-4">
                       {menu.tags.en.slice(0, 3).map((tag, index) => (
                         <p
                           key={index}
@@ -119,7 +119,7 @@ const FarmFreshMenus = () => {
                     </div>
                   )}
 
-                  <div className="flex flex-col">
+                  <div className="flex flex-col mt-3">
                     <p className="text-small-size text-primary font-medium">
                       {menu.category}
                     </p>
