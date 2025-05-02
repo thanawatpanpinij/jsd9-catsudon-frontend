@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import TextScroller from "./text-scroller/TextScroller";
 import { RiArrowDownWideLine, RiSearch2Line, RiShoppingBag3Fill, RiHeartFill, RiNotification4Fill, RiMenuLine, RiCloseLine, RiRestaurantFill } from "react-icons/ri";
 import { menus } from "../../utils/data/menus";
-import { Link } from "react-router";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { SidebarCartContext } from "../../contexts/sidebarCartContext/SidebarCartContext";
 import { SidebarFavContext } from "../../contexts/sidebarFavContext/SidebarFavContext";
 
@@ -16,6 +16,23 @@ const Header = () => {
   const dropdownButtonRef = useRef(null);
   const { cartRef, mobileCartRef, handleClickCart } = useContext(SidebarCartContext);
   const { favRef, mobileFavRef, handleClickFav } = useContext(SidebarFavContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [activeSection, setActiveSection] = useState("");
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setDropdownOpen(false);
+  };
+
+  const icons = [
+    { icon: <RiRestaurantFill className="text-xl" />, count: null },
+    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
+    { icon: <RiHeartFill className="text-xl" />, count: 0 },
+    { icon: <RiNotification4Fill className="text-xl" />, count: 9 },
+  ];
 
   useEffect(() => {
     const uniqueCategories = ["All Categories", ...new Set(menus.map((menu) => menu.category))];
@@ -77,6 +94,20 @@ const Header = () => {
     };
   }, [dropdownOpen]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (
+      params.get("scroll") === "contact-us" ||
+      location.hash === "#contact-us"
+    ) {
+      setActiveSection("contact-us");
+    } else if (location.pathname === "/") {
+      setActiveSection("home");
+    } else {
+      setActiveSection(location.pathname);
+    }
+  }, [location]);
+
   return (
     <>
       <div className={`sticky top-0 z-[200] bg-white transition-shadow duration-300 ${showShadow ? "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]" : ""}`}>
@@ -90,7 +121,10 @@ const Header = () => {
             </Link>
 
             {/* Search Area Container */}
-            <div className="relative w-[500px] hidden min-[969px]:block" ref={dropdownRef}>
+            <div
+              className="relative w-[500px] hidden min-[969px]:block"
+              ref={dropdownRef}
+            >
               <div className="flex items-center border-[1.5px] border-gray-300 rounded-full overflow-hidden">
                 <input type="text" placeholder="Search For Menu..." className="flex-1 px-4 py-2.5 text-gray-700 outline-none text-small-size" />
 
@@ -147,11 +181,16 @@ const Header = () => {
                   <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer">
                     <RiNotification4Fill className="text-xl" />
                   </div>
-                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">0</span>
+                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
+                    9
+                  </span>
                 </div>
               </div>
 
-              <Link to="/sign-in-and-sign-up" className="bg-primary text-white rounded-full px-10 py-[7px]  hover:bg-secondary transition-all duration-300 ease-in-out">
+              <Link
+                to="/sign-in-and-sign-up"
+                className="bg-primary text-white rounded-full px-10 py-[7px]  hover:bg-secondary transition-all duration-300 ease-in-out"
+              >
                 Sign In
               </Link>
             </div>
@@ -162,22 +201,87 @@ const Header = () => {
 
           <div className="hidden min-[969px]:block">
             <ul className="group flex items-center gap-1 py-[12px] text-third font-medium-weight w-fit">
-              <li className="px-5 py-1 rounded-full bg-primary text-white transition-all duration-300 ease hover:bg-primary hover:text-white group-hover:bg-transparent group-hover:text-third">
-                <Link to="/">Home</Link>
+              <li className="px-5 py-1 rounded-full">
+                <NavLink
+                  to="/"
+                  onClick={() => {
+                    setActiveSection("home");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className={() =>
+                    `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${
+                      activeSection === "home"
+                        ? "bg-primary text-white"
+                        : "text-third"
+                    }`
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
 
-              {[
-                { label: "All Menus", slug: "menus" },
-                { label: "About Us", slug: "about-us" },
-                { label: "Health Blog", slug: "blog" },
-                { label: "Contact Us", slug: "contact-us" },
-              ].map(({ label, slug }, index) => (
-                <li key={index}>
-                  <Link to={slug} className="transition-all duration-300 ease hover:bg-primary hover:text-white px-5 py-1 rounded-full">
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              {["All Menus", "About Us", "Health Blog", "Contact Us"].map(
+                (label, index) => {
+                  const path =
+                    label === "All Menus"
+                      ? "/menus"
+                      : label === "Health Blog"
+                      ? "/blog"
+                      : `/${label.toLowerCase().replace(/ /g, "-")}`;
+
+                  if (label === "Contact Us") {
+                    return (
+                      <li key={index}>
+                        <button
+                          onClick={() => {
+                            setActiveSection("contact-us");
+                            if (location.pathname !== "/") {
+                              navigate("/?scroll=contact-us");
+                            } else {
+                              setTimeout(() => {
+                                document
+                                  .getElementById("contact-us")
+                                  ?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                  });
+                              }, 100);
+                            }
+                          }}
+                          className={`transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full cursor-pointer ${
+                            activeSection === "contact-us"
+                              ? "bg-primary text-white"
+                              : "text-third"
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li key={index}>
+                      <NavLink
+                        to={path}
+                        onClick={() => {
+                          setActiveSection(path);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={() =>
+                          `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${
+                            activeSection === path
+                              ? "bg-primary text-white"
+                              : "text-third"
+                          }`
+                        }
+                      >
+                        {label}
+                      </NavLink>
+                    </li>
+                  );
+                }
+              )}
             </ul>
           </div>
 
@@ -193,21 +297,64 @@ const Header = () => {
 
             <ul className="flex flex-col items-start gap-5 mt-5 mx-[32px] text-white text-small-size">
               {[
-                { label: "All Menus", slug: "menus" },
-                { label: "About Us", slug: "about-us" },
-                { label: "Health Blog", slug: "blog" },
-                { label: "Contact Us", slug: "contact-us" },
-              ].map(({ label, slug }, index) => (
-                <li key={index}>
-                  <Link to={slug} onClick={() => setShowMobileMenu(false)} className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease">
-                    {label}
-                  </Link>
-                </li>
-              ))}
+                "Home",
+                "All Menus",
+                "About Us",
+                "Health Blog",
+                "Contact Us",
+              ].map((label, index) => {
+                if (label === "Contact Us") {
+                  return (
+                    <li key={index}>
+                      <button
+                        onClick={() => {
+                          setShowMobileMenu(false);
+                          if (location.pathname !== "/") {
+                            navigate("/?scroll=contact-us");
+                          } else {
+                            document
+                              .getElementById("contact-us")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }}
+                        className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease text-left"
+                      >
+                        {label}
+                      </button>
+                    </li>
+                  );
+                }
+
+                const path =
+                  label === "Home"
+                    ? "/"
+                    : label === "All Menus"
+                    ? "/menus"
+                    : label === "About Us"
+                    ? "/about-us"
+                    : label === "Health Blog"
+                    ? "/blog"
+                    : "#";
+
+                return (
+                  <li key={index}>
+                    <NavLink
+                      to={path}
+                      onClick={() => {
+                        setShowMobileMenu(false);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="inline-block hover:translate-x-2 hover:text-primary transition-all duration-300 ease"
+                    >
+                      {label}
+                    </NavLink>
+                  </li>
+                );
+              })}
 
               <li>
                 <Link
-                  to={`/sign-in-and-sign-up`}
+                  to="/sign-in-and-sign-up"
                   onClick={() => setShowMobileMenu(false)}
                   className="bg-primary text-white rounded-full px-10 py-[7px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
                 >
@@ -220,19 +367,27 @@ const Header = () => {
       </div>
 
       {/* ------------------------ Mobile Bottom Menu ------------------------ */}
-
       <div className="hidden max-[968px]:flex cursor-pointer fixed bottom-0 left-0 right-0 bg-primary w-[300px] mx-auto mb-[48px] rounded-full py-3 px-5 items-center justify-around text-white z-[999]">
         {icons.map(({ icon, count, ref, onClick }, index) => (
-          <Link key={index} className="relative">
-            <div
-              className="p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer"
-              ref={ref || null}
-              onClick={onClick ?? undefined}
-            >
-              {icon}
-            </div>
-            {count !== null && <span className="absolute top-0 right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">{count}</span>}
-          </Link>
+          <NavLink
+            key={index}
+            to={index === 0 ? "/menus" : "#"}
+            ref={ref || null}
+            onClick={onClick ?? undefined}
+            }}
+            className={({ isActive }) =>
+              `relative p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer ${
+                isActive ? "bg-gray-200 text-primary" : ""
+              }`
+            }
+          >
+            {icon}
+            {count !== null && (
+              <span className="absolute top-0 right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
+                {count}
+              </span>
+            )}
+          </NavLink>
         ))}
       </div>
     </>

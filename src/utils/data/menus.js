@@ -1876,7 +1876,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: ["low carb", "paleo"],
+        dietary: ["low-carb", "paleo"],
         ingredients: {
             th: [
                 "ซูกินี – 2 ผล (หั่นเป็นเส้น)",
