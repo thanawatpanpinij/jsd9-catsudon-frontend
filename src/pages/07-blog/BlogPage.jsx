@@ -1,6 +1,6 @@
 import React from "react";
 import Blog from "../../components/07c-blog/Blog";
-import { blogs } from "/Users/nuttanon/Desktop/project/Catsudon_React/src/utils/data/blogs.js";
+import { blogs } from "../../utils/data/blogs";
 
 const BlogPage = () => {
   return (
@@ -8,14 +8,17 @@ const BlogPage = () => {
       {/* Highlight Blog และ Sidebar */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-[32px]">
         {/* Main Blog */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 transition duration-300 hover:scale-[1.01] hover:shadow-xl rounded-2xl">
           <Blog blog={blogs[0]} />
         </div>
 
         {/* Sidebar */}
         <div className="space-y-8">
           {blogs.slice(1, 4).map((blog) => (
-            <div key={blog.id} className="flex items-start gap-4">
+            <div
+              key={blog.id}
+              className="flex items-start gap-4 transition duration-300 hover:shadow-md hover:scale-[1.02] p-2 rounded-xl"
+            >
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-gray-900 leading-snug">
                   {blog.title}
@@ -31,7 +34,7 @@ const BlogPage = () => {
               <img
                 src={blog.imageUrl}
                 alt={blog.title}
-                className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
+                className="w-24 h-24 object-cover rounded-lg flex-shrink-0 transition duration-300 group-hover:scale-105"
               />
             </div>
           ))}
@@ -41,11 +44,14 @@ const BlogPage = () => {
       {/* Bottom Mini Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[32px] mt-12">
         {blogs.slice(4, 7).map((blog) => (
-          <div key={blog.id} className="relative rounded-2xl overflow-hidden">
+          <div
+            key={blog.id}
+            className="relative rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl group"
+          >
             <img
               src={blog.imageUrl}
               alt={blog.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
               <p className="text-xs text-white mb-1">
