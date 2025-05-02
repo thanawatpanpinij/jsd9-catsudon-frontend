@@ -1,18 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import TextScroller from "./text-scroller/TextScroller";
-import {
-  RiArrowDownWideLine,
-  RiSearch2Line,
-  RiShoppingBag3Fill,
-  RiHeartFill,
-  RiNotification4Fill,
-  RiMenuLine,
-  RiCloseLine,
-  RiRestaurantFill,
-} from "react-icons/ri";
+import { RiArrowDownWideLine, RiSearch2Line, RiShoppingBag3Fill, RiHeartFill, RiNotification4Fill, RiMenuLine, RiCloseLine, RiRestaurantFill } from "react-icons/ri";
 import { menus } from "../../utils/data/menus";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-
+import { SidebarCartContext } from "../../contexts/sidebarCartContext/SidebarCartContext";
+import { SidebarFavContext } from "../../contexts/sidebarFavContext/SidebarFavContext";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -22,34 +14,28 @@ const Header = () => {
   const [showShadow, setShowShadow] = useState(false);
   const dropdownRef = useRef(null);
   const dropdownButtonRef = useRef(null);
-
+  const { cartRef, mobileCartRef, handleClickCart } = useContext(SidebarCartContext);
+  const { favRef, mobileFavRef, handleClickFav } = useContext(SidebarFavContext);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const [activeSection, setActiveSection] = useState("");
-
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
     setDropdownOpen(false);
   };
 
-
   const icons = [
     { icon: <RiRestaurantFill className="text-xl" />, count: null },
-    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0 },
-    { icon: <RiHeartFill className="text-xl" />, count: 0 },
+    { icon: <RiShoppingBag3Fill className="text-xl" />, count: 0, ref: mobileCartRef, onClick: handleClickCart },
+    { icon: <RiHeartFill className="text-xl" />, count: 0, ref: mobileFavRef, onClick: handleClickFav },
     { icon: <RiNotification4Fill className="text-xl" />, count: 9 },
   ];
 
-
   useEffect(() => {
-    const uniqueCategories = [
-      "All Categories",
-      ...new Set(menus.map((menu) => menu.category)),
-    ];
+    const uniqueCategories = ["All Categories", ...new Set(menus.map((menu) => menu.category))];
     setCategories(uniqueCategories);
   }, []);
 
@@ -80,7 +66,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -94,13 +79,11 @@ const Header = () => {
       }
     };
 
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownOpen]);
-
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -116,14 +99,9 @@ const Header = () => {
     }
   }, [location]);
 
-
   return (
     <>
-      <div
-        className={`sticky top-0 z-[200] bg-white transition-shadow duration-300 ${
-          showShadow ? "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]" : ""
-        }`}
-      >
+      <div className={`sticky top-0 z-[200] bg-white transition-shadow duration-300 ${showShadow ? "shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)]" : ""}`}>
         <TextScroller />
         {/* NavBar */}
         <div className="flex-col justify-center w-full px-[32px] bg-white max-w-[1440px] mx-auto">
@@ -132,9 +110,6 @@ const Header = () => {
             <Link to="/">
               <img
                 className="w-[130px]"
-                onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
                 src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720548/logo-navbar_lbsakr.png"
                 alt="logo"
               />
@@ -147,16 +122,12 @@ const Header = () => {
               ref={dropdownRef}
             >
               <div className="flex items-center border-[1.5px] border-gray-300 rounded-full overflow-hidden">
-                <input
-                  type="text"
-                  placeholder="Search For Menu..."
-                  className="flex-1 px-4 py-2.5 text-gray-700 outline-none text-small-size"
-                />
+                <input type="text" placeholder="Search For Menu..." className="flex-1 px-4 py-2.5 text-gray-700 outline-none text-small-size" />
 
 
                 {/* Dropdown Button */}
                 <div
-                  className="flex items-center gap-1 px-1 text-small-size font-medium-weight text-third cursor-pointe"
+                  className="flex items-center gap-1 px-1 text-small-size font-medium-weight text-third cursor-pointer"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   ref={dropdownButtonRef}
                 >
@@ -179,11 +150,7 @@ const Header = () => {
               {dropdownOpen && (
                 <div className="absolute right-0 mt-2 w-[180px] bg-white border border-gray-200 rounded-md shadow-md z-50">
                   {categories.map((category, index) => (
-                    <div
-                      key={index}
-                      onClick={() => handleCategorySelect(category)}
-                      className="cursor-pointer px-4 py-2 text-small-size font-medium-weight text-third hover:bg-green-100"
-                    >
+                    <div key={index} onClick={() => handleCategorySelect(category)} className="cursor-pointer px-4 py-2 text-small-size font-medium-weight text-third hover:bg-green-100">
                       {category}
                     </div>
                   ))}
@@ -197,22 +164,18 @@ const Header = () => {
               {/* Individual Icon Buttons */}
               <div className="flex gap-2">
                 <div className="relative">
-                  <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer">
+                  <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer" ref={cartRef} onClick={handleClickCart}>
                     <RiShoppingBag3Fill className="text-xl" />
                   </div>
-                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    0
-                  </span>
+                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">0</span>
                 </div>
 
 
                 <div className="relative">
-                  <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer">
+                  <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer" ref={favRef} onClick={handleClickFav}>
                     <RiHeartFill className="text-xl" />
                   </div>
-                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    0
-                  </span>
+                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">0</span>
                 </div>
 
 
@@ -234,10 +197,7 @@ const Header = () => {
                 Sign In
               </Link>
             </div>
-            <div
-              className="hidden max-[968px]:block w-7 cursor-pointer text-medium-size text-third"
-              onClick={() => setShowMobileMenu(true)}
-            >
+            <div className="hidden max-[968px]:block w-7 cursor-pointer text-medium-size text-third" onClick={() => setShowMobileMenu(true)}>
               <RiMenuLine />
             </div>
           </div>
@@ -263,7 +223,6 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-
 
               {["All Menus", "About Us", "Health Blog", "Contact Us"].map(
                 (label, index) => {
@@ -374,7 +333,6 @@ const Header = () => {
                   );
                 }
 
-
                 const path =
                   label === "Home"
                     ? "/"
@@ -385,7 +343,6 @@ const Header = () => {
                     : label === "Health Blog"
                     ? "/blog"
                     : "#";
-
 
                 return (
                   <li key={index}>
@@ -403,7 +360,6 @@ const Header = () => {
                 );
               })}
 
-
               <li>
                 <Link
                   to="/sign-in-and-sign-up"
@@ -418,18 +374,14 @@ const Header = () => {
         </div>
       </div>
 
-
       {/* ------------------------ Mobile Bottom Menu ------------------------ */}
       <div className="hidden max-[968px]:flex cursor-pointer fixed bottom-0 left-0 right-0 bg-primary w-[300px] mx-auto mb-[48px] rounded-full py-3 px-5 items-center justify-around text-white z-[999]">
         {icons.map(({ icon, count }, index) => (
           <NavLink
             key={index}
             to={index === 0 ? "/menus" : "#"}
-            onClick={() => {
-              if (index === 0) {
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            }}
+            ref={ref || null}
+            onClick={onClick ?? undefined}
             className={({ isActive }) =>
               `relative p-1.5 rounded-full text-white bg-transparent hover:bg-gray-200 hover:text-primary transition-all duration-200 ease cursor-pointer ${
                 isActive ? "bg-gray-200 text-primary" : ""
