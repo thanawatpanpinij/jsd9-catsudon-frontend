@@ -11,15 +11,14 @@ export default function RecommendedDishCard({ recommendedDish }) {
       767px:flex-col 767px:m-0
       1440px:flex-row"
     >
-      <Link to={`/menus/${recommendedDish.slug}-${recommendedDish.id}`}>
-        <div
-          className="
+      <Link
+        className="
           overflow-hidden w-full h-fit mb-4 rounded-4xl
           576px:w-[40%] 576px:m-0
           767px:w-full"
-        >
-          <img loading="lazy" className="w-full object-cover transition-transform duration-200 hover:scale-[1.1]" src={recommendedDish.imageUrl} alt={`${recommendedDish.name} picture`} />
-        </div>
+        to={`/menus/${recommendedDish.slug}-${recommendedDish.id}`}
+      >
+        <img loading="lazy" className="w-full object-cover transition-transform duration-200 hover:scale-[1.1]" src={recommendedDish.imageUrl} alt={`${recommendedDish.name} picture`} />
       </Link>
       <section
         className="
@@ -35,7 +34,7 @@ export default function RecommendedDishCard({ recommendedDish }) {
         </div>
         <div className="flex justify-between text-medium-size">
           <span className="text-primary">{recommendedDish.price} THB</span>
-          <button className="cursor-pointer p-2 text-white bg-primary rounded-full transition-color transition-transform duration-200 hover:bg-secondary hover:rotate-12" aria-label="Add to your cart">
+          <button className="cursor-pointer p-2 text-white bg-primary rounded-full transition-color transition-transform duration-200 hover:bg-secondary hover:rotate-6" aria-label="Add to your cart">
             <RiShoppingBag3Fill />
           </button>
         </div>
