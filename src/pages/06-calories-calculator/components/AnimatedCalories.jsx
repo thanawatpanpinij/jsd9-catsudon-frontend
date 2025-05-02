@@ -3,23 +3,21 @@ import formatNumber from "../../../utils/formatNumber";
 
 export default function AnimatedCalories({ target, duration = 500 }) {
   const [count, setCount] = useState(0);
-  // console.log(target);
+
   useEffect(() => {
-    // if (!startCount) return;
-    let start = 0;
-    const end = target;
-    const stepTime = Math.max(Math.floor(duration / end), 20);
-
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start >= end) {
-        clearInterval(timer);
-      }
-    }, stepTime);
-
-    // setStartCount(false);
-    return () => clearInterval(timer);
+    initialCounting()
   }, [target, duration]);
-  return <p className="text-heading02-size text-secondary text-center font-bold">{formatNumber(count)}</p>;
+
+  async function initialCounting() {
+    for (let i = 0; i < target; i+=target/50) {
+      await sleep(20);
+      setCount(i);
+    }
+  }
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  return <p className="text-heading02-size text-secondary text-center font-bold">{formatNumber(Math.round(count))}</p>;
 }
