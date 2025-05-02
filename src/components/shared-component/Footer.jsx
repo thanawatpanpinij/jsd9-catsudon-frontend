@@ -7,6 +7,7 @@ import {
 } from "react-icons/ri";
 import { MdLocationOn, MdPhone, MdEmail, MdAccessTime } from "react-icons/md";
 import TextScroller from "./text-scroller/TextScroller";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -24,8 +25,15 @@ const Footer = () => {
                 />
               </div>
               <ul className="space-y-6 text-base md:text-small-size lg:text-base">
-                <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-all duration-200">
-                  <MdLocationOn className="text-lg" /> Bangkok, Thailand
+                <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                  <a 
+                    className="flex items-center gap-2"
+                    href="https://maps.app.goo.gl/7jVDUgNWEPRH5iQC8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MdLocationOn className="text-lg" /> Bangkok, Thailand
+                  </a>
                 </li>
                 <li className="flex items-center gap-2 cursor-pointer hover:text-primary transition-all duration-200">
                   <MdPhone className="text-lg" /> +66 5696 6969
@@ -42,39 +50,57 @@ const Footer = () => {
             {/* Account */}
             <div>
               <h3 className="text-base font-semibold mb-5">Account</h3>
-              <ul className="space-y-5 text-base md:text-small-size lg:text-base">
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
+              <div className="flex flex-col space-y-5 text-base md:text-small-size lg:text-base">
+                <Link
+                  to={"/sign-in-and-sign-up"}
+                  className="cursor-pointer hover:text-primary transition-all duration-200"
+                >
                   Sign In
-                </li>
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
-                  View Cart
-                </li>
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                </Link>
+                <Link
+                  to={"/"}
+                  className="cursor-pointer hover:text-primary transition-all duration-200"
+                >
+                  My Cart
+                </Link>
+                <Link
+                  to={"/"}
+                  className="cursor-pointer hover:text-primary transition-all duration-200"
+                >
                   My Order
-                </li>
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
-                  Meal Plans
-                </li>
-              </ul>
+                </Link>
+              </div>
             </div>
 
             {/*Company */}
             <div>
               <h3 className="text-base font-semibold mb-5">Company</h3>
-              <ul className="space-y-5 text-base md:text-small-size lg:text-base">
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
+              <div className="flex flex-col space-y-5 text-base md:text-small-size lg:text-base">
+                <Link
+                  to={"/about-us"}
+                  className="cursor-pointer hover:text-primary transition-all duration-200"
+                >
                   About Us
-                </li>
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                </Link>
+                <Link
+                  to={"/"}
+                  className="cursor-pointer hover:text-primary transition-all duration-200"
+                >
                   Privacy Policy
-                </li>
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                </Link>
+                <Link
+                  to={"/"}
+                  className="cursor-pointer hover:text-primary transition-all duration-200"
+                >
                   Terms & Conditions
-                </li>
-                <li className="cursor-pointer hover:text-primary transition-all duration-200">
+                </Link>
+                <Link
+                  to={"/"}
+                  className="cursor-pointer hover:text-primary transition-all duration-200"
+                >
                   Help
-                </li>
-              </ul>
+                </Link>
+              </div>
             </div>
 
             {/* PaymentMethods/SocialIcons */}
