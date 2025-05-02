@@ -96,7 +96,7 @@ const HeaderHero = () => {
         <div className="flex items-center justify-center w-[400px] mt-[56px] max-[393px]:w-[320px]">
           <RiArrowLeftWideLine
             className="h-[60px] w-[60px] text-gray-500 cursor-pointer max-[301px]:hidden"
-            onClick={handleNextClick}
+            onClick={handlePrevClick}
           />
           <Swiper
             onSwiper={setSwiperInstance}
@@ -185,7 +185,7 @@ const HeaderHero = () => {
           </Swiper>
           <RiArrowRightWideLine
             className="h-[60px] w-[60px] text-gray-500 cursor-pointer max-[301px]:hidden"
-            onClick={handlePrevClick}
+            onClick={handleNextClick}
           />
         </div>
       </div>

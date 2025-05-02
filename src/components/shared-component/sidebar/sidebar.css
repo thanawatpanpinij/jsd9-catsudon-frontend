@@ -1,0 +1,23 @@
+@media screen and (width >= 969px) {
+  aside {
+    top: 157.44px;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    right: -483px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    right: 0;
+  }
+  to {
+    right: -483px;
+  }
+}
