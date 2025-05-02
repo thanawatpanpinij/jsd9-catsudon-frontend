@@ -41,7 +41,7 @@ const SignInSignUp = () => {
         </p>
       </div>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center h-full">
         <section
           className={`${styles.container_signIn_signUp} ${
             isActive ? styles.containerActive : ""
