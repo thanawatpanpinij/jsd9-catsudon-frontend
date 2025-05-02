@@ -96,7 +96,7 @@ const FarmFreshMenus = () => {
                   />
                 </div>
 
-                <Link to={`${menu.slug}-${menu.id}`}>
+                <Link to={`/menus/${menu.slug}-${menu.id}`}>
                   <div className="w-full h-[160px] overflow-hidden rounded-[18px]">
                     <img
                       className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
