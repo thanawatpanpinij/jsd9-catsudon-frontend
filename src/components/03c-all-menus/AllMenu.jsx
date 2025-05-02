@@ -3,68 +3,118 @@ import MenuCard from "../shared-component/MenuCard";
 import { menus } from "../../utils/data/menus";
 import { LuListFilter } from "react-icons/lu";
 import { GiAchievement } from "react-icons/gi";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const categoryMap = {
   clean: "Clean Eating",
   keto: "Keto Diet",
-  vegetarian: "Vegetarian Nutrition",
-  vegan: "Vegan Nutrition",
-  plant: "Plant-based",
-  protein: "High-Protein Nutrition",
+  vegetarian: "Vegetarian",
+  vegan: "Vegan",
+  plant: "Plant Based",
+  protein: "High Protein",
   lowcarb: "Low Carb",
-  glutenfree: "Gluten-Free Nutrition",
+  glutenfree: "Gluten Free",
 };
 
 const categories = [
   {
     label: "All Menu",
     key: "all",
-    icon: <img src="../public/allmenu.png" alt="allmenu" className="w-8" />,
+    icon: (
+      <img
+        src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033262/allmenu_a20dwp.png"
+        alt="allmenu"
+        className="w-8"
+      />
+    ),
   },
   {
     label: "Clean Eating",
     key: "clean",
-    icon: <img src="../public/cleanfood.png" alt="cleaneat" className="w-8" />,
+    icon: (
+      <img
+        src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033262/cleanfood_i2543a.png"
+        alt="cleaneat"
+        className="w-8"
+      />
+    ),
   },
   {
     label: "Keto Diet",
     key: "keto",
-    icon: <img src="../public/keto.png" alt="keto" className="w-8" />,
-  },
-  {
-    label: "Vegetarian",
-    key: "vegetarian",
     icon: (
-      <img src="../public/vegetarian.png" alt="vegetarian" className="w-8" />
+      <img
+        src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033263/keto_oys0sl.png"
+        alt="keto"
+        className="w-8"
+      />
     ),
   },
   {
     label: "Vegan",
     key: "vegan",
-    icon: <img src="../public/vegan.png" alt="vegan" className="w-8" />,
+    icon: (
+      <img
+        src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033263/vegan_e54mcz.png"
+        alt="vegan"
+        className="w-8"
+      />
+    ),
+  },
+  {
+    label: "Vegetarian",
+    key: "vegetarian",
+    icon: (
+      <img
+        src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033262/vegetarian_xbewvq.png"
+        alt="vegetarian"
+        className="w-8"
+      />
+    ),
   },
   {
     label: "Plant Based",
     key: "plant",
     icon: (
-      <img src="../public/plantbase.png" alt="plantbased" className="w-8" />
+      <img
+        src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033263/plantbase_zv5hx0.png"
+        alt="plantbased"
+        className="w-8"
+      />
     ),
   },
   {
     label: "High Protein",
     key: "protein",
-    icon: <img src="../hightprotein.png" alt="hightprotein" className="w-8" />,
+    icon: (
+      <img
+        src=" https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033263/hightprotein_alc4td.png"
+        alt="hightprotein"
+        className="w-8"
+      />
+    ),
   },
   {
     label: "Low Carb",
     key: "lowcarb",
-    icon: <img src="../public/lowcarb.png" alt="lowcarb" className="w-8" />,
+    icon: (
+      <img
+        src=" https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033263/lowcarb_epvihs.png"
+        alt="lowcarb"
+        className="w-8"
+      />
+    ),
   },
   {
     label: "Gluten Free",
     key: "glutenfree",
     icon: (
-      <img src="../public/glutenfree.png" alt="glutenfree" className="w-8" />
+      <img
+        src=" https://res.cloudinary.com/dsgtmtcmt/image/upload/v1746033263/glutenfree_wwvov0.png"
+        alt="glutenfree"
+        className="w-8"
+      />
     ),
   },
 ];
@@ -85,7 +135,7 @@ const AllMenus = () => {
   const [savoryDessertFilter, setSavoryDessertFilter] = useState("All");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const dropdownRef = useRef(); 
+  const dropdownRef = useRef();
 
   const filteredMenus = menus.filter((menu) => {
     const matchCategory =
@@ -171,7 +221,6 @@ const AllMenus = () => {
 
           {/* Dropdown Button */}
           <div className="relative" ref={dropdownRef}>
-            {" "}
             <div
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="text-sm bg-[var(--color-primary)] text-[var(--color-light)] px-4 py-1 rounded-full cursor-pointer flex items-center gap-2"
@@ -198,12 +247,12 @@ const AllMenus = () => {
         </div>
 
         {/* Menu Grid */}
-        <div className="px-6 py-6">
+        <div className="px-2 py-6">
           {activeTab === "all" ? (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
                 {visibleMenu.map((menu) => (
-                  <div key={menu.id} className="w-full max-w-[280px]">
+                  <div key={menu.id} className="">
                     <MenuCard menu={menu} />
                   </div>
                 ))}
@@ -222,13 +271,23 @@ const AllMenus = () => {
               )}
             </>
           ) : (
-            <div className="flex gap-4 overflow-x-auto pb-6">
+            <Swiper
+              spaceBetween={8}
+              slidesPerView={1.2}
+              breakpoints={{
+                640: { slidesPerView: 2.2 },
+                768: { slidesPerView: 3.2 },
+                1024: { slidesPerView: 4.4 },
+              }}
+            >
               {filteredMenus.map((menu) => (
-                <div key={menu.id} className="flex-shrink-0 w-[250px]">
-                  <MenuCard menu={menu} />
-                </div>
+                <SwiperSlide key={menu.id}>
+                  <div className="">
+                    <MenuCard menu={menu} />
+                  </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           )}
         </div>
       </div>
