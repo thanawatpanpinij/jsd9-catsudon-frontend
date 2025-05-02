@@ -1087,7 +1087,7 @@ export const menus = [
                 "vegetarian",
                 "vegetables",
                 "meat-free",
-                "homemade guacamole",
+                "homemade-guacamole",
             ],
         },
         available: true,
@@ -1659,7 +1659,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 cup (250ml)",
-        dietary: [ "plant-based", "dairy-free"],
+        dietary: ["plant-based", "dairy-free"],
         ingredients: {
             th: [
                 "เมล็ดเจีย – 3 ช้อนโต๊ะ",
@@ -1876,7 +1876,7 @@ export const menus = [
         },
         available: true,
         servingSize: "1 plate (350g)",
-        dietary: [ "low carb", "paleo"],
+        dietary: ["low-carb", "paleo"],
         ingredients: {
             th: [
                 "ซูกินี – 2 ผล (หั่นเป็นเส้น)",
@@ -2144,10 +2144,10 @@ export const menus = [
                 "เมนูไร้กังวลสำหรับคนทานกลูเตนฟรี",
             ],
             en: [
-                "Gluten-free",
-                "Healthy",
-                "Authentic",
-                "A worry-free meal for gluten-sensitive individuals",
+                "gluten-free",
+                "healthy-fats",
+                "italian",
+                "wheat-free",
             ],
         },
         available: true,
@@ -2509,8 +2509,9 @@ export const menus = [
                 "เมนูเพื่อสุขภาพและเติมพลัง",
             ],
             en: [
-                "protein-packed",
-                "hitamin rich",
+                "vitamin-rich",
+                "high-protein",
+                "fiber",
                 "healthy",
             ],
         },

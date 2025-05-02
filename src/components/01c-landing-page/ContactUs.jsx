@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[32px] mb-[56px]">
+    <div id="contact-us" className="scroll-mt-[200px] max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[32px] mb-[56px]">
       <div className="bg-secondary p-10 rounded-[32px] grid grid-cols-1 min-[986px]:grid-cols-2 gap-8 max-[500px]:p-8">
         <div className="flex flex-col justify-center text-white w-full min-[1135px]:w-[50ch]">
           <p className="text-small-size">
