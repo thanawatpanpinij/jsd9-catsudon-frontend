@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { RiShoppingBag3Fill } from "react-icons/ri";
-import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeart } from "react-icons/io";
+import { Link } from "react-router";
 
-const MenuCart = ({ menu }) => {
-  const { name, price, imageUrl, tags, dietary } = menu;
+const MenuCard = ({ menu }) => {
+  const { id, name, slug, price, imageUrl, tags, dietary } = menu;
   const [liked, setLiked] = useState(false);
 
   const toggleLike = () => {
@@ -13,23 +14,29 @@ const MenuCart = ({ menu }) => {
   return (
     <div className="w-[250px] rounded-2xl border border-gray-200 p-4 shadow bg-white relative">
       {/* Top row: Hot label + Heart icon */}
-      <div className="flex justify-between items-center mb-2">
-        <div className="bg-red-500 text-white text-sm px-3 py-0.5 rounded-full">
+      <div className="flex justify-between items-center mb-3">
+        <div className="bg-[var(--color-secondary)] text-white text-sm px-3 py-0.5 rounded-full">
           Hot
         </div>
         <button onClick={toggleLike}>
           {liked ? (
-            <IoIosHeart size={25} color="red" />
+            <IoIosHeart size={25} color="#d94343" />
           ) : (
-            <IoIosHeartEmpty size={25} color="gray" />
+            <IoIosHeart size={25} color="#bab4b4" />
           )}
         </button>
       </div>
 
       {/* Image */}
-      <div className="w-full h-[120px] bg-gray-100 rounded-lg flex items-center justify-center text-sm text-gray-600 overflow-hidden ">
-        <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
-      </div>
+      <Link to={`${slug}-${id}`}>
+        <div className="w-full h-[120px] bg-gray-100 rounded-lg flex items-center justify-center text-sm text-gray-600 overflow-hidden ">
+          <img
+            src={imageUrl}
+            alt={name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </Link>
 
       {/* Tags */}
       <div className="flex flex-nowrap overflow-hidden gap-1 mt-3 mb-2">
@@ -53,9 +60,11 @@ const MenuCart = ({ menu }) => {
       )}
 
       {/* Title */}
-      <div className="text-black font-bold text-lg mb-2 line-clamp-2 overflow-hidden min-h-[3.5rem]">
-        {name}
-      </div>
+      <Link to={`${slug}-${id}`}>
+        <div className="text-black font-bold text-lg mb-2 line-clamp-2 overflow-hidden min-h-[3.5rem]">
+          {name}
+        </div>
+      </Link>
 
       {/* Rating */}
       <div className="flex items-center text-sm mb-3">
@@ -66,12 +75,12 @@ const MenuCart = ({ menu }) => {
       {/* Price & Cart button */}
       <div className="flex items-center justify-between">
         <span className="text-black font-bold text-xl">{price}.00 THB</span>
-        <button className="bg-[var(--color-primary)] hover:bg-green-700 text-white p-2 w-10 h-10 rounded-full text-lg flex items-center justify-center">
-        <RiShoppingBag3Fill />
+        <button className="bg-[var(--color-primary)] hover:bg-green-900  hover:rotate-6 text-white p-2 w-10 h-10 rounded-full text-lg flex items-center justify-center">
+          <RiShoppingBag3Fill />
         </button>
       </div>
     </div>
   );
 };
 
-export default MenuCart;
+export default MenuCard;
