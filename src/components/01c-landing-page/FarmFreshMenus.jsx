@@ -97,7 +97,7 @@ const FarmFreshMenus = () => {
                 </div>
 
                 <Link to={`${menu.slug}-${menu.id}`}>
-                  <div className="w-full h-[160px] overflow-hidden rounded-[24px]">
+                  <div className="w-full h-[160px] overflow-hidden rounded-[18px]">
                     <img
                       className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
                       src={menu.imageUrl}
@@ -107,7 +107,7 @@ const FarmFreshMenus = () => {
                   </div>
 
                   {menu.tags?.en && (
-                    <div className="flex text-[10px] items-center gap-1 mt-2">
+                    <div className="flex text-[10px] items-center gap-1 mt-3">
                       {menu.tags.en.slice(0, 3).map((tag, index) => (
                         <p
                           key={index}
@@ -119,7 +119,7 @@ const FarmFreshMenus = () => {
                     </div>
                   )}
 
-                  <div className="flex flex-col">
+                  <div className="flex flex-col mt-3">
                     <p className="text-small-size text-primary font-medium">
                       {menu.category}
                     </p>
