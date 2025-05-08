@@ -27,18 +27,29 @@ export default function CaloriesResult() {
     },
   ];
   return (
-    <section className="p-8 text-third bg-primary-background 1440px:w-[40%] 1440px:rounded-bl-[4rem]">
-      <h2 className="mb-8 text-center text-[2rem] font-semibold">Your Daily Macro Goal</h2>
+    <section
+      className={`${
+        state.showResult ? "block opacity-100" : "hidden opacity-0"
+      } p-8 text-third bg-primary-background transition-discrete duration-200 1440px:w-[40%] 1440px:rounded-bl-[5rem]`}
+    >
+      <h2 className="mb-8 text-center text-[2rem] font-semibold">
+        Your Daily Macro Goal
+      </h2>
       <div className="mb-8 1440px:m-0">
-        <AnimatedCalories target={state.dailyCal} />
-        {/* <p className="text-heading02-size text-secondary text-center font-bold">{formatNumber(state.dailyCal)}</p> */}
+        {/* <AnimatedCalories target={state.dailyCal} /> */}
+        <p className="text-heading02-size text-secondary text-center font-bold">
+          {formatNumber(state.dailyCal)}
+        </p>
         <p className="text-third text-medium-size text-center">kcal</p>
       </div>
-      <section className="mb-8 ">
-        <h3 className="mb-8 text-normal-size font-medium">Daily Macro</h3>
-        <section className="grid  gap-12 576px:grid-cols-3 576px:gap-4">
+      <section className="mb-4">
+        <h3 className="mb-16 text-normal-size font-medium">Daily Macro</h3>
+        <section className="grid gap-12 576px:grid-cols-3 576px:gap-4">
           {nutritionData.map(({ label, value, icon }) => (
-            <div key={label} className="relative grid place-items-center p-4 pt-12 bg-white rounded-2xl">
+            <div
+              key={label}
+              className="relative grid place-items-center p-4 pt-12 bg-white rounded-2xl"
+            >
               <IconContext.Provider
                 value={{
                   color: "var(--color-third)",
@@ -47,7 +58,9 @@ export default function CaloriesResult() {
               >
                 {icon}
               </IconContext.Provider>
-              <h4 className="mb-4 text-large-size text-primary font-semibold">{value}g</h4>
+              <h4 className="mb-4 text-large-size text-primary font-semibold">
+                {value}g
+              </h4>
               <p className="text-grey">{label}</p>
             </div>
           ))}
@@ -56,13 +69,24 @@ export default function CaloriesResult() {
       <section className="grid gap-8 576px:grid-cols-2 576px:gap-4">
         {[
           {
-            label: `Total Calories to ${state.goal === "Lose" ? "Lose" : state.goal === "Maintain" ? "Maintain" : "Gain"}`,
+            label: `Total Calories to ${
+              state.goal === "Lose"
+                ? "Lose"
+                : state.goal === "Maintain"
+                ? "Maintain"
+                : "Gain"
+            }`,
             value: state.totalCalories,
           },
           { label: "Estimated Days", value: state.estimatedDays },
         ].map(({ label, value }) => (
-          <div key={label} className="px-4 py-8 text-center bg-white rounded-2xl">
-            <p className="mb-4 text-primary text-[2rem] font-semibold">{formatNumber(value)}</p>
+          <div
+            key={label}
+            className="px-4 py-8 text-center bg-white rounded-2xl first:rounded-bl-[3.5rem] last:rounded-br-[3.5rem]"
+          >
+            <p className="mb-4 text-primary text-[2rem] font-semibold">
+              {formatNumber(value)}
+            </p>
             <p className="text-grey">{label}</p>
           </div>
         ))}
