@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import Cookies from "js-cookie";
 import TextScroller from "./text-scroller/TextScroller";
 import {
@@ -17,6 +17,7 @@ import { SidebarCartContext } from "../../contexts/sidebarCartContext/SidebarCar
 import { SidebarFavContext } from "../../contexts/sidebarFavContext/SidebarFavContext";
 import axiosInstance from "../../utils/axiosInstance";
 import { getInitials } from "../../utils/helper";
+import useCartContext from "../../contexts/cartContext/useCartContext";
 
 const Header = () => {
   const [categories, setCategories] = useState([]);
@@ -31,6 +32,7 @@ const Header = () => {
     useContext(SidebarCartContext);
   const { favRef, mobileFavRef, handleClickFav } =
     useContext(SidebarFavContext);
+  const { cart, setCart } = useCartContext();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -247,7 +249,7 @@ const Header = () => {
                     <RiShoppingBag3Fill className="text-xl" />
                   </div>
                   <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    0
+                    {!cart || !cart.length ? 0 : cart.length}
                   </span>
                 </div>
 
@@ -296,7 +298,10 @@ const Header = () => {
                     </p>
                     <button
                       className="text-sm text-primary font-medium underline cursor-pointer"
-                      onClick={onLogout}
+                      onClick={() => {
+                        onLogout();
+                        setCart([]);
+                      }}
                     >
                       Sign Out
                     </button>
@@ -497,6 +502,7 @@ const Header = () => {
                     onClick={() => {
                       setShowMobileMenu(false);
                       onLogout();
+                      setCart([]);
                     }}
                     className="bg-primary text-white rounded-full px-10 py-[7px] inline-block hover:bg-secondary transition-all duration-300 ease-in-out"
                   >
