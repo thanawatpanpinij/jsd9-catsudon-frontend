@@ -63,13 +63,6 @@ const SignInSignUp = () => {
       });
 
       if (response.data?.message === "Login successfully") {
-        if (response.data?.accessToken) {
-          localStorage.setItem("accessToken", response.data.accessToken);
-        }
-        if (response.data?.user) {
-          localStorage.setItem("user", JSON.stringify(response.data.user));
-        }
-
         setEmailOrUsername("");
         setPassword("");
         navigate("/");

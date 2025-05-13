@@ -68,7 +68,6 @@ const Header = () => {
       Cookies.remove("accessToken", { path: "/" });
       setUserInfo(null);
       navigate("/sign-in-and-sign-up");
-      delete axiosInstance.defaults.headers["Authorization"];
     } catch (error) {
       console.error("Logout failed", error);
     }
@@ -82,32 +81,20 @@ const Header = () => {
       if (response.data?.user) {
         setUserInfo(response.data.user);
       } else {
-        throw new Error("User data not found.");
+        setUserInfo(null);
       }
     } catch (error) {
-      if (error.response?.status === 401 || error.response?.status === 403) {
-        console.error("Authentication failed. Redirecting to login...");
-        setUserInfo(null);
-        navigate("/sign-in-and-sign-up");
-      } else {
-        console.error("Error fetching user information:", error.message);
-      }
+      console.error("Error fetching user information:", error.message);
+      setUserInfo(null);
     }
   };
 
   useEffect(() => {
     const checkAuthAndFetchUser = async () => {
-      const token = localStorage.getItem("accessToken");
       const isOnAuthPage = location.pathname === "/sign-in-and-sign-up";
-
-      if (!token && !isOnAuthPage) {
-        setUserInfo(null);
-        return;
-      }
-
-      if (token && !isOnAuthPage) {
+      if (!isOnAuthPage) {
         await getUserInfo();
-      } else if (isOnAuthPage) {
+      } else {
         setUserInfo(null);
       }
     };
