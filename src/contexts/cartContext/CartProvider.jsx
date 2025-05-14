@@ -28,8 +28,16 @@ export default function CartProvider({ children }) {
   async function addToCart(menuId) {
     try {
       setIsLoading(true);
+
       const response = await axiosInstance.post(`/users/me/cart/${menuId}`);
-      setCart([...cart, response.item]);
+      const item = cart.find((item) => item.menuId === menuId);
+
+      if (item) {
+        console.log(item);
+        console.log(item.quantity);
+      }
+
+      setCart(response.data.cart);
     } catch (error) {
       setMessage(error.message);
     } finally {
@@ -40,7 +48,12 @@ export default function CartProvider({ children }) {
   async function updateCartItem(itemId, quantity) {
     try {
       setIsLoading(true);
-      await axiosInstance.patch(`/users/me/cart/item/${itemId}`, { quantity });
+      const response = await axiosInstance.patch(
+        `/users/me/cart/item/${itemId}`,
+        { quantity }
+      );
+      console.log("do!!");
+      setCart(response.data.cart);
       getCart();
     } catch (error) {
       setMessage(error.message);
@@ -55,7 +68,7 @@ export default function CartProvider({ children }) {
       const response = await axiosInstance.delete(
         `/users/me/cart/item/${itemId}`
       );
-      setCart(response.cart);
+      setCart(response.data.cart);
     } catch (error) {
       setMessage(error.message);
     } finally {

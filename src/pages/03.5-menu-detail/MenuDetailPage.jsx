@@ -1,18 +1,22 @@
-import React, { useEffect } from "react";
-import { menus } from "../../utils/data/menus.js";
+import { useEffect } from "react";
 import Breadcrumbs from "../../components/shared-component/Breadcrumbs.jsx";
 import MenuDetailCard from "./components/MenuDetailCard.jsx";
 import ReviewSection from "./components/ReviewSection.jsx";
 import { useParams } from "react-router";
+import { useMenuCardContext } from "../../contexts/menuCardContext/menuCardProvider.jsx";
 
 export default function MenuDetailPage() {
+  const { menus } = useMenuCardContext();
   const { menuSlugId } = useParams();
   const menuId = menuSlugId.split("-").at(-1);
-  const menu = menus.find((menuItem) => menuItem.id === menuId);
+  const menu = menus.find((menuItem) => menuItem._id === menuId);
 
   let recommendedDishes;
   if (menu) {
-    recommendedDishes = menus.filter((menuItem) => menuItem.category === menu.category && menuItem.id !== menu.id);
+    recommendedDishes = menus.filter(
+      (menuItem) =>
+        menuItem.category === menu.category && menuItem._id !== menu._id
+    );
   }
 
   useEffect(() => {

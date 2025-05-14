@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../components/01c-landing-page/swiper-assets/swiper-bundle.min.css";
 import {
@@ -9,11 +9,13 @@ import {
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
+import useCartContext from "../../contexts/cartContext/useCartContext";
 
 const FarmFreshMenus = () => {
   const [menus, setMenus] = useState([]);
   const [likedItems, setLikedItems] = useState({});
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCartContext();
 
   const tagOrder = ["Hot", "10% off", "New"];
 
@@ -97,7 +99,7 @@ const FarmFreshMenus = () => {
         >
           {menus.map((menu, index) => (
             <SwiperSlide key={index}>
-              <div className="w-[290px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-4 cursor-pointer">
+              <div className="w-[290px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-4">
                 <div className="flex items-center justify-between">
                   <p
                     className={`px-4 py-1 rounded-full text-small-size text-white cursor-pointer ${
@@ -124,7 +126,7 @@ const FarmFreshMenus = () => {
                   />
                 </div>
 
-                <Link to={`/menus/${menu.slug}-${menu.id}`}>
+                <Link to={`/menus/${menu.slug}-${menu._id}`}>
                   <div className="w-full h-[160px] overflow-hidden rounded-[18px]">
                     <img
                       className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
@@ -147,29 +149,15 @@ const FarmFreshMenus = () => {
                   </div>
                 )}
 
-                  {menu.tags?.en && (
-                    <div className="flex text-[10px] items-center gap-1 mt-4">
-                      {menu.tags.en.slice(0, 3).map((tag, idx) => (
-                        <p
-                          key={idx}
-                          className="text-fourth border-fourth border-1 px-2 py-[2px] rounded-full hover:bg-fourth hover:text-white transition-all duration-200 ease-out cursor-pointer"
-                        >
-                          {tag}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="flex flex-col mt-3">
-                    <p className="text-small-size text-primary font-medium">
-                      {menu.category}
-                    </p>
-
+                <div className="flex flex-col mt-3">
+                  <p className="text-small-size text-primary font-medium">
+                    {menu.category}
+                  </p>
+                  <Link to={`/menus/${menu.slug}-${menu._id}`}>
                     <h3 className="font-semibold text-third leading-tight text-normal-size">
                       {menu.name}
                     </h3>
                   </Link>
-
                   <div className="flex items-center gap-1 mt-1 text-fourth">
                     <RiStarFill />
                     <RiStarFill />
@@ -186,7 +174,7 @@ const FarmFreshMenus = () => {
                     {menu.price} <span>THB</span>
                   </p>
                   <div
-                    // onClick={() => addToCart(menu._id)}
+                    onClick={() => addToCart(menu._id)}
                     className="bg-primary p-3 rounded-full hover:bg-third transition-all duration-200 ease-out cursor-pointer hover:rotate-8"
                   >
                     <RiShoppingBag3Fill className="text-medium-size text-white" />
