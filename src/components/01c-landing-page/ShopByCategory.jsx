@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import {
@@ -6,11 +6,12 @@ import {
   RiArrowRightSLine,
   RiShoppingBag3Fill,
 } from "react-icons/ri";
-import { menus } from "../../utils/data/menus";
 import { Link } from "react-router";
+import axiosInstance from "../../utils/axiosInstance.js";
 
 const ShopByCategory = () => {
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const [menus, setMenus] = useState([]);
 
   const handlePrevClick = () => {
     if (swiperInstance) swiperInstance.slidePrev();
@@ -20,16 +21,35 @@ const ShopByCategory = () => {
     if (swiperInstance) swiperInstance.slideNext();
   };
 
-  const firstMenusByCategory = [];
+  useEffect(() => {
+    const fetchMenus = async () => {
+      try {
+        const response = await axiosInstance.get("/menus");
 
-  const seenCategories = new Set();
+        const allMenus = response.data.menus;
+        if (!Array.isArray(allMenus)) {
+          throw new Error("Menus data is not an array");
+        }
 
-  for (const menu of menus) {
-    if (!seenCategories.has(menu.category)) {
-      firstMenusByCategory.push(menu);
-      seenCategories.add(menu.category);
-    }
-  }
+        const seenCategories = new Set();
+        const uniqueMenus = [];
+
+        for (const menu of allMenus) {
+          if (!seenCategories.has(menu.category)) {
+            uniqueMenus.push(menu);
+            seenCategories.add(menu.category);
+          }
+          if (uniqueMenus.length === 8) break;
+        }
+
+        setMenus(uniqueMenus);
+      } catch (error) {
+        console.error("Failed to fetch menus:", error);
+      }
+    };
+
+    fetchMenus();
+  }, []);
 
   const cardData = [
     {
@@ -59,18 +79,17 @@ const ShopByCategory = () => {
                 Shop By Category
               </h2>
               <div className="flex gap-3 lg:hidden max-[461px]:gap-1">
-                <button className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer">
-                  <RiArrowLeftSLine
-                    onClick={handleNextClick}
-                    className="text-white text-normal-size"
-                  />
+                <button
+                  className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer"
+                  onClick={handlePrevClick}
+                >
+                  <RiArrowLeftSLine className="text-white text-normal-size" />
                 </button>
-
-                <button className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer">
-                  <RiArrowRightSLine
-                    onClick={handlePrevClick}
-                    className="text-white text-normal-size"
-                  />
+                <button
+                  className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer"
+                  onClick={handleNextClick}
+                >
+                  <RiArrowRightSLine className="text-white text-normal-size" />
                 </button>
               </div>
             </div>
@@ -98,7 +117,7 @@ const ShopByCategory = () => {
             },
           }}
         >
-          {firstMenusByCategory.map(({ category, imageUrl }, index) => (
+          {menus.map(({ category, imageUrl }, index) => (
             <SwiperSlide key={index} className="text-center cursor-pointer">
               <Link
                 to={"/menus"}
@@ -106,12 +125,14 @@ const ShopByCategory = () => {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               >
-                <img
-                  className="w-full rounded-[32px] mb-3 max-[390px]:rounded-[24px]"
-                  src={imageUrl}
-                  alt={category}
-                  loading="lazy"
-                />
+                <div className="relative overflow-hidden w-full rounded-[32px] mb-3 max-[390px]:rounded-[24px]">
+                  <img
+                    className="w-full transition-transform duration-300 hover:scale-110"
+                    src={imageUrl}
+                    alt={category}
+                    loading="lazy"
+                  />
+                </div>
                 <p className="text-small-size font-semibold text-third">
                   {category}
                 </p>
