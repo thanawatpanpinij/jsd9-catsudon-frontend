@@ -133,6 +133,19 @@ const FarmFreshMenus = () => {
                       loading="lazy"
                     />
                   </div>
+                </Link>
+                {menu.tags?.en && (
+                  <div className="flex text-[10px] items-center gap-1 mt-4">
+                    {menu.tags.en.slice(0, 3).map((tag, index) => (
+                      <p
+                        key={index}
+                        className="text-fourth border-fourth border-1 px-2 py-[2px] rounded-full hover:bg-fourth hover:text-white transition-all duration-200 ease-out cursor-pointer"
+                      >
+                        {tag}
+                      </p>
+                    ))}
+                  </div>
+                )}
 
                   {menu.tags?.en && (
                     <div className="flex text-[10px] items-center gap-1 mt-4">
@@ -151,30 +164,34 @@ const FarmFreshMenus = () => {
                     <p className="text-small-size text-primary font-medium">
                       {menu.category}
                     </p>
+
                     <h3 className="font-semibold text-third leading-tight text-normal-size">
                       {menu.name}
                     </h3>
-                    <div className="flex items-center gap-1 mt-1 text-fourth">
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarFill />
-                      <RiStarLine />
-                      <p className="text-third text-small-size font-semibold">
-                        {menu.rating ? `(${menu.rating})` : "(4.98)"}
-                      </p>
-                    </div>
-                  </div>
+                  </Link>
 
-                  <div className="flex items-center justify-between mt-2">
-                    <p className="text-third text-medium-size font-semibold">
-                      {menu.price} <span>THB</span>
+                  <div className="flex items-center gap-1 mt-1 text-fourth">
+                    <RiStarFill />
+                    <RiStarFill />
+                    <RiStarFill />
+                    <RiStarFill />
+                    <RiStarLine />
+                    <p className="text-third text-small-size font-semibold">
+                      {menu.rating ? `(${menu.rating})` : "(4.98)"}
                     </p>
-                    <div className="bg-primary p-3 rounded-full hover:bg-third transition-all duration-200 ease-out cursor-pointer hover:rotate-8">
-                      <RiShoppingBag3Fill className="text-medium-size text-white" />
-                    </div>
                   </div>
-                </Link>
+                </div>
+                <div className="flex items-center justify-between mt-2">
+                  <p className="text-third text-medium-size font-semibold">
+                    {menu.price} <span>THB</span>
+                  </p>
+                  <div
+                    // onClick={() => addToCart(menu._id)}
+                    className="bg-primary p-3 rounded-full hover:bg-third transition-all duration-200 ease-out cursor-pointer hover:rotate-8"
+                  >
+                    <RiShoppingBag3Fill className="text-medium-size text-white" />
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
           ))}
