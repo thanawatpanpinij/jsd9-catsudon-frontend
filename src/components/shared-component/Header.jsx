@@ -324,7 +324,7 @@ const Header = () => {
                   to="/"
                   onClick={() => {
                     setActiveSection("home");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.scrollTo({ top: 0 });
                   }}
                   className={() =>
                     `transition-all duration-300 ease hover:bg-secondary hover:text-white px-5 py-1 rounded-full ${

@@ -10,7 +10,7 @@ import ContactUs from "../../components/01c-landing-page/ContactUs";
 import ClientReviews from "../../components/01c-landing-page/client-reviews/ClientReviews";
 
 export default function Home() {
-  const location = useLocation(); 
+  const location = useLocation();
 
   useEffect(() => {
     document.title = "CalNoy | Home";
