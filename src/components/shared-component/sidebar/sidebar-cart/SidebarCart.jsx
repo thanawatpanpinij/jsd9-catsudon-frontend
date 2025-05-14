@@ -10,12 +10,14 @@ export default function SidebarCart() {
   const sidebarCartRef = useRef();
   const { showSidebarCart, setShowSidebarCart, cartRef, mobileCartRef } =
     useContext(SidebarCartContext);
+
   const totalPrice =
     !cart || !cart.length
       ? 0
       : cart.reduce((total, menu) => (total += menu.price * menu.quantity), 0);
 
   const item = !cart || !cart.length ? "item" : "items";
+
   useEffect(() => {
     function handleClickOutside(e) {
       const target = e.target;
@@ -55,7 +57,7 @@ export default function SidebarCart() {
           </p>
         </div>
         <section className="overflow-y-auto grid gap-4 py-8">
-          {cart ? (
+          {cart && cart.length > 0 ? (
             cart.map((menu) => (
               <CartItem
                 key={menu.menuId}

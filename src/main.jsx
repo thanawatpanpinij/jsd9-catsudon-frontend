@@ -12,13 +12,13 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <UserProvider>
       <CartProvider>
-  <MenuCardProvider>
-        <SidebarFavProvider>
-          <SidebarCartProvider>
-            <App />
-          </SidebarCartProvider>
-        </SidebarFavProvider>
-  </MenuCardProvider>
+        <MenuCardProvider>
+          <SidebarFavProvider>
+            <SidebarCartProvider>
+              <App />
+            </SidebarCartProvider>
+          </SidebarFavProvider>
+        </MenuCardProvider>
       </CartProvider>
     </UserProvider>
   </StrictMode>

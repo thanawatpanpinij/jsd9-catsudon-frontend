@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { menuCardContext } from "../menuCardContext/menuCardContext";
 import axiosInstance from "../../utils/axiosInstance";
 
 export default function MenuCardProvider({ children }) {
   const [menus, setMenus] = useState([]);
 
-  const getMenuAll = async () => {
+  const getMenus = async () => {
     try {
       const res = await axiosInstance.get("/menus");
       setMenus(res.data.menus);
@@ -15,7 +15,7 @@ export default function MenuCardProvider({ children }) {
   };
 
   useEffect(() => {
-    getMenuAll();
+    getMenus();
   }, []);
 
   return (

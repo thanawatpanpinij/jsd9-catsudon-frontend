@@ -42,7 +42,7 @@ export default function MyCartLists({
             <button
               aria-label="Remove item from cart"
               onClick={() => deleteCartItem(itemId)}
-              className="cursor-pointer mr-2 text-secondary text-xl"
+              className="cursor-pointer mx-2 text-secondary text-xl"
             >
               <GoTrash />
             </button>
