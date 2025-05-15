@@ -12,7 +12,7 @@ const MenuCard = ({ menu }) => {
   };
 
   return (
-    <div className="w-[290px] rounded-[32px] border-[1.5px] p-5 border-gray-300  bg-white relative ">
+    <div className="w-[300px] rounded-[32px] border-[1.5px] p-5 border-gray-300  bg-white relative ">
       {/* Top row: Hot label + Heart icon */}
       <div className="flex justify-between items-center mb-3">
         <div className="bg-[var(--color-secondary)] text-white text-sm px-3 py-0.5 rounded-full">
@@ -61,7 +61,7 @@ const MenuCard = ({ menu }) => {
 
       {/* Title */}
       <Link to={`${slug}-${_id}`}>
-        <div className="text-black font-semibold text-normal-size  text-lg mb-2 line-clamp-2 overflow-hidden min-h-[3.5rem]">
+        <div className="text-black font-semibold text-normal-size  text-lg mb-2 line-clamp-2 overflow-hidden py-1.5 w-[15ch] ">
           {name}
         </div>
       </Link>
