@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { IoIosHeart } from "react-icons/io";
 import { Link } from "react-router";
+import useCartContext from "../../contexts/cartContext/useCartContext";
 
 const MenuCard = ({ menu }) => {
-  const { id, name, slug, price, imageUrl, tags, dietary } = menu;
+  const { _id, name, slug, price, imageUrl, tags, dietary } = menu;
   const [liked, setLiked] = useState(false);
+  const { addToCart } = useCartContext();
 
   const toggleLike = () => {
     setLiked(!liked);
   };
 
   return (
-    <div className="w-[290px] rounded-[32px] border-[1.5px] p-5 border-gray-300  bg-white relative ">
+    <div className="w-[300px] rounded-[32px] border-[1.5px] p-5 border-gray-300  bg-white relative ">
       {/* Top row: Hot label + Heart icon */}
       <div className="flex justify-between items-center mb-3">
         <div className="bg-[var(--color-secondary)] text-white text-sm px-3 py-0.5 rounded-full">
@@ -28,7 +30,7 @@ const MenuCard = ({ menu }) => {
       </div>
 
       {/* Image */}
-      <Link to={`${slug}-${id}`}>
+      <Link to={`${slug}-${_id}`}>
         <div className="w-full h-[160px]  bg-gray-100 rounded-[18px] flex items-center justify-center text-sm text-gray-600 overflow-hidden  ">
           <img
             src={imageUrl}
@@ -41,7 +43,6 @@ const MenuCard = ({ menu }) => {
       {/* Tags */}
       <div className="flex gap-1 mt-3 mb-2">
         {tags?.en.slice(0, 3).map((tag) => (
-
           <span
             key={tag}
             className="flex justify-center border border-orange-500 text-orange-500 text-[10px] px-1.5 py-0.5 rounded-full whitespace-nowrap"
@@ -52,11 +53,17 @@ const MenuCard = ({ menu }) => {
       </div>
 
       {/* Dietary Label */}
-      {dietary?.[0] && <div className="text-green-600 text-sm  font-medium mt-3 mb-1">{dietary[0].replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase())}</div>}
+      {dietary?.[0] && (
+        <div className="text-green-600 text-sm  font-medium mt-3 mb-1">
+          {dietary[0]
+            .replace("-", " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase())}
+        </div>
+      )}
 
       {/* Title */}
-      <Link to={`${slug}-${id}`}>
-        <div className="text-black font-semibold text-normal-size  text-lg mb-2 line-clamp-2 overflow-hidden min-h-[3.5rem]">
+      <Link to={`${slug}-${_id}`}>
+        <div className="text-black font-semibold text-normal-size  text-lg mb-2 line-clamp-2 overflow-hidden py-1.5 w-[15ch] ">
           {name}
         </div>
       </Link>
@@ -72,7 +79,11 @@ const MenuCard = ({ menu }) => {
         <span className="text-black font-semibold text-medium-size ">
           {price}.00 THB
         </span>
-        <button className="bg-[var(--color-primary)] hover:bg-green-900  hover:rotate-6 text-white p-2 w-10 h-10 rounded-full text-lg flex items-center justify-center">
+        <button
+          aria-label="Add to cart"
+          onClick={() => addToCart(_id)}
+          className="cursor-pointer bg-[var(--color-primary)] hover:bg-green-900  hover:rotate-6 text-white p-2 w-10 h-10 rounded-full text-lg flex items-center justify-center"
+        >
           <RiShoppingBag3Fill className="w-10 h-10" />
         </button>
       </div>

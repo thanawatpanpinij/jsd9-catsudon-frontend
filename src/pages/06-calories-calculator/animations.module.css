@@ -1,0 +1,29 @@
+.slideIn {
+  animation: slide-in 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slideOut {
+  animation: slide-out 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slide-in {
+  from {
+    right: -120px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    right: 0;
+    opacity: 1;
+  }
+  to {
+    right: -549.59px;
+    opacity: 0;
+  }
+}

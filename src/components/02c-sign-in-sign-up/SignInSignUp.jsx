@@ -14,8 +14,9 @@ import {
 } from "react-icons/ri";
 import axiosInstance from "../../utils/axiosInstance.js";
 import { validateEmail } from "../../utils/helper";
+import useCartContext from "../../contexts/cartContext/useCartContext.jsx";
 
-const SignInSignUp = () => {
+const SignInSignUp = ({ setAction }) => {
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -27,14 +28,18 @@ const SignInSignUp = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
+  const { getCart } = useCartContext();
+
   const navigate = useNavigate();
 
   const togglePassword = () => setShowPassword((prev) => !prev);
   const handleSignUpClick = () => {
     setIsActive(true);
+    setAction("Sign up");
   };
   const handleSignInClick = () => {
     setIsActive(false);
+    setAction("Sign in");
   };
 
   const handleSignIn = async (e) => {
@@ -66,6 +71,7 @@ const SignInSignUp = () => {
         setEmailOrUsername("");
         setPassword("");
         navigate("/");
+        getCart();
       } else {
         setError({
           general: "Login successful, but an unexpected response was received.",

@@ -12,18 +12,27 @@ import EditInformationPage from "./pages/08-edit-information/EditInformationPage
 import DashboardPage from "./pages/09-dashboard/DashboardPage.jsx";
 import AboutUsPage from "./pages/05-about-us/AboutUsPage.jsx";
 import AddressProvider from "./contexts/addressContext/AddressProvider.jsx";
+import CaloriesCalculatorProvider from "./pages/06-calories-calculator/context/CaloriesCalculatorProvider.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: Layout,
+    element: <Layout />,
+    // errorElement: NotFoundPage,
     children: [
-      { index: true, Component: Home },
-      { path: "/menus", Component: MenusPage },
-      { path: "/menus/:menuSlugId", Component: MenuDetailPage },
-      { path: "/calories-calculator", Component: CaloriesCalculatorPage },
-      { path: "/blog", Component: BlogPage },
-      { path: "/blog/blog-detail", Component: BlogDetail },
+      { index: true, element: <Home /> },
+      { path: "/menus", element: <MenusPage /> },
+      { path: "/menus/:menuSlugId", element: <MenuDetailPage /> },
+      {
+        path: "/calories-calculator",
+        element: (
+          <CaloriesCalculatorProvider>
+            <CaloriesCalculatorPage />
+          </CaloriesCalculatorProvider>
+        ),
+      },
+      { path: "/blog", element: <BlogPage /> },
+      { path: "/blog/:blogSlugId", element: <BlogDetail /> },
       {
         path: "/checkout",
         element: (
@@ -33,18 +42,18 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/edit-information",
+        path: "/edit-address",
         element: (
           <AddressProvider>
             <EditInformationPage />
           </AddressProvider>
         ),
       },
-      { path: "/dashboard", Component: DashboardPage },
-      { path: "/about-us", Component: AboutUsPage },
+      { path: "/dashboard", element: <DashboardPage /> },
+      { path: "/about-us", element: <AboutUsPage /> },
     ],
   },
-  { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },
+  { path: "/sign-in-and-sign-up", element: <SignInAndSignUpPage /> },
 ]);
 
 function App() {

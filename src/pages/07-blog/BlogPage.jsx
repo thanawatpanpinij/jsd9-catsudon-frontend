@@ -1,8 +1,12 @@
-import React from "react";
+import { useEffect } from "react";
 import Blog from "../../components/07c-blog/Blog";
 import { blogs } from "../../utils/data/blogs";
 
 const BlogPage = () => {
+  useEffect(() => {
+    document.title = `CalNoy | Health Blog`;
+  }, []);
+
   return (
     <div className="w-full px-[32px] max-w-[1440px] mx-auto py-12">
       {/* Highlight Blog และ Sidebar */}
