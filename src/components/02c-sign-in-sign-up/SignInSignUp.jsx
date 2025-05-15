@@ -123,7 +123,6 @@ const SignInSignUp = ({ setAction }) => {
 
     setError({});
 
-    //SignUp API Call
     try {
       const response = await axiosInstance.post("/auth/create-accounts", {
         username,

@@ -91,7 +91,7 @@ const FarmFreshMenus = () => {
 
       <div className="overflow-hidden">
         <Swiper
-          className="w-[1850px] h-full"
+          className="w-[1900px] h-full"
           slidesPerView={6}
           spaceBetween={0}
           loop={true}
@@ -99,7 +99,7 @@ const FarmFreshMenus = () => {
         >
           {menus.map((menu, index) => (
             <SwiperSlide key={index}>
-              <div className="w-[290px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-4">
+              <div className="w-[300px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-4">
                 <div className="flex items-center justify-between">
                   <p
                     className={`px-4 py-1 rounded-full text-small-size text-white cursor-pointer ${
@@ -137,7 +137,7 @@ const FarmFreshMenus = () => {
                   </div>
                 </Link>
                 {menu.tags?.en && (
-                  <div className="flex text-[10px] items-center gap-1 mt-4">
+                  <div className="flex text-[10px] items-center gap-1">
                     {menu.tags.en.slice(0, 3).map((tag, index) => (
                       <p
                         key={index}
@@ -149,7 +149,7 @@ const FarmFreshMenus = () => {
                   </div>
                 )}
 
-                <div className="flex flex-col mt-3">
+                <div className="flex flex-col">
                   <p className="text-small-size text-primary font-medium">
                     {menu.category}
                   </p>
@@ -169,7 +169,7 @@ const FarmFreshMenus = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center justify-between mt-2">
+                <div className="flex items-center justify-between">
                   <p className="text-third text-medium-size font-semibold">
                     {menu.price} <span>THB</span>
                   </p>
