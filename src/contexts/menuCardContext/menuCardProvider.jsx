@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../utils/axiosInstance";
+import axiosInstance from "../../utils/axiosInstance.js";
 import { MenuCardContext } from "./MenuCardContext.jsx";
 
 export default function MenuCardProvider({ children }) {
