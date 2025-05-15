@@ -10,5 +10,17 @@ export default function SidebarCartProvider({ children }) {
     setShowSidebarCart(!showSidebarCart);
   }
 
-  return <SidebarCartContext.Provider value={{ showSidebarCart, setShowSidebarCart, cartRef, mobileCartRef, handleClickCart }}>{children}</SidebarCartContext.Provider>;
+  return (
+    <SidebarCartContext.Provider
+      value={{
+        showSidebarCart,
+        setShowSidebarCart,
+        cartRef,
+        mobileCartRef,
+        handleClickCart,
+      }}
+    >
+      {children}
+    </SidebarCartContext.Provider>
+  );
 }
