@@ -14,15 +14,16 @@ export default function MyCartLists({
   quantity,
   imageUrl,
 }) {
-  const { updateCartItem, deleteCartItem } = useCartContext();
+  const { updateQuantity, deleteCartItem } = useCartContext();
   const [itemQuantity, setItemQuantity] = useState(quantity);
   const debouncedQuantity = useDebounce(itemQuantity, 500);
 
   useEffect(() => {
     if (debouncedQuantity !== quantity) {
-      updateCartItem(itemId, debouncedQuantity);
+      updateQuantity(itemId, debouncedQuantity);
     }
   }, [debouncedQuantity]);
+
   return (
     <>
       <article className="flex gap-4 p-4 border-[1.5px] border-bright-grey rounded-4xl shadow-[0_0_5px_0_rgba(0,0,0,0.1)]">
