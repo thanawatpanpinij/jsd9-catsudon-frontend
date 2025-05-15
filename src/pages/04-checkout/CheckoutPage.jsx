@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoneyBillWave, faCreditCard, faMobileAlt, faQrcode, faMapMarkerAlt, faPlusCircle, faTrashAlt, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
+import { Link } from "react-router";
 
 function CartItem({ item, updateQuantity, removeItem }) {
   return (
@@ -82,8 +84,10 @@ function PaymentMethodOption({ method, paymentMethod, setPaymentMethod }) {
   );
 }
 
+
 export default function CheckoutPage() {
-  const [address, setAddress] = useState(null);
+  
+  const [address, setAddress] = useState(null); //address
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const [discountCodeInput, setDiscountCodeInput] = useState("");
   const [appliedCodes, setAppliedCodes] = useState([]);
@@ -95,8 +99,8 @@ export default function CheckoutPage() {
   };
 
   const [cart, setCart] = useState([
-    { id: 1, name: "Avocado & Egg Bowl", price: 120, quantity: 2, image: "avocado_bowl.jpg" },
-    { id: 2, name: "Banana Pancakes", price: 85, quantity: 1, image: "banana_pancakes.jpg" },
+    { id: 1, name: "Avocado & Egg Bowl", price: 120, quantity: 2, image: "avocado_bowl.jpg", productId: '60a7b0c2a1b2c3d4e5f6a7b8' },
+    { id: 2, name: "Banana Pancakes", price: 85, quantity: 1, image: "banana_pancakes.jpg", productId: '60a7b0c2a1b2c3d4e5f6a7b9' }, 
   ]);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -123,6 +127,8 @@ export default function CheckoutPage() {
     if (validCoupons.hasOwnProperty(code) && !appliedCodes.includes(code)) {
       setAppliedCodes((prev) => [...prev, code]);
       setDiscountCodeInput("");
+    } else {
+        console.log("Invalid or already applied discount code");
     }
   };
 
@@ -130,21 +136,81 @@ export default function CheckoutPage() {
     setAppliedCodes((prev) => prev.filter((code) => code !== codeToRemove));
   };
 
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+  const [orderError, setOrderError] = useState(null);
+  const [orderSuccess, setOrderSuccess] = useState(null);
+
+  const API_BASE_URL = 'http://localhost:3000/calnoy-api/v1';
+
+  const handlePlaceOrder = async () => {
+      if (!address || cart.length === 0 || isPlacingOrder) {
+          console.log("Cannot place order: Missing address, empty cart, or already processing.");
+          return;
+      }
+
+      setIsPlacingOrder(true);
+      setOrderError(null);
+      setOrderSuccess(null);
+
+      try {
+          const orderPayload = {
+              userId: 'STATIC_USER_ID_EXAMPLE',
+
+              items: cart.map(item => ({
+                  productId: item.productId,
+                  quantity: item.quantity,
+                  price: item.price 
+              })),
+
+              totalAmount: finalTotal,
+              shippingAddress: address,
+              paymentMethod: paymentMethod,
+              discountCodes: appliedCodes
+          };
+
+          console.log("Sending order payload:", orderPayload);
+
+          const response = await axios.post(`${API_BASE_URL}/orders`, orderPayload);
+
+          console.log('Order created successfully:', response.data);
+          setOrderSuccess(response.data);
+
+          alert('Order placed successfully!');
+
+      } catch (err) {
+          console.error('Error placing order:', err.response ? err.response.data : err.message);
+
+          if (err.response) {
+              setOrderError(err.response.data);
+          } else if (err.request) {
+              setOrderError({ message: 'No response from server. Please try again later.' });
+          } else {
+              setOrderError({ message: err.message || 'An unexpected error occurred.' });
+          }
+
+      } finally {
+          setIsPlacingOrder(false);
+      }
+  };
+
   return (
     <main className="max-w-[1440px] mx-auto mb-16 px-8">
       <h1 className="text-2xl font-semibold mt-14 mb-4">Checkout</h1>
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-16">
         <div className="space-y-8">
-          <div className="bg-white rounded-lg shadow-sm">
+          
+            <div className="bg-white rounded-lg shadow-sm">
             <div className="flex flex-col lg:flex-row gap-4 p-5">
               <div className="border bg-[#F8F8F8] border-gray-100 rounded-lg p-6 flex-1 text-center flex flex-col items-center justify-between">
                 <h3 className="text-sm font-semibold mb-3">{address ? "Delivery Address" : "No address saved"}</h3>
                 <FontAwesomeIcon icon={faMapMarkerAlt} size="2x" className="text-gray-400 mb-2" />
                 <p className="text-xs text-gray-600 mb-4">Add an address or select a saved address</p>
+                <Link to={"/edit-information"}>
                 <button className="w-full py-2 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 cursor-pointer transition">
                   <FontAwesomeIcon icon={faPlusCircle} className="mr-1" />
                   Add new locations
                 </button>
+                </Link>
               </div>
               <div className="border border-gray-100 rounded-lg p-4 flex-1">
                 <div className="flex justify-between items-center mb-3">
@@ -162,6 +228,7 @@ export default function CheckoutPage() {
               </div>
             </div>
           </div>
+        
 
           <div className="bg-white rounded-lg shadow-sm p-5">
             <div className="flex items-center mb-3">
@@ -183,10 +250,11 @@ export default function CheckoutPage() {
               ))}
             </div>
           </div>
+
         </div>
 
         <div className="space-y-8">
-          <div className="bg-white rounded-lg shadow-sm p-5">
+           <div className="bg-white rounded-lg shadow-sm p-5">
             <h3 className="text-sm font-semibold mb-1">Discount Code</h3>
             <p className="text-xs text-gray-600 mb-2">Have a coupon? Apply it below.</p>
             <div className="flex gap-2 mb-2">
@@ -213,6 +281,7 @@ export default function CheckoutPage() {
             </div>
           </div>
 
+
           <div className="bg-white rounded-lg shadow-sm p-5">
             <h3 className="text-sm font-semibold mb-4">Order Summary</h3>
             <div className="flex justify-between text-sm font-semibold text-gray-700 mb-2">
@@ -237,15 +306,37 @@ export default function CheckoutPage() {
               <span>Total:</span>
               <span>{finalTotal} THB</span>
             </div>
+            
             <button
+              onClick={handlePlaceOrder}
               className={`w-full py-3 rounded-full text-sm font-semibold transition ${
-                !address || cart.length === 0 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-green-600 text-white hover:bg-green-700 cursor-pointer"
+                !address || cart.length === 0 || isPlacingOrder
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-green-600 text-white hover:bg-green-700 cursor-pointer"
               }`}
-              disabled={!address || cart.length === 0}
+              disabled={!address || cart.length === 0 || isPlacingOrder}
             >
-              Place Order
+              {isPlacingOrder ? "Processing Order..." : "Place Order"}
             </button>
-            {(!address || cart.length === 0) && <p className="text-xs text-red-500 mt-2">Please add an address and make sure your cart is not empty.</p>}
+  
+            {isPlacingOrder && <p className="text-center text-blue-600 mt-2">Placing your order...</p>}
+            {orderError && (
+                <div className="text-red-500 mt-2">
+                    <p>Error placing order:</p>
+                    <p>{orderError.message || JSON.stringify(orderError)}</p>
+                </div>
+            )}
+             {orderSuccess && (
+                <div className="text-green-600 mt-2">
+                    <p>Order placed successfully!</p>
+                    <p>Order ID: {orderSuccess._id}</p>
+                    
+                </div>
+            )}
+
+            { {(!address || cart.length === 0) && !isPlacingOrder && <p className="text-xs text-red-500 mt-2">Please add an address and make sure your cart is not empty.</p>}}
+             
+
           </div>
         </div>
       </div>

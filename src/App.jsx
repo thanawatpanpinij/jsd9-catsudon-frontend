@@ -11,6 +11,7 @@ import CheckoutPage from "./pages/04-checkout/CheckoutPage.jsx";
 import EditInformationPage from "./pages/08-edit-information/EditInformationPage.jsx";
 import DashboardPage from "./pages/09-dashboard/DashboardPage.jsx";
 import AboutUsPage from "./pages/05-about-us/AboutUsPage.jsx";
+import AddressProvider from "./contexts/addressContext/AddressProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,8 +24,22 @@ const router = createBrowserRouter([
       { path: "/calories-calculator", Component: CaloriesCalculatorPage },
       { path: "/blog", Component: BlogPage },
       { path: "/blog/blog-detail", Component: BlogDetail },
-      { path: "/checkout", Component: CheckoutPage },
-      { path: "/edit-information", Component: EditInformationPage },
+      {
+        path: "/checkout",
+        element: (
+          <AddressProvider>
+            <CheckoutPage />
+          </AddressProvider>
+        ),
+      },
+      {
+        path: "/edit-information",
+        element: (
+          <AddressProvider>
+            <EditInformationPage />
+          </AddressProvider>
+        ),
+      },
       { path: "/dashboard", Component: DashboardPage },
       { path: "/about-us", Component: AboutUsPage },
     ],
