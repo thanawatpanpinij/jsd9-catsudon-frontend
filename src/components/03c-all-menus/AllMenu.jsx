@@ -4,7 +4,7 @@ import { LuListFilter } from "react-icons/lu";
 import { GiAchievement } from "react-icons/gi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { useMenuCardContext } from "../../contexts/menuCardContext/menuCardProvider";
+import { useMenuCardContext } from "../../contexts/menuCardContext/useMenuCardContext";
 
 const categoryMap = {
   clean: "Clean Eating",

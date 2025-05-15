@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const menuCardContext = createContext("");
+export const MenuCardContext = createContext("");
