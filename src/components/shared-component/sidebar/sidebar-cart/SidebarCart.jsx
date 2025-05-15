@@ -7,15 +7,17 @@ import useCartContext from "../../../../contexts/cartContext/useCartContext.jsx"
 
 export default function SidebarCart() {
   const { cart } = useCartContext();
-  const sidebarCartRef = useRef();
-  const item = !cart || !cart.length ? "item" : "items";
   const { showSidebarCart, setShowSidebarCart, cartRef, mobileCartRef } =
     useContext(SidebarCartContext);
+  const sidebarCartRef = useRef();
+  const totalQuantity = cart?.reduce(
+    (total, item) => (total += item.quantity),
+    0
+  );
 
   const totalPrice =
-    !cart || !cart.length
-      ? 0
-      : cart.reduce((total, menu) => (total += menu.price * menu.quantity), 0);
+    cart?.reduce((total, menu) => (total += menu.price * menu.quantity), 0) ||
+    0;
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -38,11 +40,11 @@ export default function SidebarCart() {
   return (
     <aside
       ref={sidebarCartRef}
-      className={`z-200 fixed top-[100.44px] ${
+      className={`z-200 fixed top-[100.44px] bottom-0 flex flex-col justify-between w-[min(100%,483px)] p-8 pt-0 bg-white transition-opacity duration-200 ${
         showSidebarCart
           ? "opacity-100 right-0 animate-[slide-in_0.4s_cubic-bezier(0.4,0,0.2,1)]"
           : "opacity-0 right-[-483px] animate-[slide-out_0.4s_cubic-bezier(0.4,0,0.2,1)]"
-      } bottom-0 flex flex-col justify-between w-[min(100%,483px)] p-8 pt-0 bg-white transition-opacity duration-200`}
+      }`}
     >
       <section className="flex flex-col overflow-hidden">
         <div className="flex justify-between items-end text-grey font-semibold">
@@ -52,7 +54,7 @@ export default function SidebarCart() {
             My cart
           </p>
           <p className={`transition-colors duration-200`}>
-            {!cart || !cart.length ? "0" : cart.length} {item}
+            {totalQuantity} {totalQuantity > 1 ? "items" : "item"}
           </p>
         </div>
         <section className="overflow-y-auto grid gap-4 py-8">

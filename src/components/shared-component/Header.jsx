@@ -244,13 +244,21 @@ const Header = () => {
                   <div
                     className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer"
                     ref={cartRef}
-                    onClick={handleClickCart}
+                    onClick={() =>
+                      location.pathname === "/checkout"
+                        ? undefined
+                        : handleClickCart()
+                    }
                   >
                     <RiShoppingBag3Fill className="text-xl" />
                   </div>
-                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    {!cart || !cart.length ? 0 : cart.length}
-                  </span>
+                  {!cart ||
+                    (cart.length === 0 ||
+                    location.pathname === "/checkout" ? null : (
+                      <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
+                        {!cart || cart.length === 0 ? 0 : cart.length}
+                      </span>
+                    ))}
                 </div>
 
                 <div className="relative">
@@ -261,18 +269,24 @@ const Header = () => {
                   >
                     <RiHeartFill className="text-xl" />
                   </div>
-                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    0
-                  </span>
+                  {/* {!cart ||
+                    (cart.length === 0 ? null : (
+                      <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
+                        0
+                      </span>
+                    ))} */}
                 </div>
 
                 <div className="relative">
                   <div className="bg-primary p-2 rounded-full text-white hover:text-gray-500 hover:bg-gray-300 transition-all duration-200 ease cursor-pointer">
                     <RiNotification4Fill className="text-xl" />
                   </div>
-                  <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                    9
-                  </span>
+                  {/* {!cart ||
+                    (cart.length === 0 ? null : (
+                      <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
+                        9
+                      </span>
+                    ))} */}
                 </div>
               </div>
               {!userInfo ? (

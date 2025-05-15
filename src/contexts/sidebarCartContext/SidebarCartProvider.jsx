@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { SidebarCartContext } from "./SidebarCartContext";
 
 export default function SidebarCartProvider({ children }) {

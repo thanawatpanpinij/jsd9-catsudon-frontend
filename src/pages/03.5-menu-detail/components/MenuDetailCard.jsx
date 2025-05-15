@@ -1,7 +1,9 @@
-import React from "react";
+import useCartContext from "../../../contexts/cartContext/useCartContext.jsx";
 import RecommendedDishCard from "./RecommendedDishCard.jsx";
 
 export default function MenuDetailCard({ menu, recommendedDishes }) {
+  const { addToCart } = useCartContext();
+
   return (
     <div
       className="
@@ -21,7 +23,11 @@ export default function MenuDetailCard({ menu, recommendedDishes }) {
           767px:w-[min(40%,437px)]"
         >
           <div className="overflow-hidden mb-8 rounded-4xl">
-            <img className="w-full object-cover transition-transform duration-200 hover:scale-[1.1]" src={menu.imageUrl} alt={menu.name} />
+            <img
+              className="w-full object-cover transition-transform duration-200 hover:scale-[1.1]"
+              src={menu.imageUrl}
+              alt={menu.name}
+            />
           </div>
           <section
             className="
@@ -31,7 +37,9 @@ export default function MenuDetailCard({ menu, recommendedDishes }) {
             1440px:grid-cols-4"
           >
             <div className="w-full border-r-2 border-primary">
-              <p className="text-center text-medium-size text-primary">{menu.nutrition.calories}</p>
+              <p className="text-center text-medium-size text-primary">
+                {menu.nutrition.calories}
+              </p>
               <p className="text-center text-dark-grey">Calories</p>
             </div>
             <div
@@ -41,15 +49,21 @@ export default function MenuDetailCard({ menu, recommendedDishes }) {
               767px:border-0
               1440px:border-r-2"
             >
-              <p className="text-center text-medium-size text-primary">{menu.nutrition.protein} g</p>
+              <p className="text-center text-medium-size text-primary">
+                {menu.nutrition.protein} g
+              </p>
               <p className="text-center text-dark-grey">Protein</p>
             </div>
             <div className="w-full border-r-2 border-primary">
-              <p className="text-center text-medium-size text-primary">{menu.nutrition.fat} g</p>
+              <p className="text-center text-medium-size text-primary">
+                {menu.nutrition.fat} g
+              </p>
               <p className="text-center text-dark-grey">Fat</p>
             </div>
             <div className="w-full ">
-              <p className="text-center text-medium-size text-primary">{menu.nutrition.carbohydrates} g</p>
+              <p className="text-center text-medium-size text-primary">
+                {menu.nutrition.carbohydrates} g
+              </p>
               <p className="text-center text-dark-grey">Carb</p>
             </div>
           </section>
@@ -73,12 +87,16 @@ export default function MenuDetailCard({ menu, recommendedDishes }) {
             </div>
             <div className="flex flex-wrap gap-4 items-center">
               <span className="text-heading03-size">{menu.price} THB</span>
-              <span className="px-4 py-2 text-base-size text-white font-medium bg-fourth round rounded-full">{menu.servingSize}</span>
+              <span className="px-4 py-2 text-base-size text-white font-medium bg-fourth round rounded-full">
+                {menu.servingSize}
+              </span>
             </div>
           </section>
           <section className="mb-4">{menu.description.en}</section>
           <section className="mb-4">
-            <h2 className="mb-2 text-third text-normal-size font-medium">INGREDIENTS</h2>
+            <h2 className="mb-2 text-third text-normal-size font-medium">
+              INGREDIENTS
+            </h2>
             <ol className="text-pretty">
               {menu.ingredients.en.map((ingredient, index) => (
                 <div key={index + 1} className="flex gap-1">
@@ -88,18 +106,28 @@ export default function MenuDetailCard({ menu, recommendedDishes }) {
               ))}
             </ol>
           </section>
-          <button className="cursor-pointer w-full px-6 py-4 bg-primary text-white rounded-full transition-colors duration-200 hover:bg-third">Add to Your Cart</button>
+          <button
+            onClick={() => addToCart(menu._id)}
+            className="cursor-pointer w-full px-6 py-4 bg-primary text-white rounded-full transition-colors duration-200 hover:bg-third"
+          >
+            Add to Your Cart
+          </button>
         </section>
       </section>
       <section>
-        <h2 className="mb-8 text-third text-normal-size font-medium">RECOMMENDED DISHES</h2>
+        <h2 className="mb-8 text-third text-normal-size font-medium">
+          RECOMMENDED DISHES
+        </h2>
         <section
           className="
           767px:grid 767px:grid-cols-3 767px:gap-8
           1023px:grid-cols-2"
         >
           {recommendedDishes.map((recommendedDish) => (
-            <RecommendedDishCard key={recommendedDish.id} recommendedDish={recommendedDish} />
+            <RecommendedDishCard
+              key={recommendedDish._id}
+              recommendedDish={recommendedDish}
+            />
           ))}
         </section>
       </section>
