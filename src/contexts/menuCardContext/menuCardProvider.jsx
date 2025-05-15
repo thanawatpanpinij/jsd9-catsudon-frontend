@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
-import { MenuCardContext } from "./MenuCardContext";
+import { MenuCardContext } from "./MenuCardContext.jsx";
 
 export default function MenuCardProvider({ children }) {
   const [menus, setMenus] = useState([]);
