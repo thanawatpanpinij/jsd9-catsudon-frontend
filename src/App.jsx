@@ -11,25 +11,34 @@ import CheckoutPage from "./pages/04-checkout/CheckoutPage.jsx";
 import EditInformationPage from "./pages/08-edit-information/EditInformationPage.jsx";
 import DashboardPage from "./pages/09-dashboard/DashboardPage.jsx";
 import AboutUsPage from "./pages/05-about-us/AboutUsPage.jsx";
+import CaloriesCalculatorProvider from "./pages/06-calories-calculator/context/CaloriesCalculatorProvider.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: Layout,
+    element: <Layout />,
+    // errorElement: NotFoundPage,
     children: [
-      { index: true, Component: Home },
-      { path: "/menus", Component: MenusPage },
-      { path: "/menus/:menuSlugId", Component: MenuDetailPage },
-      { path: "/calories-calculator", Component: CaloriesCalculatorPage },
-      { path: "/blog", Component: BlogPage },
-      { path: "/blog/blog-detail", Component: BlogDetail },
-      { path: "/checkout", Component: CheckoutPage },
-      { path: "/edit-information", Component: EditInformationPage },
-      { path: "/dashboard", Component: DashboardPage },
-      { path: "/about-us", Component: AboutUsPage },
+      { index: true, element: <Home /> },
+      { path: "/menus", element: <MenusPage /> },
+      { path: "/menus/:menuSlugId", element: <MenuDetailPage /> },
+      {
+        path: "/calories-calculator",
+        element: (
+          <CaloriesCalculatorProvider>
+            <CaloriesCalculatorPage />
+          </CaloriesCalculatorProvider>
+        ),
+      },
+      { path: "/blog", element: <BlogPage /> },
+      { path: "/blog/:blogSlugId", element: <BlogDetail /> },
+      { path: "/checkout", element: <CheckoutPage /> },
+      { path: "/edit-information", element: <EditInformationPage /> },
+      { path: "/dashboard", element: <DashboardPage /> },
+      { path: "/about-us", element: <AboutUsPage /> },
     ],
   },
-  { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },
+  { path: "/sign-in-and-sign-up", element: <SignInAndSignUpPage /> },
 ]);
 
 function App() {
