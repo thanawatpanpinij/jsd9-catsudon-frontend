@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       { path: "/blog", element: <BlogPage /> },
       { path: "/blog/:blogSlugId", element: <BlogDetail /> },
       { path: "/checkout", element: <CheckoutPage /> },
-      { path: "/edit-information", element: <EditInformationPage /> },
+      { path: "/edit-address", element: <EditInformationPage /> },
       { path: "/dashboard", element: <DashboardPage /> },
       { path: "/about-us", element: <AboutUsPage /> },
     ],
