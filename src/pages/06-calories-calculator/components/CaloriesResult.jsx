@@ -5,7 +5,8 @@ import { LuCandy } from "react-icons/lu";
 import formatNumber from "../../../utils/formatNumber.js";
 import { IconContext } from "react-icons/lib";
 import { CaloriesCalculatorContext } from "../context/CaloriesCalculatorContext.jsx";
-import AnimatedCalories from "./AnimatedCalories.jsx";
+import animation from "../animations.module.css";
+// import AnimatedCalories from "./AnimatedCalories.jsx";
 
 export default function CaloriesResult() {
   const { state } = useContext(CaloriesCalculatorContext);
@@ -28,16 +29,45 @@ export default function CaloriesResult() {
   ];
   return (
     <section
-      className={`${
-        state.showResult ? "block opacity-100" : "hidden opacity-0"
-      } p-8 text-third bg-primary-background transition-discrete duration-200 1440px:w-[40%] 1440px:rounded-bl-[5rem]`}
+      className={`relative ${
+        state.showResult
+          ? `block right-0 opacity-100 ${animation.slideIn}`
+          : `hidden right-[-549.59px] opacity-0 ${animation.slideOut}`
+      } p-8 text-third bg-primary-background 1440px:w-[40%] 1440px:rounded-bl-[5rem]`}
     >
       <h2 className="mb-8 text-center text-[2rem] font-semibold">
         Your Daily Macro Goal
       </h2>
       <div className="mb-8 1440px:m-0">
         {/* <AnimatedCalories target={state.dailyCal} /> */}
-        <p className="text-heading02-size text-secondary text-center font-bold">
+        {/* <svg viewBox="0 0 500 260">
+          <circle
+            cx="250"
+            cy="130"
+            r="120"
+            stroke="var(--color-secondary)"
+            strokeWidth="15"
+            fillOpacity="0"
+            strokeLinecap="round"
+          />
+          <text
+            x="185"
+            y="130"
+            fill="var(--color-secondary)"
+            className="text-heading02-size font-bold"
+          >
+            {formatNumber(state.dailyCal)}
+          </text>
+          <text
+            x="225"
+            y="170"
+            fill="var(--color-third)"
+            className="text-medium-size"
+          >
+            kcal
+          </text>
+        </svg> */}
+        <p className="z-1 text-heading02-size text-secondary text-center font-bold">
           {formatNumber(state.dailyCal)}
         </p>
         <p className="text-third text-medium-size text-center">kcal</p>

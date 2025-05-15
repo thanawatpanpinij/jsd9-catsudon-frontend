@@ -16,11 +16,12 @@ import CaloriesCalculatorProvider from "./pages/06-calories-calculator/context/C
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: Layout,
+    element: <Layout />,
+    // errorElement: NotFoundPage,
     children: [
-      { index: true, Component: Home },
-      { path: "/menus", Component: MenusPage },
-      { path: "/menus/:menuSlugId", Component: MenuDetailPage },
+      { index: true, element: <Home /> },
+      { path: "/menus", element: <MenusPage /> },
+      { path: "/menus/:menuSlugId", element: <MenuDetailPage /> },
       {
         path: "/calories-calculator",
         element: (
@@ -29,32 +30,15 @@ const router = createBrowserRouter([
           </CaloriesCalculatorProvider>
         ),
       },
-      { path: "/blog", Component: BlogPage },
-      { path: "/blog/:blogSlugId", Component: BlogDetail },
-      { path: "/checkout", Component: CheckoutPage },
-      { path: "/edit-information", Component: EditInformationPage },
-      { path: "/dashboard", Component: DashboardPage },
-      { path: "/about-us", Component: AboutUsPage },
+      { path: "/blog", element: <BlogPage /> },
+      { path: "/blog/:blogSlugId", element: <BlogDetail /> },
+      { path: "/checkout", element: <CheckoutPage /> },
+      { path: "/edit-information", element: <EditInformationPage /> },
+      { path: "/dashboard", element: <DashboardPage /> },
+      { path: "/about-us", element: <AboutUsPage /> },
     ],
   },
-  { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },
-  {
-    path: "/",
-    Component: Layout,
-    children: [
-      { index: true, Component: Home },
-      { path: "/menus", Component: MenusPage },
-      { path: "/menus/:menuSlugId", Component: MenuDetailPage },
-      { path: "/calories-calculator", Component: CaloriesCalculatorPage },
-      { path: "/blog", Component: BlogPage },
-      { path: "/blog/blog-detail", Component: BlogDetail },
-      { path: "/checkout", Component: CheckoutPage },
-      { path: "/edit-information", Component: EditInformationPage },
-      { path: "/dashboard", Component: DashboardPage },
-      { path: "/about-us", Component: AboutUsPage },
-    ],
-  },
-  { path: "/sign-in-and-sign-up", Component: SignInAndSignUpPage },
+  { path: "/sign-in-and-sign-up", element: <SignInAndSignUpPage /> },
 ]);
 
 function App() {
