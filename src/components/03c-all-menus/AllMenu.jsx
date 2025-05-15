@@ -4,7 +4,7 @@ import { LuListFilter } from "react-icons/lu";
 import { GiAchievement } from "react-icons/gi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { useMenuCardContext } from "../../contexts/menuCardContext/menuCardProvider";
+import { useMenuCardContext } from "../../contexts/menuCardContext/useMenuCardContext";
 
 const categoryMap = {
   clean: "Clean Eating",
@@ -168,19 +168,19 @@ const AllMenus = () => {
   }, []);
 
   return (
-    <div className="bg-white min-h-screen font-poppins">
-      <div className="max-w-[1440px] px-[32px] mx-auto pt">
+    <div className="min-h-screen">
+      <div className="max-w-[1440px] px-[32px] mx-auto pt-3">
         {/* Banner */}
         <div
-          className="w-full h-[200px] flex items-center justify-start text-2xl font-bold text-gray-700 bg-cover bg-center px-8 rounded-2xl"
+          className="w-full h-[300px] flex items-center justify-start text-2xl font-bold text-gray-700 bg-cover bg-center px-8 rounded-2xl"
           style={{
             backgroundImage:
               "url('https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978192/005-salad-plate-on-right_yewv5d.avif')",
           }}
         >
           <div className="bg-white bg-opacity-70 px-4 py-2 rounded">
-            Explore <span className="text-orange-500 mx-2">Culinary</span>{" "}
-            Insights
+            Explore <span className="text-orange-500 mx-2">Healthy</span>{" "}
+            Flavors
           </div>
         </div>
 
@@ -247,13 +247,13 @@ const AllMenus = () => {
         </div>
 
         {/* Menu Grid */}
-        <div className="px-2 py-6">
+        <div className="px-2 py-6 overflow-x-hidden">
           {activeTab === "all" ? (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
+              <div className="flex flex-wrap justify-center gap-5 ">
                 {menus.map((menu) => (
-                  <div key={menu._id} className="">
-                    <MenuCard menu={menu} />
+                  <div key={menu._id} className=" w-[300px]">
+                    <MenuCard menu={menu} className="w-full" />
                   </div>
                 ))}
               </div>
@@ -272,17 +272,20 @@ const AllMenus = () => {
             </>
           ) : (
             <Swiper
-              spaceBetween={8}
-              slidesPerView={1.2}
+              spaceBetween={16}
+              loop={true}
+              // slidesPerView={1}
               breakpoints={{
-                640: { slidesPerView: 2.2 },
-                768: { slidesPerView: 3.2 },
-                1024: { slidesPerView: 4.4 },
+                320: { slidesPerView: 1 },
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
               }}
+              className="w-[1262px]"
             >
               {filteredMenus.map((menu) => (
                 <SwiperSlide key={menu.id}>
-                  <div className="">
+                  <div>
                     <MenuCard menu={menu} />
                   </div>
                 </SwiperSlide>

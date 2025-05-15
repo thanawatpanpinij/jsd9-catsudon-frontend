@@ -3,7 +3,7 @@ import Breadcrumbs from "../../components/shared-component/Breadcrumbs.jsx";
 import MenuDetailCard from "./components/MenuDetailCard.jsx";
 import ReviewSection from "./components/ReviewSection.jsx";
 import { useParams } from "react-router";
-import { useMenuCardContext } from "../../contexts/menuCardContext/menuCardProvider.jsx";
+import { useMenuCardContext } from "../../contexts/menuCardContext/useMenuCardContext.jsx";
 
 export default function MenuDetailPage() {
   const { menus } = useMenuCardContext();

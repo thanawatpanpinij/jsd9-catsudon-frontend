@@ -16,7 +16,7 @@ import axiosInstance from "../../utils/axiosInstance.js";
 import { validateEmail } from "../../utils/helper";
 import useCartContext from "../../contexts/cartContext/useCartContext.jsx";
 
-const SignInSignUp = () => {
+const SignInSignUp = ({ setAction }) => {
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -35,9 +35,11 @@ const SignInSignUp = () => {
   const togglePassword = () => setShowPassword((prev) => !prev);
   const handleSignUpClick = () => {
     setIsActive(true);
+    setAction("Sign up");
   };
   const handleSignInClick = () => {
     setIsActive(false);
+    setAction("Sign in");
   };
 
   const handleSignIn = async (e) => {

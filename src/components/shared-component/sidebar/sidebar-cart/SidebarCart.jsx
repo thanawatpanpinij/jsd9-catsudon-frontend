@@ -8,6 +8,7 @@ import useCartContext from "../../../../contexts/cartContext/useCartContext.jsx"
 export default function SidebarCart() {
   const { cart } = useCartContext();
   const sidebarCartRef = useRef();
+  const item = !cart || !cart.length ? "item" : "items";
   const { showSidebarCart, setShowSidebarCart, cartRef, mobileCartRef } =
     useContext(SidebarCartContext);
 
@@ -15,8 +16,6 @@ export default function SidebarCart() {
     !cart || !cart.length
       ? 0
       : cart.reduce((total, menu) => (total += menu.price * menu.quantity), 0);
-
-  const item = !cart || !cart.length ? "item" : "items";
 
   useEffect(() => {
     function handleClickOutside(e) {

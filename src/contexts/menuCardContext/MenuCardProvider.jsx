@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { menuCardContext } from "../menuCardContext/menuCardContext";
-import axiosInstance from "../../utils/axiosInstance";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../utils/axiosInstance.js";
+import { MenuCardContext } from "./MenuCardContext.jsx";
 
 export default function MenuCardProvider({ children }) {
   const [menus, setMenus] = useState([]);
@@ -19,10 +19,8 @@ export default function MenuCardProvider({ children }) {
   }, []);
 
   return (
-    <menuCardContext.Provider value={{ menus }}>
+    <MenuCardContext.Provider value={{ menus }}>
       {children}
-    </menuCardContext.Provider>
+    </MenuCardContext.Provider>
   );
 }
-
-export const useMenuCardContext = () => useContext(menuCardContext);

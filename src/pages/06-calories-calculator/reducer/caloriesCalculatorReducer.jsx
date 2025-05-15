@@ -1,6 +1,15 @@
-import { calculateBMR, calculateDailyCal, calculateNutrition, calculateTDEE, calculateTotalCalories, estimateDays, userGoal } from "../../../utils/caloriesCalculation";
+import {
+  calculateBMR,
+  calculateDailyCal,
+  calculateNutrition,
+  calculateTDEE,
+  calculateTotalCalories,
+  estimateDays,
+  userGoal,
+} from "../../../utils/caloriesCalculation";
 
 export const initialState = {
+  showResult: false,
   gender: "Male",
   age: "",
   weight: "",
@@ -22,6 +31,8 @@ export const initialState = {
 
 export default function caloriesCalculatorReducer(state, action) {
   switch (action.type) {
+    case "set_show_result":
+      return { ...state, showResult: action.payload };
     case "set_gender":
       return { ...state, gender: action.payload };
     case "set_age":
@@ -46,7 +57,10 @@ export default function caloriesCalculatorReducer(state, action) {
       const tdee = calculateTDEE(bmr, state.activityLevel);
       const goal = userGoal(state.weight, state.goalWeight);
       const dailyCal = calculateDailyCal(tdee, goal, state.intensity);
-      const totalCalories = calculateTotalCalories(Number(state.weight), Number(state.goalWeight));
+      const totalCalories = calculateTotalCalories(
+        Number(state.weight),
+        Number(state.goalWeight)
+      );
       const estimatedDays = estimateDays(Number(state.goalWeight), dailyCal);
       const nutrition = calculateNutrition(dailyCal, goal);
       return {
