@@ -15,7 +15,6 @@ const Footer = () => {
       <div className="max-w-[1440px] mx-auto">
         <footer className="bg-third text-white p-[40px] rounded-none lg:mx-[32px] lg:rounded-[32px]">
           <div className="flex flex-col md:flex-row justify-between gap-10">
-            {/* Contact Section */}
             <div>
               <div className="flex items-center gap-2 mb-[32px]">
                 <img
@@ -26,7 +25,7 @@ const Footer = () => {
               </div>
               <ul className="space-y-6 text-base md:text-small-size lg:text-base">
                 <li className="cursor-pointer hover:text-primary transition-all duration-200">
-                  <a 
+                  <a
                     className="flex items-center gap-2"
                     href="https://maps.app.goo.gl/7jVDUgNWEPRH5iQC8"
                     target="_blank"
@@ -47,7 +46,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Account */}
             <div>
               <h3 className="text-base font-semibold mb-5">Account</h3>
               <div className="flex flex-col space-y-5 text-base md:text-small-size lg:text-base">
@@ -72,7 +70,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/*Company */}
             <div>
               <h3 className="text-base font-semibold mb-5">Company</h3>
               <div className="flex flex-col space-y-5 text-base md:text-small-size lg:text-base">
@@ -103,9 +100,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* PaymentMethods/SocialIcons */}
             <div>
-              {/* Payment Methods */}
               <div>
                 <h3 className="text-base font-semibold mb-5">Payment</h3>
                 <ul className="flex gap-2 mb-10">
@@ -139,7 +134,6 @@ const Footer = () => {
                   </li>
                 </ul>
 
-                {/* Follow us */}
                 <div>
                   <h3 className="text-base font-semibold mb-5">Follow us</h3>
                   <ul className="flex gap-2">
@@ -162,12 +156,10 @@ const Footer = () => {
           </div>
         </footer>
 
-        {/* Copyright */}
         <div className="text-center text-small-size mt-6 mb-[115px] lg:mb-6 text-third">
           © 2025 CalNoy. All Rights Reserved
         </div>
       </div>
-      {/* Fixed TextScroller */}
       <div className="bottom-0 left-0 w-full z-50">
         <TextScroller />
       </div>

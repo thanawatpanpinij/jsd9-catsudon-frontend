@@ -61,7 +61,6 @@ const Header = () => {
     { icon: <RiNotification4Fill className="text-xl" />, count: 9 },
   ];
 
-  //Logout API Call
   const onLogout = async () => {
     try {
       await axiosInstance.post("/auth/logout");
@@ -75,7 +74,6 @@ const Header = () => {
     }
   };
 
-  // Get User Info
   const getUserInfo = async () => {
     try {
       const response = await axiosInstance.get("/auth/user-info");

@@ -70,7 +70,7 @@ const FreshFlavorful = () => {
       </div>
 
       <div className="w-full">
-        <div className="w-full flex gap-5 max-[577px]:gap-3">
+        <div className="w-full flex gap-5 max-[577px]:gap-3 max-[700px]:flex-col">
           <Swiper
             className="w-full"
             slidesPerView={1}
@@ -87,15 +87,15 @@ const FreshFlavorful = () => {
               pauseOnMouseEnter: false,
             }}
           >
-            {[ 
+            {[
               "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720550/001-fresh-flavoful_gpgwlj.jpg",
               "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720550/002-fresh-flavoful_pmqe8a.webp",
               "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978247/003-leaf-lettuce_q3d1qs.avif",
-              "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978248/004-cherry-tomatoes_yxzerl.avif"
+              "https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744978248/004-cherry-tomatoes_yxzerl.avif",
             ].map((src, index) => (
               <SwiperSlide key={index}>
                 <img
-                  className="w-full h-[464px] object-cover rounded-4xl max-[740px]:h-[344px] max-[558px]:h-[320px] max-[481px]:h-[308px] max-[472px]:h-[195px] max-[441px]:h-[176px] max-[356px]:h-[167px] max-[472px]:rounded-2xl max-[558px]:rounded-3xl"
+                  className="w-full h-[492px] max-[740px]:h-[474px] max-[700px]:h-[320px] object-cover rounded-4xl max-[472px]:rounded-2xl max-[558px]:rounded-3xl"
                   src={src}
                   loading="lazy"
                 />
@@ -103,21 +103,23 @@ const FreshFlavorful = () => {
             ))}
           </Swiper>
 
-          <div className="bg-secondary w-full h-fit rounded-4xl p-6 flex flex-col gap-4 max-[472px]:gap-2 max-[558px]:p-3 max-[472px]:p-2 max-[472px]:rounded-2xl max-[558px]:rounded-3xl">
+          <div className="bg-secondary w-full h-fit rounded-4xl p-5 flex flex-col gap-4 max-[472px]:rounded-2xl">
             {items.map((item, index) => (
               <div
                 key={index}
-                className={`item-container bg-white p-4 rounded-2xl flex flex-col transition-all duration-300 max-[740px]:p-2 max-[472px]:pr-1 max-[472px]:py-1 ${openIndex === index ? "gap-2" : "gap-0"}`}
+                className={`item-container bg-white p-4 max-[700px]:py-3 rounded-2xl flex flex-col transition-all duration-300 ${
+                  openIndex === index ? "gap-2" : "gap-0"
+                }`}
               >
                 <div
                   className="flex items-center justify-between text-third cursor-pointer"
                   onClick={() => handleToggle(index)}
                 >
-                  <h3 className="font-semibold max-[740px]:text-small-size max-[472px]:text-[10px] max-[441px]:text-[8px] max-[356px]:text-[7px]">
+                  <h3 className="font-semibold text-normal-size max-[740px]:text-[18px] max-[700px]:text-base max-[350px]:text-[15px] max-[330px]:text-sm">
                     {item.title}
                   </h3>
                   <RiArrowDownSLine
-                    className={`bg-gray-300 text-normal-size max-[481px]:text-[14.5px] max-[472px]:text-[10px] rounded-full text-white hover:bg-primary transition-all duration-300 transform ${
+                    className={`bg-gray-300 text-medium-size rounded-full text-white hover:bg-primary transition-all duration-300 transform ${
                       openIndex === index ? "rotate-180 bg-primary" : "rotate-0"
                     }`}
                   />
@@ -128,7 +130,7 @@ const FreshFlavorful = () => {
                     openIndex === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
-                  <div className="text-pretty text-small-size max-[472px]:text-[10px] max-[441px]:text-[8px] max-[356px]:text-[7px] text-gray-600 overflow-hidden">
+                  <div className="text-pretty text-small-size text-gray-600 overflow-hidden">
                     {item.description}
                   </div>
                 </div>
