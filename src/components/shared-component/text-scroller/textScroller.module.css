@@ -1,14 +1,15 @@
 .textScroller {
     display: flex;
-    align-items: center;
-    justify-content: center;
     white-space: nowrap;
-    min-width: 100%;
-    animation: scrollText 4s linear infinite;
+    animation: scrollText 75s linear infinite;
 }
 
 @keyframes scrollText {
-    to {
-        transform: translateX(-15%);
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
     }
 }

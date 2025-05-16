@@ -11,6 +11,7 @@ import CheckoutPage from "./pages/04-checkout/CheckoutPage.jsx";
 import EditInformationPage from "./pages/08-edit-information/EditInformationPage.jsx";
 import DashboardPage from "./pages/09-dashboard/DashboardPage.jsx";
 import AboutUsPage from "./pages/05-about-us/AboutUsPage.jsx";
+import AddressProvider from "./contexts/addressContext/AddressProvider.jsx";
 import CaloriesCalculatorProvider from "./pages/06-calories-calculator/context/CaloriesCalculatorProvider.jsx";
 
 const router = createBrowserRouter([
@@ -32,8 +33,22 @@ const router = createBrowserRouter([
       },
       { path: "/blog", element: <BlogPage /> },
       { path: "/blog/:blogSlugId", element: <BlogDetail /> },
-      { path: "/checkout", element: <CheckoutPage /> },
-      { path: "/edit-address", element: <EditInformationPage /> },
+      {
+        path: "/checkout",
+        element: (
+          <AddressProvider>
+            <CheckoutPage />
+          </AddressProvider>
+        ),
+      },
+      {
+        path: "/edit-address",
+        element: (
+          <AddressProvider>
+            <EditInformationPage />
+          </AddressProvider>
+        ),
+      },
       { path: "/dashboard", element: <DashboardPage /> },
       { path: "/about-us", element: <AboutUsPage /> },
     ],

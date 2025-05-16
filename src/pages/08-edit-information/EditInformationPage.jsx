@@ -1,11 +1,15 @@
 import { useEffect } from "react";
+import useAddressContext from "../../contexts/addressContext/useAddressContext";
 
 export default function EditCheckoutPage() {
+  const { addresses, setAddresses, getAddress } = useAddressContext();
+
   useEffect(() => {
     document.title = `CalNoy | Edit address`;
   }, []);
+
   return (
-    <div className="min-h-screen bg-gray-100 p-4 md:p-10">
+    <div className="max-w-[1440px] mx-auto p-4 md:p-10">
       <div className="flex items-center justify-center mb-9 space-x-2">
         <div className="flex items-center text-green-500">
           <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">

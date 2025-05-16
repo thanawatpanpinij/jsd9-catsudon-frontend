@@ -1,61 +1,69 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMoneyBillWave,
-  faCreditCard,
-  faMobileAlt,
-  faQrcode,
-  faMapMarkerAlt,
-  faPlusCircle,
-  faTrashAlt,
-  faShoppingCart,
-} from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import useCartContext from "../../contexts/cartContext/useCartContext";
+import useDebounce from "../../hooks/useDebounce";
+import { GoTrash } from "react-icons/go";
+import { FaPlus, FaMobile, FaPlusCircle, FaShoppingCart } from "react-icons/fa";
+import { MdAddHome } from "react-icons/md";
+import { BsCashCoin } from "react-icons/bs";
+import { FaCreditCard } from "react-icons/fa6";
+import { IoQrCode } from "react-icons/io5";
 
-function CartItem({ item, updateQuantity, removeItem }) {
+function CartItem({ item, updateQuantity, deleteCartItem }) {
+  const [itemQuantity, setItemQuantity] = useState(item.quantity);
+  const debouncedQuantity = useDebounce(itemQuantity, 500);
+
+  useEffect(() => {
+    if (debouncedQuantity !== item.quantity) {
+      updateQuantity(item._id, debouncedQuantity);
+    }
+  }, [debouncedQuantity]);
+
   return (
-    <div
-      key={item.id}
-      className="flex justify-between items-center py-2 border-b border-gray-200"
-    >
-      <div className="flex items-center gap-3">
-        {item.image && (
+    <article className="flex justify-between items-center py-4 border-b border-gray-200">
+      <section className="flex gap-8">
+        <div className="overflow-hidden w-[20%] h-fit rounded-4xl">
           <img
-            src={item.image}
+            src={item.imageUrl}
             alt={item.name}
-            className="w-16 h-16 object-cover rounded-md"
+            className="w-full object-cover transition-transform duration-200 hover:scale-[1.1]"
           />
-        )}
-        <div>
-          <div className="font-semibold text-sm">{item.name}</div>
-          <div className="text-green-500 text-sm">{item.price} THB</div>
-          <div className="text-gray-500 text-xs">{item.unit || "1 box"}</div>
         </div>
-      </div>
-      <div className="flex items-center gap-3">
+        <section className="flex flex-col justify-between">
+          <div>
+            <p className="mb-2 text-normal-size font-semibold">{item.name}</p>
+            <p className="text-gray-500">{item.servingSize}</p>
+          </div>
+          <p className="text-primary text-medium-size font-semibold">
+            {item.price} THB
+          </p>
+        </section>
+      </section>
+      <section className="flex items-center gap-3">
         <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
           <button
-            onClick={() => updateQuantity(item.id, -1)}
-            className="bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200"
+            onClick={() => setItemQuantity((prev) => Math.max(prev - 1, 0))}
+            className="cursor-pointer bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200"
           >
             -
           </button>
-          <span className="px-2 py-1 text-sm">{item.quantity}</span>
+          <span className="px-2 py-1 text-sm">{itemQuantity}</span>
           <button
-            onClick={() => updateQuantity(item.id, 1)}
-            className="bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200"
+            onClick={() => setItemQuantity((prev) => prev + 1)}
+            className="cursor-pointer bg-gray-100 text-gray-700 px-2 py-1 hover:bg-gray-200"
           >
             +
           </button>
         </div>
         <button
-          onClick={() => removeItem(item.id)}
-          className="text-red-500 hover:text-red-600"
+          aria-label="Remove item from cart"
+          onClick={() => deleteCartItem(item._id)}
+          className="cursor-pointer text-secondary hover:text-red-600"
         >
-          <FontAwesomeIcon icon={faTrashAlt} size="sm" />
+          <GoTrash className="text-xl" />
         </button>
-      </div>
-    </div>
+      </section>
+    </article>
   );
 }
 
@@ -63,13 +71,13 @@ function PaymentMethodOption({ method, paymentMethod, setPaymentMethod }) {
   const getIcon = (method) => {
     switch (method) {
       case "cash":
-        return faMoneyBillWave;
+        return <BsCashCoin className="mr-2" />;
       case "credit":
-        return faCreditCard;
+        return <FaCreditCard className="mr-2" />;
       case "mobile":
-        return faMobileAlt;
+        return <FaMobile className="mr-2" />;
       case "qr":
-        return faQrcode;
+        return <IoQrCode className="mr-2" />;
       default:
         return null;
     }
@@ -99,11 +107,7 @@ function PaymentMethodOption({ method, paymentMethod, setPaymentMethod }) {
     >
       <div className="flex items-center w-full justify-between">
         <div className="flex items-center">
-          <FontAwesomeIcon
-            icon={getIcon(method)}
-            className="mr-2 text-gray-600"
-            size="sm"
-          />
+          {getIcon(method)}
           <span className="text-sm text-gray-700">
             {getDisplayName(method)}
           </span>
@@ -122,6 +126,8 @@ function PaymentMethodOption({ method, paymentMethod, setPaymentMethod }) {
 }
 
 export default function CheckoutPage() {
+  const { cart, setCart } = useCartContext();
+  const { updateQuantity, deleteCartItem, clearCart } = useCartContext();
   const [address, setAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const [discountCodeInput, setDiscountCodeInput] = useState("");
@@ -133,27 +139,8 @@ export default function CheckoutPage() {
     cal03: 0.3,
   };
 
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      name: "Avocado & Egg Bowl",
-      price: 120,
-      quantity: 2,
-      image: "avocado_bowl.jpg",
-    },
-    {
-      id: 2,
-      name: "Banana Pancakes",
-      price: 85,
-      quantity: 1,
-      image: "banana_pancakes.jpg",
-    },
-  ]);
-
-  const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const subtotal =
+    cart?.reduce((sum, item) => sum + item.price * item.quantity, 0) || 0;
   const discountAmount = appliedCodes.reduce(
     (sum, code) => sum + subtotal * validCoupons[code],
     0
@@ -161,36 +148,73 @@ export default function CheckoutPage() {
   const total = subtotal - discountAmount;
   const taxAmount = 0;
   const finalTotal = total + taxAmount;
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-  const updateQuantity = (id, change) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + change) }
-          : item
-      )
-    );
-  };
-
-  const removeItem = (id) => {
-    setCart((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const removeAllItems = () => {
-    setCart([]);
-  };
+  const totalItems = cart?.reduce((sum, item) => sum + item.quantity, 0) || 0;
 
   const applyDiscount = () => {
     const code = discountCodeInput.toLowerCase();
     if (validCoupons.hasOwnProperty(code) && !appliedCodes.includes(code)) {
       setAppliedCodes((prev) => [...prev, code]);
       setDiscountCodeInput("");
+    } else {
+      console.log("Invalid or already applied discount code");
     }
   };
 
   const removeDiscountCode = (codeToRemove) => {
     setAppliedCodes((prev) => prev.filter((code) => code !== codeToRemove));
+  };
+
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+  const [orderError, setOrderError] = useState(null);
+  const [orderSuccess, setOrderSuccess] = useState(null);
+
+  const handlePlaceOrder = async () => {
+    if (!address || cart.length === 0 || isPlacingOrder) {
+      console.log(
+        "Cannot place order: Missing address, empty cart, or already processing."
+      );
+      return;
+    }
+
+    setIsPlacingOrder(true);
+    setOrderError(null);
+    setOrderSuccess(null);
+
+    try {
+      const orderPayload = {
+        userId: "STATIC_USER_ID_EXAMPLE",
+
+        items: cart.map((item) => ({
+          productId: item.productId,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+
+        totalAmount: finalTotal,
+        shippingAddress: address,
+        paymentMethod: paymentMethod,
+        discountCodes: appliedCodes,
+      };
+    } catch (err) {
+      console.error(
+        "Error placing order:",
+        err.response ? err.response.data : err.message
+      );
+
+      if (err.response) {
+        setOrderError(err.response.data);
+      } else if (err.request) {
+        setOrderError({
+          message: "No response from server. Please try again later.",
+        });
+      } else {
+        setOrderError({
+          message: err.message || "An unexpected error occurred.",
+        });
+      }
+    } finally {
+      setIsPlacingOrder(false);
+    }
   };
 
   useEffect(() => {
@@ -208,32 +232,26 @@ export default function CheckoutPage() {
                 <h3 className="text-sm font-semibold mb-3">
                   {address ? "Delivery Address" : "No address saved"}
                 </h3>
-                <FontAwesomeIcon
-                  icon={faMapMarkerAlt}
-                  size="2x"
-                  className="text-gray-400 mb-2"
-                />
-                <p className="text-xs text-gray-600 mb-4">
+                <MdAddHome size={40} color="var(--color-third)" />
+                <p className="text-xs text-grey mb-4">
                   Add an address or select a saved address
                 </p>
                 <Link
                   to={"/edit-address"}
-                  className="w-full py-2 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 cursor-pointer transition"
+                  className="flex gap-2 justify-center items-center w-full py-2 bg-primary text-white rounded-full font-semibold hover:bg-green-700 cursor-pointer transition"
                 >
-                  <FontAwesomeIcon icon={faPlusCircle} className="mr-1" />
+                  <FaPlusCircle />
                   Add new locations
                 </Link>
               </div>
               <div className="border border-gray-100 rounded-lg p-4 flex-1">
                 <div className="flex justify-between items-center mb-3">
                   <h3 className="text-sm font-semibold">Choose how to pay</h3>
-                  <button className="text-xs text-red-500 hover:text-red-600 cursor-pointer">
-                    <FontAwesomeIcon
-                      icon={faPlusCircle}
-                      className="mr-1 align-middle"
-                      size="xs"
-                    />
-                    Add new method
+                  <button
+                    aria-label="Add new payment method"
+                    className="text-xs text-grey cursor-pointer"
+                  >
+                    <FaPlus />
                   </button>
                 </div>
                 <div className="space-y-2">
@@ -252,38 +270,34 @@ export default function CheckoutPage() {
 
           <div className="bg-white rounded-lg shadow-sm p-5">
             <div className="flex items-center mb-3">
-              <div className="rounded-full bg-gray-200 h-8 w-8 flex items-center justify-center mr-2">
-                <FontAwesomeIcon
-                  icon={faShoppingCart}
-                  size="sm"
-                  color="#6b7280"
-                />
+              <div className="rounded-full bg-bright-grey h-8 w-8 flex items-center justify-center mr-2">
+                <FaShoppingCart />
               </div>
-              <h3 className="text-sm font-semibold">
+              <h3 className="text-grey font-semibold">
                 Check your menu before checkout
               </h3>
             </div>
             <div className="mb-3">
-              <div className="flex justify-between items-center text-sm text-gray-700 font-semibold mb-2">
-                <span>Cart ({totalItems} items)</span>
+              <div className="flex justify-between items-center font-semibold mb-2">
+                <div>
+                  <span className="text-medium-size text-third">Cart</span>{" "}
+                  <span className="text-small-size">
+                    ({totalItems} {cart?.length > 1 ? "items" : "item"})
+                  </span>
+                </div>
                 <button
-                  onClick={removeAllItems}
-                  className="text-red-500 hover:text-red-600 cursor-pointer"
+                  onClick={clearCart}
+                  className="text-secondary hover:text-red-600 cursor-pointer"
                 >
-                  <FontAwesomeIcon
-                    icon={faTrashAlt}
-                    className="mr-1"
-                    size="xs"
-                  />
                   Remove all
                 </button>
               </div>
-              {cart.map((item) => (
+              {cart?.map((item) => (
                 <CartItem
-                  key={item.id}
+                  key={item._id}
                   item={item}
                   updateQuantity={updateQuantity}
-                  removeItem={removeItem}
+                  deleteCartItem={deleteCartItem}
                 />
               ))}
             </div>
@@ -292,8 +306,10 @@ export default function CheckoutPage() {
 
         <div className="space-y-8">
           <div className="bg-white rounded-lg shadow-sm p-5">
-            <h3 className="text-sm font-semibold mb-1">Discount Code</h3>
-            <p className="text-xs text-gray-600 mb-2">
+            <h3 className="text-medium-size text-third font-semibold mb-1">
+              Discount Code
+            </h3>
+            <p className="text-xs text-grey mb-2">
               Have a coupon? Apply it below.
             </p>
             <div className="flex gap-2 mb-2">
@@ -306,7 +322,7 @@ export default function CheckoutPage() {
               />
               <button
                 onClick={applyDiscount}
-                className="w-24 py-3 bg-green-600 text-white text-sm rounded-full hover:bg-green-700 cursor-pointer"
+                className="w-24 py-3 bg-primary text-white text-sm rounded-full hover:bg-green-700 cursor-pointer"
               >
                 Apply
               </button>
@@ -320,7 +336,7 @@ export default function CheckoutPage() {
                   <span className="mr-2">{code.toUpperCase()}</span>
                   <button
                     onClick={() => removeDiscountCode(code)}
-                    className="text-red-500 text-xs hover:text-red-600 focus:outline-none"
+                    className="text-secondary text-xs hover:text-red-600 focus:outline-none"
                   >
                     Remove
                   </button>
@@ -330,8 +346,10 @@ export default function CheckoutPage() {
           </div>
 
           <div className="bg-white rounded-lg shadow-sm p-5">
-            <h3 className="text-sm font-semibold mb-4">Order Summary</h3>
-            <div className="flex justify-between text-sm font-semibold text-gray-700 mb-2">
+            <h3 className="text-medium-size text-thrid font-semibold mb-4">
+              Order Summary
+            </h3>
+            <div className="flex justify-between text-sm font-semibold text-grey mb-2">
               <span>Subtotal ({totalItems} items)</span>
               <span>{subtotal} THB</span>
             </div>
@@ -341,30 +359,49 @@ export default function CheckoutPage() {
                 <span>-{discountAmount} THB</span>
               </div>
             )}
-            <div className="flex justify-between text-sm text-gray-700 mb-2">
+            <div className="flex justify-between text-sm text-grey mb-2">
               <span>Tax:</span>
               <span>0 THB</span>
             </div>
-            <div className="flex justify-between text-sm text-gray-700 mb-2">
+            <div className="flex justify-between text-sm text-grey mb-2">
               <span>Shipping:</span>
               <span>Free</span>
             </div>
-            <div className="flex justify-between text-base font-semibold text-gray-900 mt-3 mb-4">
+            <div className="flex justify-between text-base font-semibold text-third mt-3 mb-4">
               <span>Total:</span>
               <span>{finalTotal} THB</span>
             </div>
+
             <button
+              onClick={handlePlaceOrder}
               className={`w-full py-3 rounded-full text-sm font-semibold transition ${
-                !address || cart.length === 0
+                !address || cart.length === 0 || isPlacingOrder
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-green-600 text-white hover:bg-green-700 cursor-pointer"
+                  : "bg-primary text-white hover:bg-green-700 cursor-pointer"
               }`}
-              disabled={!address || cart.length === 0}
+              disabled={!address || cart.length === 0 || isPlacingOrder}
             >
-              Place Order
+              {isPlacingOrder ? "Processing Order..." : "Place Order"}
             </button>
-            {(!address || cart.length === 0) && (
-              <p className="text-xs text-red-500 mt-2">
+            {isPlacingOrder && (
+              <p className="text-center text-blue-600 mt-2">
+                Placing your order...
+              </p>
+            )}
+            {orderError && (
+              <div className="text-secondary mt-2">
+                <p>Error placing order:</p>
+                <p>{orderError.message || JSON.stringify(orderError)}</p>
+              </div>
+            )}
+            {orderSuccess && (
+              <div className="text-green-600 mt-2">
+                <p>Order placed successfully!</p>
+                <p>Order ID: {orderSuccess._id}</p>
+              </div>
+            )}
+            {(!address || cart.length === 0) && !isPlacingOrder && (
+              <p className="text-xs text-secondary mt-2">
                 Please add an address and make sure your cart is not empty.
               </p>
             )}
