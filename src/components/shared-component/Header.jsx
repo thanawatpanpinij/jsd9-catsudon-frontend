@@ -254,7 +254,12 @@ const Header = () => {
                     (cart.length === 0 ||
                     location.pathname === "/checkout" ? null : (
                       <span className="absolute top-[-4px] right-0 w-[16px] h-[16px] bg-secondary text-white text-[10px] flex items-center justify-center rounded-full">
-                        {!cart || cart.length === 0 ? 0 : cart.length}
+                        {!cart || cart.length === 0
+                          ? 0
+                          : cart.reduce(
+                              (total, item) => (total += item.quantity),
+                              0
+                            )}
                       </span>
                     ))}
                 </div>
