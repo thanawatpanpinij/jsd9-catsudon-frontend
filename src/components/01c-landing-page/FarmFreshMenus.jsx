@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { Activity, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import {
@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import useCartContext from "../../contexts/cartContext/useCartContext";
+import MenuCardSkeleton from "./skeletons/MenuCardSkeleton";
 
 const FarmFreshMenus = () => {
   const [menus, setMenus] = useState([]);
@@ -60,10 +61,6 @@ const FarmFreshMenus = () => {
     }));
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <section className="flex flex-col max-w-[1440px] mx-auto px-[32px] mb-[80px] max-[721px]:mb-[56px]">
       <div className="mb-[32px]">
@@ -90,100 +87,105 @@ const FarmFreshMenus = () => {
       </div>
 
       <div className="overflow-hidden">
-        <Swiper
-          className="w-[1900px] h-full"
-          slidesPerView={6}
-          spaceBetween={0}
-          loop={true}
-          speed={800}
-        >
-          {menus.map((menu, index) => (
-            <SwiperSlide key={index}>
-              <div className="w-[300px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-4">
-                <div className="flex items-center justify-between">
-                  <p
-                    className={`px-4 py-1 rounded-full text-small-size text-white cursor-pointer ${
-                      tagOrder[index % tagOrder.length] === "Hot"
-                        ? "bg-secondary"
-                        : tagOrder[index % tagOrder.length] === "New"
-                        ? "bg-primary"
-                        : tagOrder[index % tagOrder.length] === "10% off"
-                        ? "bg-fourth"
-                        : "bg-gray-500"
-                    }`}
-                  >
-                    {tagOrder[index % tagOrder.length]}
-                  </p>
+        <Activity mode={loading ? "visible" : "hidden"}>
+          <MenuCardSkeleton />
+        </Activity>
+        <Activity mode={loading ? "hidden" : "visible"}>
+          <Swiper
+            className="w-[1900px] h-full"
+            slidesPerView={6}
+            spaceBetween={0}
+            loop={true}
+            speed={800}
+          >
+            {menus.map((menu, index) => (
+              <SwiperSlide key={index}>
+                <div className="w-[300px] border-[1.5px] border-gray-300 p-5 rounded-[32px] flex flex-col justify-center gap-4">
+                  <div className="flex items-center justify-between">
+                    <p
+                      className={`px-4 py-1 rounded-full text-small-size text-white cursor-pointer ${
+                        tagOrder[index % tagOrder.length] === "Hot"
+                          ? "bg-secondary"
+                          : tagOrder[index % tagOrder.length] === "New"
+                          ? "bg-primary"
+                          : tagOrder[index % tagOrder.length] === "10% off"
+                          ? "bg-fourth"
+                          : "bg-gray-500"
+                      }`}
+                    >
+                      {tagOrder[index % tagOrder.length]}
+                    </p>
 
-                  <RiHeartFill
-                    className={`text-normal-size cursor-pointer transition-colors duration-300 ${
-                      likedItems[index] ? "text-secondary" : "text-gray-300"
-                    }`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleLike(index);
-                    }}
-                  />
-                </div>
-
-                <Link to={`/menus/${menu.slug}-${menu._id}`}>
-                  <div className="w-full h-[160px] overflow-hidden rounded-[18px]">
-                    <img
-                      className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
-                      src={menu.imageUrl}
-                      alt={menu.name}
-                      loading="lazy"
+                    <RiHeartFill
+                      className={`text-normal-size cursor-pointer transition-colors duration-300 ${
+                        likedItems[index] ? "text-secondary" : "text-gray-300"
+                      }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLike(index);
+                      }}
                     />
                   </div>
-                </Link>
-                {menu.tags?.en && (
-                  <div className="flex text-[10px] items-center gap-1">
-                    {menu.tags.en.slice(0, 3).map((tag, index) => (
-                      <p
-                        key={index}
-                        className="text-fourth border-fourth border-1 px-2 py-[2px] rounded-full hover:bg-fourth hover:text-white transition-all duration-200 ease-out cursor-pointer"
-                      >
-                        {tag}
-                      </p>
-                    ))}
-                  </div>
-                )}
 
-                <div className="flex flex-col">
-                  <p className="text-small-size text-primary font-medium">
-                    {menu.category}
-                  </p>
                   <Link to={`/menus/${menu.slug}-${menu._id}`}>
-                    <h3 className="font-semibold text-third leading-tight text-normal-size">
-                      {menu.name}
-                    </h3>
+                    <div className="w-full h-[160px] overflow-hidden rounded-[18px]">
+                      <img
+                        className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
+                        src={menu.imageUrl}
+                        alt={menu.name}
+                        loading="lazy"
+                      />
+                    </div>
                   </Link>
-                  <div className="flex items-center gap-1 mt-1 text-fourth">
-                    <RiStarFill />
-                    <RiStarFill />
-                    <RiStarFill />
-                    <RiStarFill />
-                    <RiStarLine />
-                    <p className="text-third text-small-size font-semibold">
-                      {menu.rating ? `(${menu.rating})` : "(4.98)"}
+                  {menu.tags?.en && (
+                    <div className="flex text-[10px] items-center gap-1">
+                      {menu.tags.en.slice(0, 3).map((tag, index) => (
+                        <p
+                          key={index}
+                          className="text-fourth border-fourth border-1 px-2 py-[2px] rounded-full hover:bg-fourth hover:text-white transition-all duration-200 ease-out cursor-pointer"
+                        >
+                          {tag}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="flex flex-col">
+                    <p className="text-small-size text-primary font-medium">
+                      {menu.category}
                     </p>
+                    <Link to={`/menus/${menu.slug}-${menu._id}`}>
+                      <h3 className="font-semibold text-third leading-tight text-normal-size">
+                        {menu.name}
+                      </h3>
+                    </Link>
+                    <div className="flex items-center gap-1 mt-1 text-fourth">
+                      <RiStarFill />
+                      <RiStarFill />
+                      <RiStarFill />
+                      <RiStarFill />
+                      <RiStarLine />
+                      <p className="text-third text-small-size font-semibold">
+                        {menu.rating ? `(${menu.rating})` : "(4.98)"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="text-third text-medium-size font-semibold">
+                      {menu.price} <span>THB</span>
+                    </p>
+                    <div
+                      onClick={() => addToCart(menu._id)}
+                      className="bg-primary p-3 rounded-full hover:bg-third transition-all duration-200 ease-out cursor-pointer hover:rotate-8"
+                    >
+                      <RiShoppingBag3Fill className="text-medium-size text-white" />
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <p className="text-third text-medium-size font-semibold">
-                    {menu.price} <span>THB</span>
-                  </p>
-                  <div
-                    onClick={() => addToCart(menu._id)}
-                    className="bg-primary p-3 rounded-full hover:bg-third transition-all duration-200 ease-out cursor-pointer hover:rotate-8"
-                  >
-                    <RiShoppingBag3Fill className="text-medium-size text-white" />
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Activity>
       </div>
     </section>
   );
