@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { Activity, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -16,11 +16,13 @@ import {
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../utils/axiosInstance";
+import CategorySkeleton from "../skeletons/CategorySkeleton";
 
 const HeaderHero = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [diets, setDiets] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handlePrevClick = () => {
     if (swiperInstance) swiperInstance.slidePrev();
@@ -33,6 +35,7 @@ const HeaderHero = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
+        setIsLoading(true);
         const res = await axiosInstance.get("/menus");
         const menus = res.data.menus;
 
@@ -49,6 +52,8 @@ const HeaderHero = () => {
         setDiets(categoriesData);
       } catch (err) {
         console.error("Error fetching categories", err);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -124,75 +129,84 @@ const HeaderHero = () => {
         </div>
 
         <div className="flex items-center justify-center w-[400px] mt-[56px] max-[393px]:w-[320px]">
-          <RiArrowLeftWideLine
-            className="h-[60px] w-[60px] text-gray-500 cursor-pointer max-[301px]:hidden"
-            onClick={handlePrevClick}
-          />
-          <Swiper
-            onSwiper={setSwiperInstance}
-            slidesPerView={3}
-            spaceBetween={20}
-            centeredSlides={true}
-            loop={true}
-            speed={1000}
-            modules={[Autoplay]}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-          >
-            {diets.map((item, index) => {
-              const ratingValues = [
-                "3.98",
-                "4.25",
-                "4.58",
-                "3.75",
-                "4.35",
-                "4.15",
-                "4.75",
-                "4.45",
-              ];
-              const rating = ratingValues[index % ratingValues.length];
+          <Activity mode={isLoading ? "hidden" : "visible"}>
+            <RiArrowLeftWideLine
+              className="h-[60px] w-[60px] text-gray-500 cursor-pointer max-[301px]:hidden"
+              onClick={handlePrevClick}
+            />
+          </Activity>
+          <Activity mode={isLoading ? "visible" : "hidden"}>
+            <CategorySkeleton />
+          </Activity>
+          <Activity mode={isLoading ? "hidden" : "visible"}>
+            <Swiper
+              onSwiper={setSwiperInstance}
+              slidesPerView={3}
+              spaceBetween={20}
+              centeredSlides={true}
+              loop={true}
+              speed={1000}
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
+            >
+              {diets.map((item, index) => {
+                const ratingValues = [
+                  "3.98",
+                  "4.25",
+                  "4.58",
+                  "3.75",
+                  "4.35",
+                  "4.15",
+                  "4.75",
+                  "4.45",
+                ];
+                const rating = ratingValues[index % ratingValues.length];
 
-              return (
-                <SwiperSlide
-                  key={index}
-                  className={`flex justify-center items-center w-auto py-[20px] ${
-                    swiperInstance?.realIndex === index
-                      ? styles.activeSlide
-                      : ""
-                  }`}
-                >
-                  <article
-                    className={`flex flex-col items-center justify-center max-[393px]:py-2 px-1 py-3 w-auto rounded-full ${
-                      index % 2 === 0 ? "bg-third" : "bg-secondary"
-                    } transition-all duration-300`}
+                return (
+                  <SwiperSlide
+                    key={index}
+                    className={`flex justify-center items-center w-auto py-[20px] ${
+                      swiperInstance?.realIndex === index
+                        ? styles.activeSlide
+                        : ""
+                    }`}
                   >
-                    <div className="bg-white rounded-full w-[80px] h-[80px] flex justify-center items-center max-[393px]:w-[60px] max-[393px]:h-[60px]">
-                      <img
-                        className="w-[80px] h-[80px] object-cover max-[393px]:w-[60px] max-[393px]:h-[60px]"
-                        src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720534/002-vector-r02_whb6bu.webp"
-                        alt={item.name}
-                      />
-                    </div>
+                    <article
+                      className={`flex flex-col items-center justify-center max-[393px]:py-2 px-1 py-3 w-auto rounded-full ${
+                        index % 2 === 0 ? "bg-third" : "bg-secondary"
+                      } transition-all duration-300`}
+                    >
+                      <div className="bg-white rounded-full w-[80px] h-[80px] flex justify-center items-center max-[393px]:w-[60px] max-[393px]:h-[60px]">
+                        <img
+                          className="w-[80px] h-[80px] object-cover max-[393px]:w-[60px] max-[393px]:h-[60px]"
+                          src="https://res.cloudinary.com/dsgtmtcmt/image/upload/v1744720534/002-vector-r02_whb6bu.webp"
+                          alt={item.name}
+                        />
+                      </div>
 
-                    <p className="text-small-size text-white my-5 text-center max-[393px]:text-[10px]">
-                      {item.name}
-                    </p>
+                      <p className="text-small-size text-white my-5 text-center max-[393px]:text-[10px]">
+                        {item.name}
+                      </p>
 
-                    <div className="flex items-center justify-center gap-1 text-small-size text-white mb-8">
-                      <RiStarFill className="text-fourth" />
-                      <span>{rating}</span>
-                    </div>
-                  </article>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-          <RiArrowRightWideLine
-            className="h-[60px] w-[60px] text-gray-500 cursor-pointer max-[301px]:hidden"
-            onClick={handleNextClick}
-          />
+                      <div className="flex items-center justify-center gap-1 text-small-size text-white mb-8">
+                        <RiStarFill className="text-fourth" />
+                        <span>{rating}</span>
+                      </div>
+                    </article>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </Activity>
+          <Activity mode={isLoading ? "hidden" : "visible"}>
+            <RiArrowRightWideLine
+              className="h-[60px] w-[60px] text-gray-500 cursor-pointer max-[301px]:hidden"
+              onClick={handleNextClick}
+            />
+          </Activity>
         </div>
       </div>
 
