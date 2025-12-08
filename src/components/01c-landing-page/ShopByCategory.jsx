@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { Activity, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import {
@@ -8,10 +8,12 @@ import {
 } from "react-icons/ri";
 import { Link } from "react-router";
 import axiosInstance from "../../utils/axiosInstance.js";
+import CategoryCardSkeleton from "./skeletons/CategoryCardSkeleton";
 
 const ShopByCategory = () => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [menus, setMenus] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handlePrevClick = () => {
     if (swiperInstance) swiperInstance.slidePrev();
@@ -24,6 +26,7 @@ const ShopByCategory = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       try {
+        setIsLoading(true);
         const response = await axiosInstance.get("/menus");
 
         const allMenus = response.data.menus;
@@ -45,6 +48,8 @@ const ShopByCategory = () => {
         setMenus(uniqueMenus);
       } catch (error) {
         console.error("Failed to fetch menus:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -78,68 +83,75 @@ const ShopByCategory = () => {
               <h2 className="text-[42px] font-semibold text-third max-[631px]:text-large-size max-[433px]:text-medium-size">
                 Shop By Category
               </h2>
-              <div className="flex gap-3 lg:hidden max-[461px]:gap-1">
-                <button
-                  className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer"
-                  onClick={handlePrevClick}
-                >
-                  <RiArrowLeftSLine className="text-white text-normal-size" />
-                </button>
-                <button
-                  className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer"
-                  onClick={handleNextClick}
-                >
-                  <RiArrowRightSLine className="text-white text-normal-size" />
-                </button>
-              </div>
+              <Activity mode={isLoading ? "hidden" : "visible"}>
+                <div className="flex gap-3 lg:hidden max-[461px]:gap-1">
+                  <button
+                    className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer"
+                    onClick={handlePrevClick}
+                  >
+                    <RiArrowLeftSLine className="text-white text-normal-size" />
+                  </button>
+                  <button
+                    className="bg-primary rounded-full p-2 hover:bg-third transition-all duration-200 ease cursor-pointer"
+                    onClick={handleNextClick}
+                  >
+                    <RiArrowRightSLine className="text-white text-normal-size" />
+                  </button>
+                </div>
+              </Activity>
             </div>
           </div>
         </div>
 
-        <Swiper
-          className="w-full"
-          onSwiper={setSwiperInstance}
-          spaceBetween={16}
-          loop={true}
-          speed={600}
-          breakpoints={{
-            320: {
-              slidesPerView: 3,
-            },
-            640: {
-              slidesPerView: 4,
-            },
-            768: {
-              slidesPerView: 6,
-            },
-            1024: {
-              slidesPerView: 8,
-            },
-          }}
-        >
-          {menus.map(({ category, imageUrl }, index) => (
-            <SwiperSlide key={index} className="text-center cursor-pointer">
-              <Link
-                to={"/menus"}
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
-                <div className="relative overflow-hidden w-full rounded-[32px] mb-3 max-[390px]:rounded-[24px]">
-                  <img
-                    className="w-full transition-transform duration-300 hover:scale-110"
-                    src={imageUrl}
-                    alt={category}
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-small-size font-semibold text-third">
-                  {category}
-                </p>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <Activity mode={isLoading ? "visible" : "hidden"}>
+          <CategoryCardSkeleton />
+        </Activity>
+        <Activity mode={isLoading ? "hidden" : "visible"}>
+          <Swiper
+            className="w-full"
+            onSwiper={setSwiperInstance}
+            spaceBetween={16}
+            loop={true}
+            speed={600}
+            breakpoints={{
+              320: {
+                slidesPerView: 3,
+              },
+              640: {
+                slidesPerView: 4,
+              },
+              768: {
+                slidesPerView: 6,
+              },
+              1024: {
+                slidesPerView: 8,
+              },
+            }}
+          >
+            {menus.map(({ category, imageUrl }, index) => (
+              <SwiperSlide key={index} className="text-center cursor-pointer">
+                <Link
+                  to={"/menus"}
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
+                  <div className="relative overflow-hidden w-full rounded-[32px] mb-3 max-[390px]:rounded-[24px]">
+                    <img
+                      className="w-full transition-transform duration-300 hover:scale-110"
+                      src={imageUrl}
+                      alt={category}
+                      loading="lazy"
+                    />
+                  </div>
+                  <p className="text-small-size font-semibold text-third">
+                    {category}
+                  </p>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Activity>
       </div>
 
       <div className="grid grid-cols-2 gap-5 max-[843px]:grid-cols-1">
