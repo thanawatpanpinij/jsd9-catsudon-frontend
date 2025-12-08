@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "../../components/01c-landing-page/swiper-assets/swiper-bundle.min.css";
+import "swiper/css";
 import {
   RiHeartFill,
   RiStarFill,

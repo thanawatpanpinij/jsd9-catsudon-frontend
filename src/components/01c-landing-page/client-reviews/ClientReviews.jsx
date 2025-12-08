@@ -1,8 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 import { RiStarFill, RiStarLine } from "react-icons/ri";
 import { Pagination } from "swiper/modules";
-import "../swiper-assets/swiper-bundle.min.css";
 import styles from "./ClientReviews.module.css";
 
 const reviews = [

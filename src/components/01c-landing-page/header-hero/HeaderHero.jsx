@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "../swiper-assets/swiper-bundle.min.css";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
 import styles from "./HeaderHero.module.css";
 import { Autoplay, EffectFade } from "swiper/modules";
 import {
