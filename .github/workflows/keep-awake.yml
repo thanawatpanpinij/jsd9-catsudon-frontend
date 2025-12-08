@@ -1,0 +1,32 @@
+name: Keep Backend Awake
+
+on:
+  schedule:
+    - cron: "5,17,29,41,53 * * * *"
+
+  workflow_dispatch:
+
+jobs:
+  ping-backend:
+    name: Ping Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping backend health endpoint
+        run: |
+          BACKEND_URL="${BACKEND_URL:-https://catsudon-api.onrender.com}"
+          ENDPOINT="${ENDPOINT:-/}"
+
+          echo "Pinging ${BACKEND_URL}${ENDPOINT}..."
+
+          HTTP_CODE=$(curl -f -s -S -o /dev/null -w "%{http_code}" "${BACKEND_URL}${ENDPOINT}" || echo "000")
+
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 400 ]; then
+            echo "✅ Success! Backend is awake. HTTP Status: $HTTP_CODE"
+          else
+            echo "⚠️  Warning: HTTP Status: $HTTP_CODE (Backend might be sleeping or endpoint not found)"
+            echo "This is normal if backend is sleeping - it will wake up on next request."
+          fi
+        env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
+          ENDPOINT: ${{ secrets.BACKEND_ENDPOINT || '/' }}
