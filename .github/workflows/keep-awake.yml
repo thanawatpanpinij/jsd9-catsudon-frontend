@@ -2,7 +2,7 @@ name: Keep Backend Awake
 
 on:
   schedule:
-    - cron: "5,17,29,41,53 * * * *"
+    - cron: "*/14 * * * *"
 
   workflow_dispatch:
 
